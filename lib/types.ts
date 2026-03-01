@@ -87,7 +87,7 @@ export interface OwnerProfile {
   address: string;
   coordinates: Coordinates;
   membershipType: MembershipType;
-  paymentMethod: "Visa Platinum" | "Mastercard World" | "Bank Transfer" | "PromptPay";
+  paymentMethod: string;
   bookingHistory: BookingRecord[];
 }
 

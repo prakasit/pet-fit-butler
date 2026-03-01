@@ -32,7 +32,7 @@ export function HeroVideoSection() {
         {useImageFallback ? (
           <Image
             src={HERO_POSTER}
-            alt="Happy dog running with joyful energy"
+            alt="สุนัขวิ่งอย่างร่าเริงท่ามกลางบรรยากาศอบอุ่น"
             fill
             priority
             className="object-cover"
@@ -67,14 +67,14 @@ export function HeroVideoSection() {
           className="space-y-4"
         >
           <p className="max-w-[30ch] text-4xl leading-tight text-soft-cream md:text-[2.65rem]">
-            A Happier, Healthier Life for Your Best Friend
+            ให้ลูกรักมีชีวิตที่สุขกาย สบายใจ และแข็งแรงในทุกวัน
           </p>
           <div className="flex flex-wrap gap-2">
             <Link href="/booking">
-              <ElegantButton>Book a Session</ElegantButton>
+              <ElegantButton>จองเลย</ElegantButton>
             </Link>
             <Link href="/profile">
-              <ElegantButton variant="secondary">View Membership</ElegantButton>
+              <ElegantButton variant="secondary">ดูแพ็กเกจสมาชิก</ElegantButton>
             </Link>
           </div>
         </motion.div>

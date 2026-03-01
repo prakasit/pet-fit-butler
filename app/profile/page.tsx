@@ -6,20 +6,21 @@ import { motion } from "framer-motion";
 import { BookingCard } from "@/components/ui/BookingCard";
 import { PremiumCard } from "@/components/ui/PremiumCard";
 import { StatusBadge } from "@/components/ui/StatusBadge";
+import { membershipTypeThai } from "@/lib/thai";
 import { currentUserProfile } from "@/mock";
 
 const profileFields = [
-  { label: "Name", value: currentUserProfile.name, icon: UserRound },
-  { label: "Phone", value: currentUserProfile.phone, icon: Phone },
-  { label: "Email", value: currentUserProfile.email, icon: Mail },
-  { label: "Address", value: currentUserProfile.address, icon: LocateFixed },
+  { label: "ชื่อ-นามสกุล", value: currentUserProfile.name, icon: UserRound },
+  { label: "เบอร์โทรศัพท์", value: currentUserProfile.phone, icon: Phone },
+  { label: "อีเมล", value: currentUserProfile.email, icon: Mail },
+  { label: "ที่อยู่", value: currentUserProfile.address, icon: LocateFixed },
   {
-    label: "GPS Coordinates",
+    label: "พิกัดรับ-ส่ง",
     value: `${currentUserProfile.coordinates.lat}, ${currentUserProfile.coordinates.lng}`,
     icon: LocateFixed,
   },
   {
-    label: "Payment Method",
+    label: "ช่องทางชำระเงิน",
     value: currentUserProfile.paymentMethod,
     icon: CreditCard,
   },
@@ -36,15 +37,15 @@ export default function ProfilePage() {
         transition={{ duration: 0.35 }}
         className="rounded-[28px] bg-brand-navy px-6 py-7 text-soft-cream shadow-premium"
       >
-        <p className="text-sm text-soft-cream/80">Profile Overview</p>
-        <h2 className="mt-1 text-3xl leading-tight">{firstName}&apos;s premium account</h2>
+        <p className="text-sm text-soft-cream/80">ภาพรวมโปรไฟล์</p>
+        <h2 className="mt-1 text-3xl leading-tight">บัญชีสมาชิกของคุณ {firstName}</h2>
         <p className="mt-2 text-sm text-soft-cream/80">{currentUserProfile.email}</p>
       </motion.section>
 
       <PremiumCard
         title={currentUserProfile.name}
-        subtitle="Luxury membership account"
-        action={<StatusBadge label={currentUserProfile.membershipType} tone="active" />}
+        subtitle="บัญชีแพ็กเกจดูแลสุขภาพลูกรัก"
+        action={<StatusBadge label={membershipTypeThai[currentUserProfile.membershipType]} tone="active" />}
       >
         <div className="space-y-3">
           {profileFields.map((field) => {
@@ -63,8 +64,8 @@ export default function ProfilePage() {
       </PremiumCard>
 
       <PremiumCard
-        title="Booking History"
-        subtitle={`${currentUserProfile.bookingHistory.length} premium sessions`}
+        title="ประวัติการจองบริการ"
+        subtitle={`ทั้งหมด ${currentUserProfile.bookingHistory.length} รายการ`}
       >
         <div className="space-y-3">
           {currentUserProfile.bookingHistory.slice(0, 8).map((booking) => (

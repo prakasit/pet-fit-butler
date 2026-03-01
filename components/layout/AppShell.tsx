@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 
 import { DesktopLayout } from "@/components/layout/DesktopLayout";
 import { MobileLayout } from "@/components/layout/MobileLayout";
+import { pageTitleThai } from "@/lib/thai";
 import { currentUserProfile, pets } from "@/mock";
 
 interface AppShellProps {
@@ -13,25 +14,13 @@ interface AppShellProps {
 }
 
 const standaloneRoutes = ["/auth", "/offline"];
-const pageTitles: Record<string, string> = {
-  "/dashboard": "Home",
-  "/booking": "Booking",
-  "/health": "Activity",
-  "/tracking": "Live",
-  "/profile": "Profile",
-  "/reports": "Activity",
-  "/pets": "Activity",
-  "/live-cam": "Live",
-  "/gallery": "Activity",
-};
-
 export function AppShell({ children }: AppShellProps) {
   const pathname = usePathname();
   const isStandalone = standaloneRoutes.some((route) => pathname.startsWith(route));
   const firstName = currentUserProfile.name.split(" ")[0];
-  const featuredPet = pets[0]?.name ?? "your pet";
-  const title = pageTitles[pathname] ?? "Pet Fit Butler";
-  const today = new Intl.DateTimeFormat("en-US", {
+  const featuredPet = pets[0]?.name ?? "ลูกรัก";
+  const title = pageTitleThai[pathname] ?? "เพ็ท ฟิต บัตเลอร์";
+  const today = new Intl.DateTimeFormat("th-TH", {
     weekday: "long",
     month: "short",
     day: "numeric",

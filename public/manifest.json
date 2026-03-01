@@ -1,7 +1,7 @@
 {
-  "name": "Pet Fit Butler",
-  "short_name": "Pet Butler",
-  "description": "Luxury pet wellness butler experience with premium care tracking.",
+  "name": "เพ็ท ฟิต บัตเลอร์",
+  "short_name": "เพ็ทบัตเลอร์",
+  "description": "แพลตฟอร์มดูแลสุขภาพสัตว์เลี้ยงระดับพรีเมียม พร้อมผู้ช่วยดูแลแบบใกล้ชิด",
   "start_url": "/dashboard",
   "display": "standalone",
   "orientation": "portrait",

@@ -14,9 +14,9 @@ interface ButlerDriverCardProps {
 export function ButlerDriverCard({ driver, etaMinutes }: ButlerDriverCardProps) {
   return (
     <PremiumCard
-      title="Butler Driver"
-      subtitle="Premium pet transfer in progress"
-      action={<StatusBadge label={`${etaMinutes} min ETA`} tone="active" />}
+      title="ผู้ดูแลประจำการเดินทาง"
+      subtitle="กำลังดูแลการรับส่งลูกรักแบบพรีเมียม"
+      action={<StatusBadge label={`ถึงภายใน ${etaMinutes} นาที`} tone="active" />}
     >
       <div className="flex items-center gap-4">
         <div className="h-16 w-16 overflow-hidden rounded-2xl border border-line-soft bg-soft-cream">
@@ -40,7 +40,7 @@ export function ButlerDriverCard({ driver, etaMinutes }: ButlerDriverCardProps) 
           </p>
           <p className="flex items-center gap-1 text-text-muted">
             <Star className="h-4 w-4 fill-joy-peach text-joy-peach" />
-            {driver.rating.toFixed(1)} rating
+            คะแนน {driver.rating.toFixed(1)}
           </p>
         </div>
       </div>

@@ -7,7 +7,7 @@ export default function Loading() {
         <div className="overflow-hidden rounded-3xl border border-line-soft bg-surface p-2 shadow-premium">
           <Image
             src="/brand_logo.jpg"
-            alt="Pet Fit Butler"
+            alt="โลโก้เพ็ท ฟิต บัตเลอร์"
             width={96}
             height={96}
             className="rounded-2xl object-cover"
@@ -15,8 +15,8 @@ export default function Loading() {
           />
         </div>
         <div>
-          <p className="text-xs tracking-[0.24em] text-text-muted">PET FIT BUTLER</p>
-          <p className="mt-1 text-2xl text-brand-navy">Preparing your wellness lounge</p>
+          <p className="text-xs tracking-[0.18em] text-text-muted">เพ็ท ฟิต บัตเลอร์</p>
+          <p className="mt-1 text-2xl text-brand-navy">กำลังเตรียมพื้นที่ดูแลสุขภาพลูกรัก</p>
         </div>
         <div className="h-1.5 w-44 overflow-hidden rounded-full bg-brand-navy/10">
           <div className="h-full w-1/2 animate-pulse rounded-full bg-sage" />

@@ -1,5 +1,4 @@
 import { StatusBadge } from "@/components/ui/StatusBadge";
-import { toTitleCase } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 interface TimelineItem {
@@ -40,10 +39,10 @@ export function Timeline({ items, className }: TimelineProps) {
           </div>
           <div className="flex min-h-8 flex-1 items-center justify-between gap-2">
             <div>
-              <p className="text-sm font-medium text-brand-navy">{toTitleCase(item.label)}</p>
+              <p className="text-sm font-medium text-brand-navy">{item.label}</p>
               <p className="text-xs text-text-muted">{item.timestamp}</p>
             </div>
-            {item.active && <StatusBadge label="Current" tone="active" />}
+            {item.active && <StatusBadge label="สถานะปัจจุบัน" tone="active" />}
           </div>
         </li>
       ))}

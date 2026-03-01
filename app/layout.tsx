@@ -19,9 +19,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Pet Fit Butler",
+  title: "เพ็ท ฟิต บัตเลอร์ | ดูแลสุขภาพลูกรักแบบพรีเมียม",
   description:
-    "Luxury pet wellness and butler concierge experience with premium health tracking.",
+    "บริการดูแลสุขภาพสัตว์เลี้ยงระดับพรีเมียม พร้อมผู้ช่วยส่วนตัว การติดตามแบบเรียลไทม์ และรายงานสุขภาพครบถ้วน",
   manifest: "/manifest.json",
   icons: {
     icon: [
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   appleWebApp: {
     capable: true,
-    title: "Pet Fit Butler",
+    title: "เพ็ท ฟิต บัตเลอร์",
     statusBarStyle: "black-translucent",
   },
 };
@@ -49,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="th">
       <body className={`${inter.variable} ${playfair.variable} antialiased`}>
         <AppShell>{children}</AppShell>
       </body>

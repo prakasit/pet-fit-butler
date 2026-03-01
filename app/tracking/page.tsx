@@ -8,7 +8,7 @@ import { ButlerDriverCard } from "@/components/ui/ButlerDriverCard";
 import { PremiumCard } from "@/components/ui/PremiumCard";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { Timeline } from "@/components/ui/Timeline";
-import { toTitleCase } from "@/lib/format";
+import { rideStatusThai } from "@/lib/thai";
 import { rides } from "@/mock";
 
 export default function TrackingPage() {
@@ -51,18 +51,18 @@ export default function TrackingPage() {
           <div className="relative z-10 space-y-4 p-5">
             <div className="flex items-center justify-between">
               <StatusBadge
-                label={toTitleCase(selectedRide.currentStatus)}
+                label={rideStatusThai[selectedRide.currentStatus]}
                 tone="active"
                 className="bg-sage/35 text-soft-cream"
               />
               <span className="inline-flex items-center gap-1 rounded-full bg-soft-cream/16 px-3 py-1 text-xs font-semibold">
                 <Radio className="h-3.5 w-3.5" />
-                Live tracking
+                ติดตามแบบเรียลไทม์
               </span>
             </div>
             <div className="space-y-1">
-              <p className="text-sm text-soft-cream/80">Current ride for {selectedRide.petName}</p>
-              <h2 className="text-3xl leading-tight">{etaCountdown} min until arrival</h2>
+              <p className="text-sm text-soft-cream/80">สถานะการเดินทางของ {selectedRide.petName}</p>
+              <h2 className="text-3xl leading-tight">จะถึงภายใน {etaCountdown} นาที</h2>
             </div>
 
             <div className="h-2.5 overflow-hidden rounded-full bg-soft-cream/20">
@@ -100,7 +100,7 @@ export default function TrackingPage() {
           >
             <ButlerDriverCard driver={selectedRide.driver} etaMinutes={etaCountdown} />
             <div className="rounded-2xl bg-surface/95 px-4 py-3 text-brand-navy shadow-premium-sm backdrop-blur">
-              <p className="mb-2 text-xs uppercase tracking-[0.12em] text-text-muted">Route waypoints</p>
+              <p className="mb-2 text-xs uppercase tracking-[0.12em] text-text-muted">จุดเส้นทางการเดินรถ</p>
               <ul className="space-y-1.5 text-sm">
                 {selectedRide.route.map((coordinate, index) => (
                   <li key={`${selectedRide.id}-route-${index}`} className="flex items-center gap-2">
@@ -114,18 +114,18 @@ export default function TrackingPage() {
         </section>
       </div>
 
-      <PremiumCard title="Trip Progress" subtitle="Uber-style timeline experience">
+      <PremiumCard title="ความคืบหน้าการเดินทาง" subtitle="ลำดับสถานะแบบต่อเนื่อง">
         <div className="mb-4 flex items-center justify-between rounded-2xl bg-soft-cream p-4">
           <div>
-            <p className="text-sm text-text-muted">Live status</p>
-            <p className="text-xl text-brand-navy">{toTitleCase(selectedRide.currentStatus)}</p>
+            <p className="text-sm text-text-muted">สถานะปัจจุบัน</p>
+            <p className="text-xl text-brand-navy">{rideStatusThai[selectedRide.currentStatus]}</p>
           </div>
-          <StatusBadge label={`${etaCountdown} min`} tone="warning" />
+          <StatusBadge label={`${etaCountdown} นาที`} tone="warning" />
         </div>
         <Timeline
           items={selectedRide.timeline.map((point, index) => ({
             id: `${selectedRide.id}-timeline-${index}`,
-            label: point.status,
+            label: rideStatusThai[point.status],
             timestamp: new Date(point.timestamp).toLocaleTimeString("th-TH", {
               hour: "2-digit",
               minute: "2-digit",
@@ -136,20 +136,20 @@ export default function TrackingPage() {
         />
       </PremiumCard>
 
-      <PremiumCard title="Quick Actions" subtitle="Need another view?">
+      <PremiumCard title="เมนูลัด" subtitle="ดูข้อมูลเพิ่มเติมได้ทันที">
         <div className="grid grid-cols-2 gap-3 text-sm">
           <button className="rounded-2xl bg-soft-cream p-4 text-left">
-            <p className="font-semibold text-brand-navy">Open Live Cam</p>
-            <p className="mt-1 text-xs text-text-muted">Switch to studio camera</p>
+            <p className="font-semibold text-brand-navy">เปิดกล้องถ่ายทอดสด</p>
+            <p className="mt-1 text-xs text-text-muted">สลับไปดูกล้องภายในสตูดิโอ</p>
           </button>
           <button className="rounded-2xl bg-soft-cream p-4 text-left">
-            <p className="font-semibold text-brand-navy">Share Route</p>
-            <p className="mt-1 text-xs text-text-muted">Send secure tracking link</p>
+            <p className="font-semibold text-brand-navy">แชร์เส้นทาง</p>
+            <p className="mt-1 text-xs text-text-muted">ส่งลิงก์ติดตามแบบปลอดภัย</p>
           </button>
           <button className="col-span-2 rounded-2xl bg-soft-cream p-4 text-left">
             <p className="inline-flex items-center gap-1 font-semibold text-brand-navy">
               <Navigation className="h-4 w-4 text-sage" />
-              Open detailed waypoint list
+              เปิดรายการจุดเส้นทางแบบละเอียด
               <ChevronRight className="h-4 w-4" />
             </p>
           </button>

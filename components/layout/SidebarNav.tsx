@@ -17,15 +17,15 @@ import { BrandLogo } from "@/components/BrandLogo";
 import { cn } from "@/lib/utils";
 
 const navigation = [
-  { href: "/dashboard", label: "Dashboard", icon: Gauge },
-  { href: "/profile", label: "User Profile", icon: UserRound },
-  { href: "/pets", label: "Pet Profile", icon: PawPrint },
-  { href: "/health", label: "Health Dashboard", icon: Activity },
-  { href: "/booking", label: "Booking System", icon: CalendarDays },
-  { href: "/tracking", label: "Taxi Tracking", icon: MapPinned },
-  { href: "/live-cam", label: "Live Cam", icon: Camera },
-  { href: "/reports", label: "Daily Fit Report", icon: Activity },
-  { href: "/gallery", label: "Gallery", icon: GalleryVerticalEnd },
+  { href: "/dashboard", label: "หน้าหลัก", icon: Gauge },
+  { href: "/profile", label: "โปรไฟล์", icon: UserRound },
+  { href: "/pets", label: "ข้อมูลลูกรัก", icon: PawPrint },
+  { href: "/health", label: "กิจกรรมสุขภาพ", icon: Activity },
+  { href: "/booking", label: "จองบริการ", icon: CalendarDays },
+  { href: "/tracking", label: "ติดตามการเดินทาง", icon: MapPinned },
+  { href: "/live-cam", label: "ถ่ายทอดสด", icon: Camera },
+  { href: "/reports", label: "รายงานฟิตประจำวัน", icon: Activity },
+  { href: "/gallery", label: "แกลเลอรี", icon: GalleryVerticalEnd },
 ];
 
 export function SidebarNav() {

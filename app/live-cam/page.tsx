@@ -28,12 +28,12 @@ export default function LiveCamPage() {
         transition={{ duration: 0.35 }}
         className="rounded-[28px] bg-brand-navy px-6 py-7 text-soft-cream shadow-premium"
       >
-        <p className="text-sm text-soft-cream/80">Secure livestream access</p>
+        <p className="text-sm text-soft-cream/80">การเข้าถึงภาพถ่ายทอดสดแบบปลอดภัย</p>
         <h2 className="mt-1 text-3xl leading-tight">{selectedFeed.name}</h2>
         <p className="mt-2 text-sm text-soft-cream/80">{selectedFeed.zone}</p>
       </motion.section>
 
-      <PremiumCard title="Camera Feeds" subtitle="Switch between 5 secure channels">
+      <PremiumCard title="กล้องถ่ายทอดสด" subtitle="สลับดูได้ 5 ช่องทางอย่างปลอดภัย">
         <div className="flex gap-2 overflow-x-auto pb-1">
           {cameraFeeds.map((feed) => (
             <button
@@ -58,28 +58,28 @@ export default function LiveCamPage() {
           <div className="relative overflow-hidden rounded-2xl border border-line-soft bg-brand-navy">
             <div className="absolute top-4 left-4 z-10 inline-flex items-center gap-2 rounded-full bg-red-500/90 px-3 py-1 text-xs font-semibold text-white">
               <CircleDot className="h-3.5 w-3.5" />
-              LIVE
+              ถ่ายทอดสด
             </div>
             <div className="absolute top-4 right-4 z-10 rounded-full bg-surface/90 px-3 py-1 text-xs font-medium text-brand-navy">
-              {selectedFeed.viewers} viewers
+              ผู้ชม {selectedFeed.viewers} คน
             </div>
 
             <div className="flex h-[340px] items-center justify-center bg-[radial-gradient(circle_at_35%_35%,rgba(127,184,164,0.52),transparent_45%),radial-gradient(circle_at_70%_60%,rgba(247,216,200,0.42),transparent_50%)]">
               <div className="rounded-2xl border border-soft-cream/25 bg-brand-navy/70 px-6 py-4 text-center text-soft-cream">
                 <Camera className="mx-auto h-8 w-8 text-joy-peach" />
-                <p className="mt-2 text-lg">Video Stream Placeholder</p>
-                <p className="text-xs text-soft-cream/80">Encrypted wellness monitoring feed</p>
+                <p className="mt-2 text-lg">ตัวอย่างสัญญาณวิดีโอ</p>
+                <p className="text-xs text-soft-cream/80">สตรีมติดตามสุขภาพพร้อมการเข้ารหัส</p>
               </div>
             </div>
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
             <StatusBadge
-              label={secureAccess ? "Secure Access Enabled" : "Access Not Secure"}
+              label={secureAccess ? "เปิดใช้งานโหมดปลอดภัย" : "ยังไม่ได้เปิดโหมดปลอดภัย"}
               tone={secureAccess ? "success" : "warning"}
             />
             <StatusBadge
-              label={selectedFeed.isSecure ? "Camera Authenticated" : "Auth Check Required"}
+              label={selectedFeed.isSecure ? "กล้องผ่านการยืนยันแล้ว" : "ต้องยืนยันตัวตนเพิ่มเติม"}
               tone={selectedFeed.isSecure ? "success" : "warning"}
             />
           </div>
@@ -87,11 +87,11 @@ export default function LiveCamPage() {
           <div className="grid grid-cols-2 gap-2">
             <ElegantButton type="button" onClick={() => setSecureAccess((value) => !value)}>
               {secureAccess ? <Lock className="mr-2 h-4 w-4" /> : <Shield className="mr-2 h-4 w-4" />}
-              Toggle Security
+              สลับโหมดความปลอดภัย
             </ElegantButton>
             <ElegantButton type="button" variant="secondary">
               <Eye className="mr-2 h-4 w-4" />
-              Switch View
+              สลับมุมมอง
             </ElegantButton>
           </div>
         </div>

@@ -11,14 +11,15 @@ import {
   UserRound,
 } from "lucide-react";
 
+import { navLabelThai } from "@/lib/thai";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { href: "/dashboard", label: "Home", icon: Home },
-  { href: "/booking", label: "Booking", icon: CalendarClock },
-  { href: "/health", label: "Activity", icon: Activity },
-  { href: "/tracking", label: "Live", icon: Radio },
-  { href: "/profile", label: "Profile", icon: UserRound },
+  { href: "/dashboard", label: navLabelThai.home, icon: Home },
+  { href: "/booking", label: navLabelThai.booking, icon: CalendarClock },
+  { href: "/health", label: navLabelThai.activity, icon: Activity },
+  { href: "/tracking", label: navLabelThai.live, icon: Radio },
+  { href: "/profile", label: navLabelThai.profile, icon: UserRound },
 ];
 
 export function BottomNav() {

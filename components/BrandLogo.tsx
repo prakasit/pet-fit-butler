@@ -15,7 +15,7 @@ export function BrandLogo({ compact = false, className, href = "/dashboard" }: B
       <div className="overflow-hidden rounded-xl border border-line-soft bg-surface p-1 shadow-premium-sm">
         <Image
           src="/brand_logo.jpg"
-          alt="Pet Fit Butler"
+          alt="โลโก้แบรนด์เพ็ท ฟิต บัตเลอร์"
           width={compact ? 36 : 44}
           height={compact ? 36 : 44}
           className="rounded-lg object-cover"
@@ -24,8 +24,8 @@ export function BrandLogo({ compact = false, className, href = "/dashboard" }: B
       </div>
       {!compact && (
         <div>
-          <p className="text-xs tracking-[0.28em] text-text-muted">PET FIT BUTLER</p>
-          <p className="text-lg leading-tight text-brand-navy">Premium Wellness</p>
+          <p className="text-xs tracking-[0.18em] text-text-muted">เพ็ท ฟิต บัตเลอร์</p>
+          <p className="text-lg leading-tight text-brand-navy">ดูแลสุขภาพลูกรักอย่างพรีเมียม</p>
         </div>
       )}
     </div>

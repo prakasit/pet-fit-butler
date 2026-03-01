@@ -33,9 +33,9 @@ export function MobileLayout({
           </span>
         </div>
         <div className="space-y-1 rounded-2xl border border-line-soft/50 bg-surface/85 px-4 py-3 shadow-premium-sm">
-          <p className="text-xs tracking-[0.05em] text-text-muted">Hi {firstName}</p>
+          <p className="text-xs tracking-[0.05em] text-text-muted">สวัสดีคุณ {firstName}</p>
           <h1 className="text-3xl leading-tight text-brand-navy">{title}</h1>
-          <p className="text-sm text-text-muted">{featuredPet} is ready for today&apos;s wellness plan.</p>
+          <p className="text-sm text-text-muted">{featuredPet} พร้อมเริ่มแผนดูแลสุขภาพวันนี้แล้ว</p>
         </div>
       </header>
 

@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 
 import { BrandLogo } from "@/components/BrandLogo";
+import { navLabelThai } from "@/lib/thai";
 import { cn } from "@/lib/utils";
 
 interface DesktopLayoutProps {
@@ -13,11 +14,11 @@ interface DesktopLayoutProps {
 }
 
 const navItems = [
-  { href: "/dashboard", label: "Home" },
-  { href: "/booking", label: "Booking" },
-  { href: "/health", label: "Activity" },
-  { href: "/tracking", label: "Live" },
-  { href: "/profile", label: "Profile" },
+  { href: "/dashboard", label: navLabelThai.home },
+  { href: "/booking", label: navLabelThai.booking },
+  { href: "/health", label: navLabelThai.activity },
+  { href: "/tracking", label: navLabelThai.live },
+  { href: "/profile", label: navLabelThai.profile },
 ];
 
 export function DesktopLayout({ children, pathname }: DesktopLayoutProps) {
@@ -56,7 +57,7 @@ export function DesktopLayout({ children, pathname }: DesktopLayoutProps) {
             href="/booking"
             className="rounded-xl bg-sage px-4 py-2 text-sm font-semibold text-brand-navy shadow-premium-sm transition hover:-translate-y-0.5"
           >
-            Book Session
+            จองเลย
           </Link>
         </div>
       </header>
