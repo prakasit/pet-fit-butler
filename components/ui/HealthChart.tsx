@@ -29,5 +29,12 @@ export function HealthChart({
   series,
   chartType = "line",
 }: HealthChartProps) {
-  return <DynamicHealthChartClient data={data} xKey={xKey} series={series} chartType={chartType} />;
+  return (
+    <DynamicHealthChartClient
+      data={data}
+      xKey={xKey}
+      series={series}
+      chartType={chartType}
+    />
+  );
 }
