@@ -12,7 +12,7 @@ export default function Loading() {
       <div className="flex flex-col items-center gap-4 text-center">
         <div className="overflow-hidden rounded-3xl border border-line-soft bg-surface p-2 shadow-premium">
           <Image
-            src="/brand_logo.jpg"
+            src="/brand_logo.png"
             alt={tBrand("logoAlt")}
             width={96}
             height={96}

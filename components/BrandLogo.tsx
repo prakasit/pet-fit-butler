@@ -19,7 +19,7 @@ export function BrandLogo({ compact = false, className, href = "/dashboard" }: B
     <div className={cn("flex items-center gap-3", className)}>
       <div className="overflow-hidden rounded-xl border border-line-soft bg-surface p-1 shadow-premium-sm">
         <Image
-          src="/brand_logo.jpg"
+          src="/brand_logo.png"
           alt={t("logoAlt")}
           width={compact ? 36 : 44}
           height={compact ? 36 : 44}
