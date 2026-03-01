@@ -1,3 +1,7 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { cn } from "@/lib/utils";
 
@@ -15,6 +19,8 @@ interface TimelineProps {
 }
 
 export function Timeline({ items, className }: TimelineProps) {
+  const tTimeline = useTranslations("timeline");
+
   return (
     <ol className={cn("space-y-4", className)}>
       {items.map((item, index) => (
@@ -42,7 +48,7 @@ export function Timeline({ items, className }: TimelineProps) {
               <p className="text-sm font-medium text-brand-navy">{item.label}</p>
               <p className="text-xs text-text-muted">{item.timestamp}</p>
             </div>
-            {item.active && <StatusBadge label="สถานะปัจจุบัน" tone="active" />}
+            {item.active && <StatusBadge label={tTimeline("current")} tone="active" />}
           </div>
         </li>
       ))}

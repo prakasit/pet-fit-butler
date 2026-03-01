@@ -1,0 +1,370 @@
+{
+  "meta": {
+    "title": "เพ็ท ฟิต บัตเลอร์ | ดูแลสุขภาพลูกรักแบบพรีเมียม",
+    "description": "บริการดูแลสุขภาพสัตว์เลี้ยงระดับพรีเมียม พร้อมผู้ช่วยส่วนตัว การติดตามแบบเรียลไทม์ และรายงานสุขภาพครบถ้วน",
+    "appleTitle": "เพ็ท ฟิต บัตเลอร์"
+  },
+  "brand": {
+    "name": "เพ็ท ฟิต บัตเลอร์",
+    "tagline": "ดูแลสุขภาพลูกรักอย่างพรีเมียม",
+    "logoAlt": "โลโก้แบรนด์เพ็ท ฟิต บัตเลอร์"
+  },
+  "language": {
+    "ariaLabel": "สลับภาษา",
+    "thai": "ไทย",
+    "english": "EN"
+  },
+  "nav": {
+    "home": "หน้าหลัก",
+    "booking": "จองบริการ",
+    "activity": "กิจกรรม",
+    "live": "ถ่ายทอดสด",
+    "profile": "โปรไฟล์"
+  },
+  "routeTitles": {
+    "dashboard": "หน้าหลัก",
+    "booking": "จองบริการ",
+    "health": "กิจกรรม",
+    "tracking": "ถ่ายทอดสด",
+    "profile": "โปรไฟล์",
+    "reports": "รายงานสุขภาพ",
+    "pets": "ข้อมูลลูกรัก",
+    "liveCam": "ถ่ายทอดสด",
+    "gallery": "แกลเลอรี",
+    "fallback": "เพ็ท ฟิต บัตเลอร์"
+  },
+  "appShell": {
+    "greeting": "สวัสดีคุณ {name}",
+    "featuredPetFallback": "ลูกรัก",
+    "readyLine": "{petName} พร้อมเริ่มแผนดูแลสุขภาพวันนี้แล้ว"
+  },
+  "labels": {
+    "today": "วันนี้",
+    "averageWeight": "น้ำหนักเฉลี่ย",
+    "weeklyCalories": "แคลอรี่รายสัปดาห์",
+    "caloriesBurned": "แคลอรี่ที่เผาผลาญ",
+    "distance": "ระยะทาง",
+    "workoutDuration": "ระยะเวลาออกกำลังกาย",
+    "butlerNotes": "บันทึกจากผู้ดูแล",
+    "healthAlert": "แจ้งเตือนสุขภาพ",
+    "statusCurrent": "สถานะปัจจุบัน",
+    "coveragePeriod": "ระยะเวลาความคุ้มครอง",
+    "remainingVisits": "จำนวนครั้งคงเหลือ",
+    "conciergeTeam": "ทีมผู้ช่วยเฉพาะทาง",
+    "subtotal": "ค่าบริการหลัก",
+    "addons": "บริการเสริม",
+    "tax": "ภาษีมูลค่าเพิ่ม 7%",
+    "total": "ยอดรวมสุทธิ",
+    "service": "โปรแกรม",
+    "date": "วันที่",
+    "time": "ช่วงเวลา",
+    "minutes": "{count} นาที",
+    "kilogram": "{value} กก.",
+    "kilometer": "{value} กม.",
+    "kilocalorie": "{value} กิโลแคลอรี่",
+    "records": "{count} รายการ",
+    "sessions": "{count} ครั้ง"
+  },
+  "cta": {
+    "bookNow": "จองเลย",
+    "viewReport": "ดูรายงาน",
+    "seeDetails": "ดูรายละเอียด",
+    "upgradePlan": "อัปเกรดแพ็กเกจ",
+    "viewMembership": "ดูแพ็กเกจสมาชิก",
+    "trackRide": "ดูการติดตามรถรับส่ง",
+    "continue": "ดำเนินการต่อ",
+    "back": "ย้อนกลับ",
+    "confirmAndPay": "ยืนยันและชำระเงิน",
+    "saveAddons": "บันทึกบริการเสริม",
+    "exploreAll": "ดูทั้งหมด",
+    "switchView": "สลับมุมมอง",
+    "toggleSecurity": "สลับโหมดความปลอดภัย",
+    "openCachedDashboard": "เปิดหน้าหลักจากข้อมูลที่บันทึกไว้",
+    "signIn": "เข้าสู่ระบบ",
+    "openLiveCam": "เปิดกล้องถ่ายทอดสด",
+    "shareRoute": "แชร์เส้นทาง"
+  },
+  "bookingType": {
+    "singleSession": "คอร์สรายครั้ง",
+    "membership": "แพ็กเกจสมาชิกรายเดือน",
+    "specialProgram": "โปรแกรมพิเศษ"
+  },
+  "membershipType": {
+    "activeFit": "แอ็กทีฟ ฟิต (พื้นฐาน)",
+    "executiveCare": "เอ็กเซกคิวทีฟ แคร์ (ยอดนิยม)",
+    "ultimateWellness": "อัลติเมต เวลเนส (พรีเมียมสูงสุด)"
+  },
+  "timeSlot": {
+    "morning": "ช่วงเช้า",
+    "afternoon": "ช่วงบ่าย",
+    "morningRange": "08:00 - 12:00 น.",
+    "afternoonRange": "13:00 - 18:00 น."
+  },
+  "bookingStatus": {
+    "scheduled": "นัดหมายแล้ว",
+    "inProgress": "กำลังให้บริการ",
+    "completed": "เสร็จสิ้น",
+    "cancelled": "ยกเลิก"
+  },
+  "rideStatus": {
+    "BUTLER_ON_THE_WAY": "ผู้ดูแลกำลังเดินทางไปรับ",
+    "PET_PICKED_UP": "รับลูกรักขึ้นรถเรียบร้อยแล้ว",
+    "ARRIVED_AT_STUDIO": "ถึงสตูดิโอแล้ว",
+    "WORKOUT_IN_PROGRESS": "กำลังทำกิจกรรม",
+    "HEADING_HOME": "กำลังเดินทางกลับบ้าน",
+    "ARRIVED_HOME": "ส่งลูกรักถึงบ้านเรียบร้อยแล้ว"
+  },
+  "healthAlert": {
+    "normal": "ปกติ",
+    "watch": "เฝ้าระวัง",
+    "attention": "ต้องดูแลใกล้ชิด"
+  },
+  "activityCategory": {
+    "walk": "เดินออกกำลังกาย",
+    "swim": "ว่ายน้ำบำบัด",
+    "treadmill": "ลู่วิ่ง",
+    "agility": "ฝึกความคล่องตัว",
+    "rehab": "ฟื้นฟูร่างกาย"
+  },
+  "gender": {
+    "male": "เพศผู้",
+    "female": "เพศเมีย"
+  },
+  "common": {
+    "none": "ไม่มี",
+    "live": "ถ่ายทอดสด",
+    "video": "วิดีโอ",
+    "swipe": "เลื่อนดู",
+    "mockMode": "โหมดจำลอง",
+    "viewers": "ผู้ชม {count} คน"
+  },
+  "layout": {
+    "desktopBookButton": "จองเลย"
+  },
+  "loading": {
+    "title": "กำลังเตรียมพื้นที่ดูแลสุขภาพลูกรัก"
+  },
+  "auth": {
+    "title": "เข้าสู่ระบบอย่างปลอดภัย",
+    "subtitle": "ยืนยันตัวตนเพื่อเข้าถึงบริการดูแลสุขภาพลูกรัก",
+    "emailLabel": "อีเมล",
+    "passwordLabel": "รหัสผ่าน",
+    "emailPlaceholder": "กรอกอีเมลสำหรับเข้าสู่ระบบ",
+    "passwordPlaceholder": "กรอกรหัสผ่าน",
+    "securityNote": "ระบบเข้ารหัสความปลอดภัยระดับสูง ({mode})"
+  },
+  "offline": {
+    "title": "ขณะนี้อุปกรณ์ออฟไลน์",
+    "subtitle": "ระบบยังไม่สามารถเชื่อมต่อข้อมูลแบบเรียลไทม์ได้ในขณะนี้",
+    "description": "ระบบได้บันทึกข้อมูลสำคัญไว้ในเครื่องแล้ว เมื่อเชื่อมต่ออีกครั้งจะซิงก์การติดตาม การรายงาน และกล้องสดอัตโนมัติ"
+  },
+  "dashboard": {
+    "quickActionsTitle": "เมนูลัด",
+    "quickActionsSubtitle": "เข้าถึงบริการสำคัญได้ทันที",
+    "membershipHeadline": "แพ็กเกจดูแลสุขภาพ",
+    "membershipJourney": "เส้นทางสุขภาพของ {petName}",
+    "membershipRemaining": "คงเหลือสิทธิ์ดูแลแบบพรีเมียมอีก {count} ครั้งในรอบนี้",
+    "nextBookingTitle": "นัดหมายครั้งถัดไป",
+    "nextBookingSubtitle": "คิวดูแลใกล้ที่สุดของวันนี้",
+    "nextBookingNone": "ขณะนี้ยังไม่มีนัดหมายถัดไป",
+    "queuedSessions": "มีนัดหมายต่อเนื่องอีก {count} รายการ",
+    "butlerLiveTitle": "สถานะผู้ดูแลแบบเรียลไทม์",
+    "butlerActive": "กำลังให้บริการ",
+    "butlerStandby": "รอให้บริการ",
+    "dailyActivityTitle": "กิจกรรมประจำวัน",
+    "dailyActivitySubtitle": "แนวโน้มแคลอรี่และการเคลื่อนไหว",
+    "recentHighlights": "ไฮไลต์ล่าสุด",
+    "desktopMembershipTierTitle": "ระดับสมาชิก",
+    "desktopMembershipTierSubtitle": "สิทธิ์ดูแลแบบพรีเมียม",
+    "coverageUntil": "ครอบคลุมถึงวันที่ {date}",
+    "desktopRemainingVisitsTitle": "จำนวนครั้งคงเหลือ",
+    "desktopRemainingVisitsSubtitle": "รอบแพ็กเกจปัจจุบัน",
+    "desktopRemainingVisitsDescription": "สำหรับการดูแลสุขภาพและวารีบำบัด",
+    "desktopConciergeTitle": "ช่องทางผู้ช่วยเฉพาะทาง",
+    "desktopConciergeSubtitle": "ติดต่อได้โดยตรง",
+    "desktopConciergeDescription": "ทีมผู้ช่วยดูแลพร้อมให้บริการทุกวัน",
+    "desktopWeeklyActivityTitle": "ภาพรวมกิจกรรมรายสัปดาห์",
+    "desktopWeeklyActivitySubtitle": "แนวโน้มการเคลื่อนไหวและแคลอรี่",
+    "featuredServicesTitle": "โปรแกรมแนะนำ",
+    "testimonialTitle": "เสียงจากผู้ปกครองลูกรัก",
+    "verifiedClient": "ผู้ใช้บริการจริง",
+    "premiumExperience": "ประสบการณ์ดูแลระดับพรีเมียม",
+    "storyGalleryTitle": "แกลเลอรีเรื่องราว",
+    "conciergeNoteTitle": "บันทึกจากทีมผู้ดูแล",
+    "conciergeNoteBody": "จุดรับ-ส่งพร้อมให้บริการสำหรับลูกรัก {count} ตัว",
+    "openLiveRoute": "ดูการติดตามแบบเรียลไทม์",
+    "testimonials": {
+      "oneName": "คุณณัฐพร",
+      "oneQuote": "ทีมผู้ดูแลช่วยให้ลูกรักของเราสดใสขึ้นชัดเจนภายในไม่กี่สัปดาห์ ประทับใจทั้งความใส่ใจและมาตรฐานบริการ",
+      "twoName": "คุณธนวัฒน์",
+      "twoQuote": "ตั้งแต่การติดตามรถรับส่งจนถึงวารีบำบัด ทุกขั้นตอนรู้สึกมั่นใจและเป็นมืออาชีพมาก",
+      "threeName": "คุณพิมพ์ชนก",
+      "threeQuote": "ลูกรักดีใจทุกครั้งที่ทีมผู้ดูแลมาถึง แอปใช้งานง่าย อบอุ่น และชัดเจนมาก"
+    },
+    "stories": {
+      "one": "วิ่งเล่นอย่างมีความสุข",
+      "two": "วารีบำบัดเพื่อฟื้นตัว",
+      "three": "ช่วงเวลาใกล้ชิดกับผู้ดูแล",
+      "four": "ความสุขของครอบครัวและลูกรัก"
+    }
+  },
+  "hero": {
+    "headline": "ให้ลูกรักมีชีวิตที่สุขกาย สบายใจ และแข็งแรงในทุกวัน",
+    "imageAlt": "สุนัขวิ่งอย่างร่าเริงท่ามกลางบรรยากาศอบอุ่น"
+  },
+  "booking": {
+    "title": "จองบริการ",
+    "steps": {
+      "selectProgram": "เลือกโปรแกรม",
+      "selectDate": "เลือกวันที่",
+      "selectTime": "เลือกช่วงเวลา",
+      "selectAddons": "เลือกบริการเสริม",
+      "summaryAndPayment": "สรุปรายละเอียดและชำระเงิน"
+    },
+    "stepLabel": "ขั้นตอนที่ {current} จาก 5 · {name}",
+    "upcomingTitle": "นัดหมายที่กำลังจะมาถึง",
+    "upcomingSubtitle": "ภาพรวมการจองล่าสุด",
+    "desktopServiceDetailsTitle": "รายละเอียดโปรแกรม",
+    "desktopServiceDetailsSubtitle": "เลือกโปรแกรมที่เหมาะสมจากคอลัมน์ด้านซ้าย",
+    "selectedServiceTitle": "โปรแกรมที่เลือก",
+    "selectedServiceSubtitle": "สรุปข้อมูลโปรแกรม",
+    "selectedServiceHint": "เลือกวันที่ ช่วงเวลา และบริการเสริมจากแบบฟอร์มด้านขวา เพื่อยืนยันการจอง",
+    "selectedServiceEmpty": "โปรดเลือกการ์ดโปรแกรมเพื่อเริ่มขั้นตอนการจอง",
+    "bookingFormTitle": "แบบฟอร์มจองบริการ",
+    "bookingFormHint": "เลือกโปรแกรมที่ต้องการจากด้านซ้าย แล้วดำเนินการกำหนดวันและเวลานัดหมาย",
+    "addOnDescription": "บริการเสริมเป็นตัวเลือกเพิ่มเติม สามารถปรับเปลี่ยนได้ก่อนยืนยันชำระเงิน",
+    "noAddonsSelected": "ยังไม่ได้เลือกบริการเสริม",
+    "chooseAddons": "เลือกบริการเสริม",
+    "saveAddons": "บันทึกบริการเสริม",
+    "confirmed": "ยืนยันการจองเรียบร้อยแล้ว",
+    "recentSessionsTitle": "ประวัติการใช้บริการล่าสุด",
+    "recentSessionsSubtitle": "ภาพรวมแบบย่อ"
+  },
+  "bookingCard": {
+    "addonsLabel": "บริการเสริม"
+  },
+  "membershipCard": {
+    "title": "สถานะแพ็กเกจสมาชิก",
+    "subtitle": "ครอบคลุมการดูแลสุขภาพและทีมผู้ช่วยเฉพาะทาง",
+    "priority": "สิทธิ์นัดหมายลำดับพิเศษพร้อมแผนฟื้นฟูมาตรฐานพรีเมียม"
+  },
+  "health": {
+    "heroTag": "สรุปกิจกรรมประจำวัน",
+    "heroSubtitle": "ค่าเฉลี่ยพลังงานที่เผาผลาญต่อครั้งในเดือนนี้",
+    "snapshotTitle": "ภาพรวมสุขภาพ",
+    "snapshotSubtitle": "ตัวชี้วัดที่อ่านง่ายและชัดเจน",
+    "weightTracking": "ติดตามน้ำหนัก",
+    "weightBaseline": "ค่าเฉลี่ยพื้นฐานตลอด 12 เดือน",
+    "sessionRecords": "บันทึกกิจกรรม",
+    "sessionRecordsValue": "บันทึกทั้งหมด {count} ครั้ง",
+    "calorieBenchmark": "เกณฑ์การเผาผลาญ",
+    "calorieBenchmarkValue": "{value} กิโลแคลอรี่ต่อครั้ง",
+    "weightGraphTitle": "กราฟน้ำหนัก",
+    "weightGraphSubtitle": "ช่วงเวลา 12 เดือน",
+    "activityCurveTitle": "แนวโน้มกิจกรรม",
+    "activityCurveSubtitle": "คะแนนรายวันและการเผาผลาญ",
+    "caloriesGraphTitle": "แคลอรี่ที่เผาผลาญ",
+    "caloriesGraphSubtitle": "แนวโน้มรวมรายเดือน",
+    "activityScore": "คะแนนกิจกรรม",
+    "weightSeries": "น้ำหนัก (กก.)"
+  },
+  "tracking": {
+    "liveTag": "ติดตามแบบเรียลไทม์",
+    "rideForPet": "สถานะการเดินทางของ {petName}",
+    "arriveIn": "จะถึงภายใน {minutes} นาที",
+    "waypoints": "จุดเส้นทางการเดินรถ",
+    "progressTitle": "ความคืบหน้าการเดินทาง",
+    "progressSubtitle": "ลำดับสถานะแบบต่อเนื่อง",
+    "quickActionsTitle": "เมนูลัด",
+    "quickActionsSubtitle": "ดูข้อมูลเพิ่มเติมได้ทันที",
+    "openLiveCam": "เปิดกล้องถ่ายทอดสด",
+    "openLiveCamSubtitle": "สลับไปดูกล้องภายในสตูดิโอ",
+    "shareRoute": "แชร์เส้นทาง",
+    "shareRouteSubtitle": "ส่งลิงก์ติดตามแบบปลอดภัย",
+    "openWaypointList": "เปิดรายการจุดเส้นทางแบบละเอียด"
+  },
+  "driverCard": {
+    "title": "ผู้ดูแลประจำการเดินทาง",
+    "subtitle": "กำลังดูแลการรับส่งลูกรักแบบพรีเมียม",
+    "eta": "ถึงภายใน {minutes} นาที",
+    "rating": "คะแนน {rating}"
+  },
+  "timeline": {
+    "current": "สถานะปัจจุบัน"
+  },
+  "liveCam": {
+    "heroTag": "การเข้าถึงภาพถ่ายทอดสดแบบปลอดภัย",
+    "feedsTitle": "กล้องถ่ายทอดสด",
+    "feedsSubtitle": "สลับดูได้ 5 ช่องทางอย่างปลอดภัย",
+    "liveBadge": "ถ่ายทอดสด",
+    "streamPlaceholderTitle": "ตัวอย่างสัญญาณวิดีโอ",
+    "streamPlaceholderSubtitle": "สตรีมติดตามสุขภาพพร้อมการเข้ารหัส",
+    "secureOn": "เปิดใช้งานโหมดปลอดภัย",
+    "secureOff": "ยังไม่ได้เปิดโหมดปลอดภัย",
+    "cameraAuthenticated": "กล้องผ่านการยืนยันแล้ว",
+    "cameraAuthRequired": "ต้องยืนยันตัวตนเพิ่มเติม"
+  },
+  "reports": {
+    "heroTag": "รายงานฟิตประจำวัน",
+    "heroSubtitle": "แคลอรี่ที่เผาผลาญของ {petName}",
+    "breakdownTitle": "สรุปผลการออกกำลังกาย",
+    "breakdownSubtitle": "ค่าการดูแลสุขภาพสำคัญ",
+    "swimTime": "เวลาวารีบำบัด",
+    "butlerNoteTitle": "บันทึกจากผู้ดูแล",
+    "butlerNoteSubtitle": "ข้อสังเกตจากการดูแลรายวัน",
+    "caloriePatternTitle": "แนวโน้มการเผาผลาญ",
+    "caloriePatternSubtitle": "ค่าแคลอรี่จากครั้งล่าสุด",
+    "recentReportsTitle": "รายงานล่าสุด",
+    "recentReportsSubtitle": "มีรายงานทั้งหมด {count} ฉบับ",
+    "round": "รอบ {index}"
+  },
+  "pets": {
+    "heroTag": "ข้อมูลลูกรักที่เลือก",
+    "heroDetail": "{breed} · {age} ปี · {weight} กก.",
+    "yourPetsTitle": "ลูกรักของคุณ",
+    "yourPetsSubtitle": "โปรไฟล์ที่ลงทะเบียนแล้ว {count} รายการ",
+    "profileDetailsTitle": "รายละเอียดโปรไฟล์",
+    "currentWeight": "น้ำหนักปัจจุบัน",
+    "medicalConditions": "ภาวะสุขภาพที่ต้องติดตาม",
+    "allergies": "อาการแพ้",
+    "weightHistoryTitle": "ประวัติน้ำหนัก",
+    "weightHistorySubtitle": "แนวโน้ม 12 เดือน",
+    "activityHistoryTitle": "ประวัติกิจกรรม",
+    "activityHistorySubtitle": "บันทึกล่าสุด 20 ครั้ง",
+    "wellnessSnapshotTitle": "สรุปการเคลื่อนไหว",
+    "wellnessSnapshotSubtitle": "ภาพรวมสมรรถนะรายเดือน",
+    "round": "รอบ {index}",
+    "ownerAndGender": "{owner} · {gender}"
+  },
+  "profile": {
+    "heroTag": "ภาพรวมโปรไฟล์",
+    "heroTitle": "บัญชีสมาชิกของคุณ {name}",
+    "membershipSubtitle": "บัญชีแพ็กเกจดูแลสุขภาพลูกรัก",
+    "bookingHistoryTitle": "ประวัติการจองบริการ",
+    "bookingHistorySubtitle": "ทั้งหมด {count} รายการ",
+    "fields": {
+      "fullName": "ชื่อ-นามสกุล",
+      "phone": "เบอร์โทรศัพท์",
+      "email": "อีเมล",
+      "address": "ที่อยู่",
+      "coordinates": "พิกัดรับ-ส่ง",
+      "paymentMethod": "ช่องทางชำระเงิน"
+    },
+    "mobileLanguageTitle": "ภาษาแอป",
+    "mobileLanguageSubtitle": "เลือกภาษาที่ต้องการใช้งาน"
+  },
+  "gallery": {
+    "heroTag": "ช่วงเวลาที่บันทึกไว้",
+    "heroTitle": "ภาพความทรงจำและคลิปกิจกรรม",
+    "heroCount": "{images} ภาพ · {videos} คลิปวิดีโอ",
+    "photoTitle": "แกลเลอรีภาพถ่าย",
+    "photoSubtitle": "ภาพตัวอย่าง {count} รายการ",
+    "videoTitle": "ตัวอย่างวิดีโอ",
+    "videoSubtitle": "คลิปกิจกรรม {count} รายการ",
+    "imageIndex": "ภาพที่ {index}",
+    "clipIndex": "คลิปที่ {index}",
+    "download": "ดาวน์โหลด",
+    "sizeUnit": "เมกะไบต์",
+    "secondsUnit": "วินาที"
+  }
+}

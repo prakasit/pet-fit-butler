@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import {
   Activity,
   CalendarClock,
@@ -11,28 +11,34 @@ import {
   UserRound,
 } from "lucide-react";
 
-import { navLabelThai } from "@/lib/thai";
+import { LocaleLink } from "@/components/i18n/LocaleLink";
+import { stripLocalePrefix } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-const navItems = [
-  { href: "/dashboard", label: navLabelThai.home, icon: Home },
-  { href: "/booking", label: navLabelThai.booking, icon: CalendarClock },
-  { href: "/health", label: navLabelThai.activity, icon: Activity },
-  { href: "/tracking", label: navLabelThai.live, icon: Radio },
-  { href: "/profile", label: navLabelThai.profile, icon: UserRound },
-];
-
 export function BottomNav() {
+  const tNav = useTranslations("nav");
   const pathname = usePathname();
+  const cleanPathname = stripLocalePrefix(pathname || "/");
+  const activePath = cleanPathname === "/" ? "/dashboard" : cleanPathname;
+
+  const navItems = [
+    { href: "/dashboard", label: tNav("home"), icon: Home },
+    { href: "/booking", label: tNav("booking"), icon: CalendarClock },
+    { href: "/health", label: tNav("activity"), icon: Activity },
+    { href: "/tracking", label: tNav("live"), icon: Radio },
+    { href: "/profile", label: tNav("profile"), icon: UserRound },
+  ];
 
   const isActive = (href: string) => {
     if (href === "/health") {
-      return ["/health", "/reports", "/pets", "/gallery"].some((path) => pathname.startsWith(path));
+      return ["/health", "/reports", "/pets", "/gallery"].some((path) =>
+        activePath.startsWith(path),
+      );
     }
     if (href === "/tracking") {
-      return ["/tracking", "/live-cam"].some((path) => pathname.startsWith(path));
+      return ["/tracking", "/live-cam"].some((path) => activePath.startsWith(path));
     }
-    return pathname.startsWith(href);
+    return activePath.startsWith(href);
   };
 
   return (
@@ -43,7 +49,7 @@ export function BottomNav() {
           const active = isActive(item.href);
           return (
             <li key={item.href}>
-              <Link
+              <LocaleLink
                 href={item.href}
                 className={cn(
                   "relative flex flex-col items-center gap-1 rounded-2xl py-2 text-[11px] font-medium transition",
@@ -59,7 +65,7 @@ export function BottomNav() {
                 )}
                 <Icon className="relative z-10 h-4.5 w-4.5" />
                 <span className="relative z-10">{item.label}</span>
-              </Link>
+              </LocaleLink>
             </li>
           );
         })}

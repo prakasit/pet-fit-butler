@@ -2,12 +2,17 @@
 
 import { motion } from "framer-motion";
 import { Flame, Footprints, Weight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { HealthChart } from "@/components/ui/HealthChart";
 import { PremiumCard } from "@/components/ui/PremiumCard";
-import { healthDashboardSeries } from "@/mock";
+import { useMockData } from "@/mock/useMockData";
 
 export default function HealthPage() {
+  const tHealth = useTranslations("health");
+  const tLabels = useTranslations("labels");
+  const { healthDashboardSeries } = useMockData();
+
   const avgCalories = Math.round(
     healthDashboardSeries.activityByDay.reduce((sum, entry) => sum + entry.calories, 0) /
       healthDashboardSeries.activityByDay.length,
@@ -21,66 +26,68 @@ export default function HealthPage() {
         transition={{ duration: 0.35 }}
         className="rounded-[28px] bg-brand-navy px-6 py-7 text-soft-cream shadow-premium"
       >
-        <p className="text-xs tracking-[0.15em] text-soft-cream/75">สรุปกิจกรรมประจำวัน</p>
-        <p className="mt-1 text-4xl leading-tight">{avgCalories} กิโลแคลอรี่</p>
-        <p className="mt-2 text-sm text-soft-cream/80">ค่าเฉลี่ยพลังงานที่เผาผลาญต่อครั้งในเดือนนี้</p>
+        <p className="text-xs tracking-[0.15em] text-soft-cream/75">{tHealth("heroTag")}</p>
+        <p className="mt-1 text-4xl leading-tight">{tLabels("kilocalorie", { value: avgCalories })}</p>
+        <p className="mt-2 text-sm text-soft-cream/80">{tHealth("heroSubtitle")}</p>
       </motion.section>
 
-      <PremiumCard title="ภาพรวมสุขภาพ" subtitle="ตัวชี้วัดที่อ่านง่ายและชัดเจน">
+      <PremiumCard title={tHealth("snapshotTitle")} subtitle={tHealth("snapshotSubtitle")}>
         <div className="space-y-3">
           <div className="rounded-2xl bg-soft-cream p-5">
             <p className="flex items-center gap-2 text-xs uppercase tracking-[0.12em] text-text-muted">
               <Weight className="h-4 w-4 text-sage" />
-              ติดตามน้ำหนัก
+              {tHealth("weightTracking")}
             </p>
-            <p className="mt-1 text-sm text-brand-navy">ค่าเฉลี่ยพื้นฐานตลอด 12 เดือน</p>
+            <p className="mt-1 text-sm text-brand-navy">{tHealth("weightBaseline")}</p>
           </div>
           <div className="rounded-2xl bg-soft-cream p-5">
             <p className="flex items-center gap-2 text-xs uppercase tracking-[0.12em] text-text-muted">
               <Footprints className="h-4 w-4 text-sage" />
-              บันทึกกิจกรรม
+              {tHealth("sessionRecords")}
             </p>
             <p className="mt-1 text-sm text-brand-navy">
-              บันทึกทั้งหมด {healthDashboardSeries.activityByDay.length} ครั้ง
+              {tHealth("sessionRecordsValue", { count: healthDashboardSeries.activityByDay.length })}
             </p>
           </div>
           <div className="rounded-2xl bg-soft-cream p-5">
             <p className="flex items-center gap-2 text-xs uppercase tracking-[0.12em] text-text-muted">
               <Flame className="h-4 w-4 text-sage" />
-              เกณฑ์การเผาผลาญ
+              {tHealth("calorieBenchmark")}
             </p>
-            <p className="mt-1 text-sm text-brand-navy">{avgCalories} กิโลแคลอรี่ต่อครั้ง</p>
+            <p className="mt-1 text-sm text-brand-navy">
+              {tHealth("calorieBenchmarkValue", { value: avgCalories })}
+            </p>
           </div>
         </div>
       </PremiumCard>
 
-      <PremiumCard title="กราฟน้ำหนัก" subtitle="ช่วงเวลา 12 เดือน">
+      <PremiumCard title={tHealth("weightGraphTitle")} subtitle={tHealth("weightGraphSubtitle")}>
         <HealthChart
           data={healthDashboardSeries.weightByMonth}
           xKey="month"
           chartType="area"
-          series={[{ key: "avgWeightKg", label: "น้ำหนัก (กก.)", color: "#5FBF9F" }]}
+          series={[{ key: "avgWeightKg", label: tHealth("weightSeries"), color: "#5FBF9F" }]}
         />
       </PremiumCard>
 
-      <PremiumCard title="แนวโน้มกิจกรรม" subtitle="คะแนนรายวันและการเผาผลาญ">
+      <PremiumCard title={tHealth("activityCurveTitle")} subtitle={tHealth("activityCurveSubtitle")}>
         <HealthChart
           data={healthDashboardSeries.activityByDay}
           xKey="day"
           chartType="line"
           series={[
-            { key: "activityScore", label: "คะแนนกิจกรรม", color: "#1B2A41" },
-            { key: "calories", label: "แคลอรี่ที่เผาผลาญ", color: "#FAD7C4" },
+            { key: "activityScore", label: tHealth("activityScore"), color: "#1B2A41" },
+            { key: "calories", label: tLabels("caloriesBurned"), color: "#FAD7C4" },
           ]}
         />
       </PremiumCard>
 
-      <PremiumCard title="แคลอรี่ที่เผาผลาญ" subtitle="แนวโน้มรวมรายเดือน">
+      <PremiumCard title={tHealth("caloriesGraphTitle")} subtitle={tHealth("caloriesGraphSubtitle")}>
         <HealthChart
           data={healthDashboardSeries.caloriesByMonth}
           xKey="month"
           chartType="bar"
-          series={[{ key: "calories", label: "แคลอรี่ที่เผาผลาญ", color: "#1B2A41" }]}
+          series={[{ key: "calories", label: tLabels("caloriesBurned"), color: "#1B2A41" }]}
         />
       </PremiumCard>
     </div>

@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { CarFront, Phone, Star } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import type { ButlerDriver } from "@/lib/types";
 
@@ -12,11 +15,13 @@ interface ButlerDriverCardProps {
 }
 
 export function ButlerDriverCard({ driver, etaMinutes }: ButlerDriverCardProps) {
+  const t = useTranslations("driverCard");
+
   return (
     <PremiumCard
-      title="ผู้ดูแลประจำการเดินทาง"
-      subtitle="กำลังดูแลการรับส่งลูกรักแบบพรีเมียม"
-      action={<StatusBadge label={`ถึงภายใน ${etaMinutes} นาที`} tone="active" />}
+      title={t("title")}
+      subtitle={t("subtitle")}
+      action={<StatusBadge label={t("eta", { minutes: etaMinutes })} tone="active" />}
     >
       <div className="flex items-center gap-4">
         <div className="h-16 w-16 overflow-hidden rounded-2xl border border-line-soft bg-soft-cream">
@@ -40,7 +45,7 @@ export function ButlerDriverCard({ driver, etaMinutes }: ButlerDriverCardProps) 
           </p>
           <p className="flex items-center gap-1 text-text-muted">
             <Star className="h-4 w-4 fill-joy-peach text-joy-peach" />
-            คะแนน {driver.rating.toFixed(1)}
+            {t("rating", { rating: driver.rating.toFixed(1) })}
           </p>
         </div>
       </div>

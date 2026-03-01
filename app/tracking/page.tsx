@@ -3,20 +3,30 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronRight, MapPin, Navigation, Radio } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 
 import { ButlerDriverCard } from "@/components/ui/ButlerDriverCard";
 import { PremiumCard } from "@/components/ui/PremiumCard";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { Timeline } from "@/components/ui/Timeline";
-import { rideStatusThai } from "@/lib/thai";
-import { rides } from "@/mock";
+import { rideStatusKey } from "@/lib/translation-keys";
+import { useMockData } from "@/mock/useMockData";
 
 export default function TrackingPage() {
+  const locale = useLocale();
+  const tTracking = useTranslations("tracking");
+  const tRideStatus = useTranslations("rideStatus");
+  const tLabels = useTranslations("labels");
+  const { rides } = useMockData();
+
   const [rideId, setRideId] = useState(rides[0]?.id ?? "");
   const [etaByRide, setEtaByRide] = useState<Record<string, number>>(() =>
     Object.fromEntries(rides.map((ride) => [ride.id, ride.etaMinutes])),
   );
-  const selectedRide = useMemo(() => rides.find((ride) => ride.id === rideId) ?? rides[0], [rideId]);
+  const selectedRide = useMemo(
+    () => rides.find((ride) => ride.id === rideId) ?? rides[0],
+    [rideId, rides],
+  );
   const etaCountdown =
     (selectedRide ? etaByRide[selectedRide.id] : undefined) ?? selectedRide?.etaMinutes ?? 0;
 
@@ -51,18 +61,20 @@ export default function TrackingPage() {
           <div className="relative z-10 space-y-4 p-5">
             <div className="flex items-center justify-between">
               <StatusBadge
-                label={rideStatusThai[selectedRide.currentStatus]}
+                label={tRideStatus(rideStatusKey[selectedRide.currentStatus])}
                 tone="active"
                 className="bg-sage/35 text-soft-cream"
               />
               <span className="inline-flex items-center gap-1 rounded-full bg-soft-cream/16 px-3 py-1 text-xs font-semibold">
                 <Radio className="h-3.5 w-3.5" />
-                ติดตามแบบเรียลไทม์
+                {tTracking("liveTag")}
               </span>
             </div>
             <div className="space-y-1">
-              <p className="text-sm text-soft-cream/80">สถานะการเดินทางของ {selectedRide.petName}</p>
-              <h2 className="text-3xl leading-tight">จะถึงภายใน {etaCountdown} นาที</h2>
+              <p className="text-sm text-soft-cream/80">
+                {tTracking("rideForPet", { petName: selectedRide.petName })}
+              </p>
+              <h2 className="text-3xl leading-tight">{tTracking("arriveIn", { minutes: etaCountdown })}</h2>
             </div>
 
             <div className="h-2.5 overflow-hidden rounded-full bg-soft-cream/20">
@@ -100,7 +112,9 @@ export default function TrackingPage() {
           >
             <ButlerDriverCard driver={selectedRide.driver} etaMinutes={etaCountdown} />
             <div className="rounded-2xl bg-surface/95 px-4 py-3 text-brand-navy shadow-premium-sm backdrop-blur">
-              <p className="mb-2 text-xs uppercase tracking-[0.12em] text-text-muted">จุดเส้นทางการเดินรถ</p>
+              <p className="mb-2 text-xs uppercase tracking-[0.12em] text-text-muted">
+                {tTracking("waypoints")}
+              </p>
               <ul className="space-y-1.5 text-sm">
                 {selectedRide.route.map((coordinate, index) => (
                   <li key={`${selectedRide.id}-route-${index}`} className="flex items-center gap-2">
@@ -114,19 +128,21 @@ export default function TrackingPage() {
         </section>
       </div>
 
-      <PremiumCard title="ความคืบหน้าการเดินทาง" subtitle="ลำดับสถานะแบบต่อเนื่อง">
+      <PremiumCard title={tTracking("progressTitle")} subtitle={tTracking("progressSubtitle")}>
         <div className="mb-4 flex items-center justify-between rounded-2xl bg-soft-cream p-4">
           <div>
-            <p className="text-sm text-text-muted">สถานะปัจจุบัน</p>
-            <p className="text-xl text-brand-navy">{rideStatusThai[selectedRide.currentStatus]}</p>
+            <p className="text-sm text-text-muted">{tLabels("statusCurrent")}</p>
+            <p className="text-xl text-brand-navy">
+              {tRideStatus(rideStatusKey[selectedRide.currentStatus])}
+            </p>
           </div>
-          <StatusBadge label={`${etaCountdown} นาที`} tone="warning" />
+          <StatusBadge label={tLabels("minutes", { count: etaCountdown })} tone="warning" />
         </div>
         <Timeline
           items={selectedRide.timeline.map((point, index) => ({
             id: `${selectedRide.id}-timeline-${index}`,
-            label: rideStatusThai[point.status],
-            timestamp: new Date(point.timestamp).toLocaleTimeString("th-TH", {
+            label: tRideStatus(rideStatusKey[point.status]),
+            timestamp: new Date(point.timestamp).toLocaleTimeString(locale === "en" ? "en-US" : "th-TH", {
               hour: "2-digit",
               minute: "2-digit",
             }),
@@ -136,20 +152,20 @@ export default function TrackingPage() {
         />
       </PremiumCard>
 
-      <PremiumCard title="เมนูลัด" subtitle="ดูข้อมูลเพิ่มเติมได้ทันที">
+      <PremiumCard title={tTracking("quickActionsTitle")} subtitle={tTracking("quickActionsSubtitle")}>
         <div className="grid grid-cols-2 gap-3 text-sm">
           <button className="rounded-2xl bg-soft-cream p-4 text-left">
-            <p className="font-semibold text-brand-navy">เปิดกล้องถ่ายทอดสด</p>
-            <p className="mt-1 text-xs text-text-muted">สลับไปดูกล้องภายในสตูดิโอ</p>
+            <p className="font-semibold text-brand-navy">{tTracking("openLiveCam")}</p>
+            <p className="mt-1 text-xs text-text-muted">{tTracking("openLiveCamSubtitle")}</p>
           </button>
           <button className="rounded-2xl bg-soft-cream p-4 text-left">
-            <p className="font-semibold text-brand-navy">แชร์เส้นทาง</p>
-            <p className="mt-1 text-xs text-text-muted">ส่งลิงก์ติดตามแบบปลอดภัย</p>
+            <p className="font-semibold text-brand-navy">{tTracking("shareRoute")}</p>
+            <p className="mt-1 text-xs text-text-muted">{tTracking("shareRouteSubtitle")}</p>
           </button>
           <button className="col-span-2 rounded-2xl bg-soft-cream p-4 text-left">
             <p className="inline-flex items-center gap-1 font-semibold text-brand-navy">
               <Navigation className="h-4 w-4 text-sage" />
-              เปิดรายการจุดเส้นทางแบบละเอียด
+              {tTracking("openWaypointList")}
               <ChevronRight className="h-4 w-4" />
             </p>
           </button>

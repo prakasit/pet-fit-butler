@@ -2,9 +2,10 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { useTranslations } from "next-intl";
 
+import { LocaleLink } from "@/components/i18n/LocaleLink";
 import { ElegantButton } from "@/components/ui/ElegantButton";
 
 const HERO_POSTER = "https://assets.mixkit.co/videos/45843/45843-thumb-720-3.jpg";
@@ -12,6 +13,8 @@ const HERO_VIDEO_LARGE = "https://assets.mixkit.co/videos/45843/45843-720.mp4";
 const HERO_VIDEO_SMALL = "https://assets.mixkit.co/videos/45843/45843-360.mp4";
 
 export function HeroVideoSection() {
+  const tHero = useTranslations("hero");
+  const tCta = useTranslations("cta");
   const sectionRef = useRef<HTMLElement>(null);
   const [videoLoadFailed, setVideoLoadFailed] = useState(false);
   const prefersReducedMotion = useReducedMotion();
@@ -32,7 +35,7 @@ export function HeroVideoSection() {
         {useImageFallback ? (
           <Image
             src={HERO_POSTER}
-            alt="สุนัขวิ่งอย่างร่าเริงท่ามกลางบรรยากาศอบอุ่น"
+            alt={tHero("imageAlt")}
             fill
             priority
             className="object-cover"
@@ -67,15 +70,15 @@ export function HeroVideoSection() {
           className="space-y-4"
         >
           <p className="max-w-[30ch] text-4xl leading-tight text-soft-cream md:text-[2.65rem]">
-            ให้ลูกรักมีชีวิตที่สุขกาย สบายใจ และแข็งแรงในทุกวัน
+            {tHero("headline")}
           </p>
           <div className="flex flex-wrap gap-2">
-            <Link href="/booking">
-              <ElegantButton>จองเลย</ElegantButton>
-            </Link>
-            <Link href="/profile">
-              <ElegantButton variant="secondary">ดูแพ็กเกจสมาชิก</ElegantButton>
-            </Link>
+            <LocaleLink href="/booking">
+              <ElegantButton>{tCta("bookNow")}</ElegantButton>
+            </LocaleLink>
+            <LocaleLink href="/profile">
+              <ElegantButton variant="secondary">{tCta("viewMembership")}</ElegantButton>
+            </LocaleLink>
           </div>
         </motion.div>
       </div>

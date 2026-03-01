@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import {
   Activity,
   CalendarDays,
@@ -14,22 +14,28 @@ import {
 } from "lucide-react";
 
 import { BrandLogo } from "@/components/BrandLogo";
+import { LocaleLink } from "@/components/i18n/LocaleLink";
+import { stripLocalePrefix } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-const navigation = [
-  { href: "/dashboard", label: "หน้าหลัก", icon: Gauge },
-  { href: "/profile", label: "โปรไฟล์", icon: UserRound },
-  { href: "/pets", label: "ข้อมูลลูกรัก", icon: PawPrint },
-  { href: "/health", label: "กิจกรรมสุขภาพ", icon: Activity },
-  { href: "/booking", label: "จองบริการ", icon: CalendarDays },
-  { href: "/tracking", label: "ติดตามการเดินทาง", icon: MapPinned },
-  { href: "/live-cam", label: "ถ่ายทอดสด", icon: Camera },
-  { href: "/reports", label: "รายงานฟิตประจำวัน", icon: Activity },
-  { href: "/gallery", label: "แกลเลอรี", icon: GalleryVerticalEnd },
-];
-
 export function SidebarNav() {
+  const tNav = useTranslations("nav");
+  const tRoutes = useTranslations("routeTitles");
   const pathname = usePathname();
+  const cleanPathname = stripLocalePrefix(pathname || "/");
+  const activePath = cleanPathname === "/" ? "/dashboard" : cleanPathname;
+
+  const navigation = [
+    { href: "/dashboard", label: tNav("home"), icon: Gauge },
+    { href: "/profile", label: tNav("profile"), icon: UserRound },
+    { href: "/pets", label: tRoutes("pets"), icon: PawPrint },
+    { href: "/health", label: tNav("activity"), icon: Activity },
+    { href: "/booking", label: tNav("booking"), icon: CalendarDays },
+    { href: "/tracking", label: tRoutes("tracking"), icon: MapPinned },
+    { href: "/live-cam", label: tRoutes("liveCam"), icon: Camera },
+    { href: "/reports", label: tRoutes("reports"), icon: Activity },
+    { href: "/gallery", label: tRoutes("gallery"), icon: GalleryVerticalEnd },
+  ];
 
   return (
     <aside className="sticky top-0 hidden h-screen w-[276px] shrink-0 border-r border-line-soft bg-surface/80 p-5 backdrop-blur lg:block">
@@ -38,11 +44,11 @@ export function SidebarNav() {
         <ul className="space-y-2">
           {navigation.map((item) => {
             const Icon = item.icon;
-            const active = pathname.startsWith(item.href);
+            const active = activePath.startsWith(item.href);
 
             return (
               <li key={item.href}>
-                <Link
+                <LocaleLink
                   href={item.href}
                   className={cn(
                     "group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition",
@@ -53,7 +59,7 @@ export function SidebarNav() {
                 >
                   <Icon className="h-4 w-4" />
                   {item.label}
-                </Link>
+                </LocaleLink>
               </li>
             );
           })}

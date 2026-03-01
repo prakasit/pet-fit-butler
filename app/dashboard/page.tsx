@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import {
   Activity,
   CalendarClock,
@@ -12,84 +11,94 @@ import {
   Sparkles,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLocale, useTranslations } from "next-intl";
 
+import { LocaleLink } from "@/components/i18n/LocaleLink";
 import { HeroVideoSection } from "@/components/storytelling/HeroVideoSection";
 import { ElegantButton } from "@/components/ui/ElegantButton";
 import { HealthChart } from "@/components/ui/HealthChart";
 import { PremiumCard } from "@/components/ui/PremiumCard";
 import { StatusBadge } from "@/components/ui/StatusBadge";
-import { formatDate, formatTime } from "@/lib/format";
-import { bookingStatusThai, bookingTypeThai, membershipTypeThai, timeSlotThai } from "@/lib/thai";
+import { formatCurrency, formatDate, formatTime } from "@/lib/format";
 import {
-  butlerStatus,
-  dailyActivitySeries,
-  dashboardActivities,
-  membershipStatus,
-  pets,
-  services,
-  upcomingBookings,
-} from "@/mock";
-
-const quickActions = [
-  {
-    href: "/booking",
-    label: "จองเลย",
-    icon: CalendarClock,
-  },
-  {
-    href: "/reports",
-    label: "ดูรายงาน",
-    icon: FileHeart,
-  },
-];
-
-const testimonialItems = [
-  {
-    id: "t-1",
-    quote:
-      "ทีมผู้ดูแลช่วยให้ลูกรักของเราสดใสขึ้นชัดเจนภายในไม่กี่สัปดาห์ ประทับใจทั้งความใส่ใจและมาตรฐานบริการ",
-    name: "คุณณัฐพร",
-  },
-  {
-    id: "t-2",
-    quote:
-      "ตั้งแต่การติดตามรถรับส่งจนถึงวารีบำบัด ทุกขั้นตอนรู้สึกมั่นใจและเป็นมืออาชีพมาก",
-    name: "คุณธนวัฒน์",
-  },
-  {
-    id: "t-3",
-    quote:
-      "ลูกรักดีใจทุกครั้งที่ทีมผู้ดูแลมาถึง แอปใช้งานง่าย อบอุ่น และชัดเจนมาก",
-    name: "คุณพิมพ์ชนก",
-  },
-];
-
-const galleryShowcase = [
-  {
-    id: "g-1",
-    title: "วิ่งเล่นอย่างมีความสุข",
-    imageUrl: "https://assets.mixkit.co/videos/45843/45843-thumb-720-3.jpg",
-  },
-  {
-    id: "g-2",
-    title: "วารีบำบัดเพื่อฟื้นตัว",
-    imageUrl: "https://assets.mixkit.co/videos/13950/13950-thumb-720-0.jpg",
-  },
-  {
-    id: "g-3",
-    title: "ช่วงเวลาใกล้ชิดกับผู้ดูแล",
-    imageUrl: "https://assets.mixkit.co/videos/42736/42736-thumb-720-0.jpg",
-  },
-  {
-    id: "g-4",
-    title: "ความสุขของครอบครัวและลูกรัก",
-    imageUrl: "https://assets.mixkit.co/videos/42727/42727-thumb-720-0.jpg",
-  },
-];
+  bookingStatusKey,
+  bookingTypeKey,
+  membershipTypeKey,
+  timeSlotKey,
+} from "@/lib/translation-keys";
+import {
+  useMockData,
+} from "@/mock/useMockData";
 
 export default function DashboardPage() {
+  const locale = useLocale();
+  const tDashboard = useTranslations("dashboard");
+  const tCta = useTranslations("cta");
+  const tLabels = useTranslations("labels");
+  const tBookingType = useTranslations("bookingType");
+  const tMembershipType = useTranslations("membershipType");
+  const tBookingStatus = useTranslations("bookingStatus");
+  const tTimeSlot = useTranslations("timeSlot");
+  const tCommon = useTranslations("common");
+  const { butlerStatus, dailyActivitySeries, dashboardActivities, membershipStatus, pets, services, upcomingBookings } =
+    useMockData();
+
+  const quickActions = [
+    {
+      href: "/booking",
+      label: tCta("bookNow"),
+      icon: CalendarClock,
+    },
+    {
+      href: "/reports",
+      label: tCta("viewReport"),
+      icon: FileHeart,
+    },
+  ];
+
+  const testimonialItems = [
+    {
+      id: "t-1",
+      quote: tDashboard("testimonials.oneQuote"),
+      name: tDashboard("testimonials.oneName"),
+    },
+    {
+      id: "t-2",
+      quote: tDashboard("testimonials.twoQuote"),
+      name: tDashboard("testimonials.twoName"),
+    },
+    {
+      id: "t-3",
+      quote: tDashboard("testimonials.threeQuote"),
+      name: tDashboard("testimonials.threeName"),
+    },
+  ];
+
+  const galleryShowcase = [
+    {
+      id: "g-1",
+      title: tDashboard("stories.one"),
+      imageUrl: "https://assets.mixkit.co/videos/45843/45843-thumb-720-3.jpg",
+    },
+    {
+      id: "g-2",
+      title: tDashboard("stories.two"),
+      imageUrl: "https://assets.mixkit.co/videos/13950/13950-thumb-720-0.jpg",
+    },
+    {
+      id: "g-3",
+      title: tDashboard("stories.three"),
+      imageUrl: "https://assets.mixkit.co/videos/42736/42736-thumb-720-0.jpg",
+    },
+    {
+      id: "g-4",
+      title: tDashboard("stories.four"),
+      imageUrl: "https://assets.mixkit.co/videos/42727/42727-thumb-720-0.jpg",
+    },
+  ];
+
   const nextBooking = upcomingBookings[0];
-  const featuredPet = pets[0]?.name ?? "ลูกรัก";
+  const featuredPet = pets[0]?.name ?? "—";
   const averageWeight =
     pets.reduce((sum, pet) => sum + pet.currentWeightKg, 0) / Math.max(1, pets.length);
   const totalCaloriesWeek = dailyActivitySeries.reduce(
@@ -108,44 +117,49 @@ export default function DashboardPage() {
         >
           <div className="mb-4 flex items-start justify-between">
             <div>
-              <p className="text-sm text-soft-cream/80">แพ็กเกจดูแลสุขภาพ</p>
-              <h2 className="mt-1 text-[1.95rem] leading-tight">เส้นทางสุขภาพของ {featuredPet}</h2>
+              <p className="text-sm text-soft-cream/80">{tDashboard("membershipHeadline")}</p>
+              <h2 className="mt-1 text-[1.95rem] leading-tight">
+                {tDashboard("membershipJourney", { petName: featuredPet })}
+              </h2>
             </div>
             <StatusBadge
-              label={membershipTypeThai[membershipStatus.tier]}
+              label={tMembershipType(membershipTypeKey[membershipStatus.tier])}
               tone="warning"
               className="bg-joy-peach/45 text-soft-cream"
             />
           </div>
           <p className="text-sm text-soft-cream/85">
-            คงเหลือสิทธิ์ดูแลแบบพรีเมียมอีก {membershipStatus.visitsRemaining} ครั้งในรอบนี้
+            {tDashboard("membershipRemaining", { count: membershipStatus.visitsRemaining })}
           </p>
         </motion.section>
 
-        <PremiumCard title="นัดหมายครั้งถัดไป" subtitle="คิวดูแลใกล้ที่สุดของวันนี้">
+        <PremiumCard title={tDashboard("nextBookingTitle")} subtitle={tDashboard("nextBookingSubtitle")}>
           {nextBooking ? (
             <div className="space-y-4">
               <div className="rounded-2xl bg-soft-cream p-5">
                 <p className="text-2xl text-brand-navy">{nextBooking.petName}</p>
                 <p className="mt-1 text-sm text-text-muted">{nextBooking.serviceName}</p>
                 <p className="mt-3 text-sm text-brand-navy">
-                  {formatDate(nextBooking.date)} · {formatTime(nextBooking.date)} ({timeSlotThai[nextBooking.timeSlot]})
+                  {formatDate(nextBooking.date, locale)} · {formatTime(nextBooking.date, locale)} (
+                  {tTimeSlot(timeSlotKey[nextBooking.timeSlot])})
                 </p>
                 <div className="mt-3 flex items-center gap-2">
-                  <StatusBadge label={bookingStatusThai[nextBooking.status]} tone="warning" />
-                  <span className="text-xs text-text-muted">มีนัดหมายต่อเนื่องอีก {upcomingBookings.length} รายการ</span>
+                  <StatusBadge label={tBookingStatus(bookingStatusKey[nextBooking.status])} tone="warning" />
+                  <span className="text-xs text-text-muted">
+                    {tDashboard("queuedSessions", { count: upcomingBookings.length })}
+                  </span>
                 </div>
               </div>
-              <Link href="/booking">
-                <ElegantButton fullWidth>ดูรายละเอียด</ElegantButton>
-              </Link>
+              <LocaleLink href="/booking">
+                <ElegantButton fullWidth>{tCta("seeDetails")}</ElegantButton>
+              </LocaleLink>
             </div>
           ) : (
-            <p className="text-sm text-text-muted">ขณะนี้ยังไม่มีนัดหมายถัดไป</p>
+            <p className="text-sm text-text-muted">{tDashboard("nextBookingNone")}</p>
           )}
         </PremiumCard>
 
-        <PremiumCard title="สถานะผู้ดูแลแบบเรียลไทม์" subtitle={butlerStatus.shiftName}>
+        <PremiumCard title={tDashboard("butlerLiveTitle")} subtitle={butlerStatus.shiftName}>
           <div className="space-y-4">
             <div className="flex items-center justify-between rounded-2xl bg-soft-cream p-4">
               <div>
@@ -153,52 +167,54 @@ export default function DashboardPage() {
                 <p className="text-sm text-text-muted">{butlerStatus.currentTask}</p>
               </div>
               <StatusBadge
-                label={butlerStatus.isActive ? "กำลังให้บริการ" : "รอให้บริการ"}
+                label={butlerStatus.isActive ? tDashboard("butlerActive") : tDashboard("butlerStandby")}
                 tone={butlerStatus.isActive ? "active" : "neutral"}
               />
             </div>
-            <Link href="/tracking">
+            <LocaleLink href="/tracking">
               <ElegantButton variant="secondary" fullWidth>
                 <MapPinned className="mr-2 h-4 w-4" />
-                ดูการติดตามรถรับส่ง
+                {tCta("trackRide")}
               </ElegantButton>
-            </Link>
+            </LocaleLink>
           </div>
         </PremiumCard>
 
-        <PremiumCard title="เมนูลัด" subtitle="เข้าถึงบริการสำคัญได้ทันที">
+        <PremiumCard title={tDashboard("quickActionsTitle")} subtitle={tDashboard("quickActionsSubtitle")}>
           <div className="grid grid-cols-2 gap-3">
             {quickActions.map((action) => {
               const Icon = action.icon;
               return (
-                <Link key={action.href} href={action.href}>
+                <LocaleLink key={action.href} href={action.href}>
                   <div className="rounded-2xl bg-soft-cream p-4 shadow-premium-sm transition hover:-translate-y-0.5">
                     <Icon className="h-5 w-5 text-brand-navy" />
                     <p className="mt-3 text-sm font-semibold text-brand-navy">{action.label}</p>
                   </div>
-                </Link>
+                </LocaleLink>
               );
             })}
           </div>
         </PremiumCard>
 
-        <PremiumCard title="กิจกรรมประจำวัน" subtitle="แนวโน้มแคลอรี่และการเคลื่อนไหว">
+        <PremiumCard title={tDashboard("dailyActivityTitle")} subtitle={tDashboard("dailyActivitySubtitle")}>
           <HealthChart
             data={dailyActivitySeries}
             xKey="day"
             chartType="line"
             series={[
-              { key: "calories", label: "แคลอรี่ที่เผาผลาญ", color: "#1B2A41" },
-              { key: "distanceKm", label: "ระยะทาง (กม.)", color: "#5FBF9F" },
+              { key: "calories", label: tLabels("caloriesBurned"), color: "#1B2A41" },
+              { key: "distanceKm", label: tLabels("distance"), color: "#5FBF9F" },
             ]}
           />
           <div className="mt-4 flex gap-3 text-sm">
             <div className="rounded-2xl bg-soft-cream px-4 py-3">
-              <p className="text-xs text-text-muted">น้ำหนักเฉลี่ย</p>
-              <p className="text-lg font-semibold text-brand-navy">{averageWeight.toFixed(1)} กก.</p>
+              <p className="text-xs text-text-muted">{tLabels("averageWeight")}</p>
+              <p className="text-lg font-semibold text-brand-navy">
+                {tLabels("kilogram", { value: averageWeight.toFixed(1) })}
+              </p>
             </div>
             <div className="rounded-2xl bg-soft-cream px-4 py-3">
-              <p className="text-xs text-text-muted">แคลอรี่รายสัปดาห์</p>
+              <p className="text-xs text-text-muted">{tLabels("weeklyCalories")}</p>
               <p className="text-lg font-semibold text-brand-navy">{totalCaloriesWeek}</p>
             </div>
           </div>
@@ -206,8 +222,8 @@ export default function DashboardPage() {
 
         <div>
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-2xl text-brand-navy">ไฮไลต์ล่าสุด</h2>
-            <span className="text-xs uppercase tracking-[0.14em] text-text-muted">เลื่อนดู</span>
+            <h2 className="text-2xl text-brand-navy">{tDashboard("recentHighlights")}</h2>
+            <span className="text-xs uppercase tracking-[0.14em] text-text-muted">{tCommon("swipe")}</span>
           </div>
           <div className="flex gap-3 overflow-x-auto pb-1">
             {dashboardActivities.slice(0, 10).map((activity) => (
@@ -222,7 +238,7 @@ export default function DashboardPage() {
                   <StatusBadge label={activity.petName} tone="success" />
                 </div>
                 <p className="text-sm font-medium text-brand-navy">{activity.summary}</p>
-                <p className="mt-2 text-xs text-text-muted">{formatDate(activity.timestamp)}</p>
+                <p className="mt-2 text-xs text-text-muted">{formatDate(activity.timestamp, locale)}</p>
               </article>
             ))}
           </div>
@@ -233,61 +249,72 @@ export default function DashboardPage() {
         <HeroVideoSection />
 
         <section className="grid gap-6 xl:grid-cols-3">
-          <PremiumCard title="ระดับสมาชิก" subtitle="สิทธิ์ดูแลแบบพรีเมียม">
-            <p className="text-4xl leading-none text-brand-navy">{membershipTypeThai[membershipStatus.tier]}</p>
+          <PremiumCard title={tDashboard("desktopMembershipTierTitle")} subtitle={tDashboard("desktopMembershipTierSubtitle")}>
+            <p className="text-4xl leading-none text-brand-navy">
+              {tMembershipType(membershipTypeKey[membershipStatus.tier])}
+            </p>
             <p className="mt-3 text-sm text-text-muted">
-              ครอบคลุมถึงวันที่ {formatDate(membershipStatus.expiresAt)}
+              {tDashboard("coverageUntil", { date: formatDate(membershipStatus.expiresAt, locale) })}
             </p>
           </PremiumCard>
-          <PremiumCard title="จำนวนครั้งคงเหลือ" subtitle="รอบแพ็กเกจปัจจุบัน">
+          <PremiumCard
+            title={tDashboard("desktopRemainingVisitsTitle")}
+            subtitle={tDashboard("desktopRemainingVisitsSubtitle")}
+          >
             <p className="text-5xl leading-none text-brand-navy">{membershipStatus.visitsRemaining}</p>
-            <p className="mt-3 text-sm text-text-muted">สำหรับการดูแลสุขภาพและวารีบำบัด</p>
+            <p className="mt-3 text-sm text-text-muted">
+              {tDashboard("desktopRemainingVisitsDescription")}
+            </p>
           </PremiumCard>
-          <PremiumCard title="ช่องทางผู้ช่วยเฉพาะทาง" subtitle="ติดต่อได้โดยตรง">
+          <PremiumCard title={tDashboard("desktopConciergeTitle")} subtitle={tDashboard("desktopConciergeSubtitle")}>
             <p className="text-2xl text-brand-navy">{membershipStatus.conciergeContact}</p>
             <p className="mt-3 text-sm text-text-muted">
-              ทีมผู้ช่วยดูแลพร้อมให้บริการทุกวัน
+              {tDashboard("desktopConciergeDescription")}
             </p>
           </PremiumCard>
         </section>
 
         <section className="grid gap-6 xl:grid-cols-3">
-          <PremiumCard className="xl:col-span-2" title="ภาพรวมกิจกรรมรายสัปดาห์" subtitle="แนวโน้มการเคลื่อนไหวและแคลอรี่">
+          <PremiumCard
+            className="xl:col-span-2"
+            title={tDashboard("desktopWeeklyActivityTitle")}
+            subtitle={tDashboard("desktopWeeklyActivitySubtitle")}
+          >
             <HealthChart
               data={dailyActivitySeries}
               xKey="day"
               chartType="line"
               series={[
-                { key: "calories", label: "แคลอรี่ที่เผาผลาญ", color: "#1B2A41" },
-                { key: "distanceKm", label: "ระยะทาง (กม.)", color: "#5FBF9F" },
+                { key: "calories", label: tLabels("caloriesBurned"), color: "#1B2A41" },
+                { key: "distanceKm", label: tLabels("distance"), color: "#5FBF9F" },
               ]}
             />
           </PremiumCard>
-          <PremiumCard title="นัดหมายครั้งถัดไป" subtitle="คิวที่ใกล้ที่สุด">
+          <PremiumCard title={tDashboard("nextBookingTitle")} subtitle={tDashboard("nextBookingSubtitle")}>
             {nextBooking ? (
               <div className="space-y-3">
                 <p className="text-xl text-brand-navy">{nextBooking.petName}</p>
                 <p className="text-sm text-text-muted">{nextBooking.serviceName}</p>
                 <p className="text-sm text-brand-navy">
-                  {formatDate(nextBooking.date)} · {formatTime(nextBooking.date)}
+                  {formatDate(nextBooking.date, locale)} · {formatTime(nextBooking.date, locale)}
                 </p>
-                <StatusBadge label={bookingStatusThai[nextBooking.status]} tone="warning" />
-                <Link href="/booking">
-                  <ElegantButton fullWidth>จองเลย</ElegantButton>
-                </Link>
+                <StatusBadge label={tBookingStatus(bookingStatusKey[nextBooking.status])} tone="warning" />
+                <LocaleLink href="/booking">
+                  <ElegantButton fullWidth>{tCta("bookNow")}</ElegantButton>
+                </LocaleLink>
               </div>
             ) : (
-              <p className="text-sm text-text-muted">ขณะนี้ยังไม่มีนัดหมายถัดไป</p>
+              <p className="text-sm text-text-muted">{tDashboard("nextBookingNone")}</p>
             )}
           </PremiumCard>
         </section>
 
         <section className="space-y-4">
           <div className="flex items-center justify-between">
-            <h2 className="text-4xl text-brand-navy">โปรแกรมแนะนำ</h2>
-            <Link href="/booking" className="text-sm font-semibold text-brand-navy">
-              ดูทั้งหมด
-            </Link>
+            <h2 className="text-4xl text-brand-navy">{tDashboard("featuredServicesTitle")}</h2>
+            <LocaleLink href="/booking" className="text-sm font-semibold text-brand-navy">
+              {tCta("exploreAll")}
+            </LocaleLink>
           </div>
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {services.slice(0, 6).map((service) => (
@@ -295,24 +322,26 @@ export default function DashboardPage() {
                 key={service.id}
                 className="rounded-2xl border border-line-soft bg-surface p-6 shadow-premium-sm transition hover:-translate-y-1 hover:shadow-premium"
               >
-                <p className="mb-2 text-xs tracking-[0.08em] text-text-muted">{bookingTypeThai[service.category]}</p>
+                <p className="mb-2 text-xs tracking-[0.08em] text-text-muted">
+                  {tBookingType(bookingTypeKey[service.category])}
+                </p>
                 <h3 className="text-2xl leading-tight text-brand-navy">{service.name}</h3>
                 <p className="mt-2 text-sm text-text-muted">{service.description}</p>
-                <p className="mt-4 text-3xl text-brand-navy">{service.price.toLocaleString("th-TH")} บาท</p>
+                <p className="mt-4 text-3xl text-brand-navy">{formatCurrency(service.price, locale)}</p>
               </article>
             ))}
           </div>
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-4xl text-brand-navy">เสียงจากผู้ปกครองลูกรัก</h2>
+          <h2 className="text-4xl text-brand-navy">{tDashboard("testimonialTitle")}</h2>
           <div className="grid gap-5 xl:grid-cols-3">
             {testimonialItems.map((item) => (
-              <PremiumCard key={item.id} title={item.name} subtitle="ผู้ใช้บริการจริง">
+              <PremiumCard key={item.id} title={item.name} subtitle={tDashboard("verifiedClient")}>
                 <p className="text-sm leading-relaxed text-text-muted">{item.quote}</p>
                 <div className="mt-4 inline-flex items-center gap-1 rounded-full bg-sage/22 px-3 py-1 text-xs font-semibold text-brand-navy">
                   <HeartHandshake className="h-3.5 w-3.5" />
-                  ประสบการณ์ดูแลระดับพรีเมียม
+                  {tDashboard("premiumExperience")}
                 </div>
               </PremiumCard>
             ))}
@@ -320,7 +349,7 @@ export default function DashboardPage() {
         </section>
 
         <section className="space-y-4 pb-2">
-          <h2 className="text-4xl text-brand-navy">แกลเลอรีเรื่องราว</h2>
+          <h2 className="text-4xl text-brand-navy">{tDashboard("storyGalleryTitle")}</h2>
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {galleryShowcase.map((item) => (
               <article
@@ -353,13 +382,13 @@ export default function DashboardPage() {
               <Sparkles className="h-4 w-4 text-brand-navy" />
             </span>
             <div className="space-y-1">
-              <p className="text-sm font-semibold text-brand-navy">บันทึกจากทีมผู้ดูแล</p>
+              <p className="text-sm font-semibold text-brand-navy">{tDashboard("conciergeNoteTitle")}</p>
               <p className="text-sm text-text-muted">
-                จุดรับ-ส่งพร้อมให้บริการสำหรับลูกรัก {pets.length} ตัว{" "}
-                <Link href="/tracking" className="inline-flex items-center gap-1 text-brand-navy underline-offset-2 hover:underline">
+                {tDashboard("conciergeNoteBody", { count: pets.length })}{" "}
+                <LocaleLink href="/tracking" className="inline-flex items-center gap-1 text-brand-navy underline-offset-2 hover:underline">
                   <MapPinned className="h-3.5 w-3.5" />
-                  ดูการติดตามแบบเรียลไทม์
-                </Link>
+                  {tDashboard("openLiveRoute")}
+                </LocaleLink>
               </p>
             </div>
           </div>

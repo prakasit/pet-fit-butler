@@ -1,0 +1,370 @@
+{
+  "meta": {
+    "title": "Pet Fit Butler | Premium Pet Wellness Care",
+    "description": "Premium pet wellness service with personal butler support, live tracking and complete health reporting.",
+    "appleTitle": "Pet Fit Butler"
+  },
+  "brand": {
+    "name": "PET FIT BUTLER",
+    "tagline": "Premium Wellness for Your Pet",
+    "logoAlt": "Pet Fit Butler brand logo"
+  },
+  "language": {
+    "ariaLabel": "Switch language",
+    "thai": "ไทย",
+    "english": "EN"
+  },
+  "nav": {
+    "home": "Home",
+    "booking": "Booking",
+    "activity": "Activity",
+    "live": "Live",
+    "profile": "Profile"
+  },
+  "routeTitles": {
+    "dashboard": "Home",
+    "booking": "Booking",
+    "health": "Activity",
+    "tracking": "Live",
+    "profile": "Profile",
+    "reports": "Health Reports",
+    "pets": "Pet Profiles",
+    "liveCam": "Live",
+    "gallery": "Gallery",
+    "fallback": "Pet Fit Butler"
+  },
+  "appShell": {
+    "greeting": "Welcome, {name}",
+    "featuredPetFallback": "your pet",
+    "readyLine": "{petName} is ready for today's wellness plan."
+  },
+  "labels": {
+    "today": "Today",
+    "averageWeight": "Average Weight",
+    "weeklyCalories": "Weekly Calories",
+    "caloriesBurned": "Calories Burned",
+    "distance": "Distance",
+    "workoutDuration": "Workout Duration",
+    "butlerNotes": "Butler Notes",
+    "healthAlert": "Health Alert",
+    "statusCurrent": "Current Status",
+    "coveragePeriod": "Coverage Period",
+    "remainingVisits": "Visits Remaining",
+    "conciergeTeam": "Concierge Team",
+    "subtotal": "Service Fee",
+    "addons": "Add-ons",
+    "tax": "VAT 7%",
+    "total": "Grand Total",
+    "service": "Program",
+    "date": "Date",
+    "time": "Time Slot",
+    "minutes": "{count} min",
+    "kilogram": "{value} kg",
+    "kilometer": "{value} km",
+    "kilocalorie": "{value} kcal",
+    "records": "{count} records",
+    "sessions": "{count} sessions"
+  },
+  "cta": {
+    "bookNow": "Book Now",
+    "viewReport": "View Report",
+    "seeDetails": "See Details",
+    "upgradePlan": "Upgrade Plan",
+    "viewMembership": "View Membership",
+    "trackRide": "Track Butler Ride",
+    "continue": "Continue",
+    "back": "Back",
+    "confirmAndPay": "Confirm & Pay",
+    "saveAddons": "Save Add-ons",
+    "exploreAll": "Explore All",
+    "switchView": "Switch View",
+    "toggleSecurity": "Toggle Security",
+    "openCachedDashboard": "Open Cached Dashboard",
+    "signIn": "Sign In",
+    "openLiveCam": "Open Live Cam",
+    "shareRoute": "Share Route"
+  },
+  "bookingType": {
+    "singleSession": "Single Session",
+    "membership": "Monthly Membership",
+    "specialProgram": "Special Program"
+  },
+  "membershipType": {
+    "activeFit": "Active Fit (Basic)",
+    "executiveCare": "Executive Care (Most Popular)",
+    "ultimateWellness": "Ultimate Wellness (Highest Premium)"
+  },
+  "timeSlot": {
+    "morning": "Morning",
+    "afternoon": "Afternoon",
+    "morningRange": "08:00 - 12:00",
+    "afternoonRange": "13:00 - 18:00"
+  },
+  "bookingStatus": {
+    "scheduled": "Scheduled",
+    "inProgress": "In Progress",
+    "completed": "Completed",
+    "cancelled": "Cancelled"
+  },
+  "rideStatus": {
+    "BUTLER_ON_THE_WAY": "Butler is on the way for pickup",
+    "PET_PICKED_UP": "Pet has been picked up safely",
+    "ARRIVED_AT_STUDIO": "Arrived at the studio",
+    "WORKOUT_IN_PROGRESS": "Workout session in progress",
+    "HEADING_HOME": "Heading home now",
+    "ARRIVED_HOME": "Pet has arrived home safely"
+  },
+  "healthAlert": {
+    "normal": "Normal",
+    "watch": "Watch",
+    "attention": "Attention Needed"
+  },
+  "activityCategory": {
+    "walk": "Walk",
+    "swim": "Hydro Swim",
+    "treadmill": "Treadmill",
+    "agility": "Agility",
+    "rehab": "Rehab"
+  },
+  "gender": {
+    "male": "Male",
+    "female": "Female"
+  },
+  "common": {
+    "none": "None",
+    "live": "LIVE",
+    "video": "VIDEO",
+    "swipe": "Swipe",
+    "mockMode": "mock mode",
+    "viewers": "{count} viewers"
+  },
+  "layout": {
+    "desktopBookButton": "Book Now"
+  },
+  "loading": {
+    "title": "Preparing your premium wellness lounge"
+  },
+  "auth": {
+    "title": "Secure Sign In",
+    "subtitle": "Verify your account to access premium pet wellness services",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "emailPlaceholder": "Enter your sign-in email",
+    "passwordPlaceholder": "Enter your password",
+    "securityNote": "Enterprise-grade encrypted access ({mode})"
+  },
+  "offline": {
+    "title": "You Are Currently Offline",
+    "subtitle": "Live data is temporarily unavailable right now.",
+    "description": "Core information is saved on your device. Reconnect to sync live tracking, reports and camera feeds."
+  },
+  "dashboard": {
+    "quickActionsTitle": "Quick Actions",
+    "quickActionsSubtitle": "Access key services in one tap",
+    "membershipHeadline": "Wellness Membership",
+    "membershipJourney": "{petName}'s wellness journey",
+    "membershipRemaining": "{count} premium visits remain in this cycle.",
+    "nextBookingTitle": "Next Booking",
+    "nextBookingSubtitle": "Closest upcoming session",
+    "nextBookingNone": "No upcoming booking at the moment.",
+    "queuedSessions": "{count} more sessions are queued.",
+    "butlerLiveTitle": "Live Butler Status",
+    "butlerActive": "Active Now",
+    "butlerStandby": "Standby",
+    "dailyActivityTitle": "Daily Activity",
+    "dailyActivitySubtitle": "Calorie and movement trends",
+    "recentHighlights": "Recent Highlights",
+    "desktopMembershipTierTitle": "Membership Tier",
+    "desktopMembershipTierSubtitle": "Premium care coverage",
+    "coverageUntil": "Coverage valid until {date}",
+    "desktopRemainingVisitsTitle": "Visits Remaining",
+    "desktopRemainingVisitsSubtitle": "Current membership cycle",
+    "desktopRemainingVisitsDescription": "Reserved for wellness and hydro sessions.",
+    "desktopConciergeTitle": "Concierge Contact",
+    "desktopConciergeSubtitle": "Direct assistance",
+    "desktopConciergeDescription": "Your concierge team is available every day.",
+    "desktopWeeklyActivityTitle": "Weekly Activity Insights",
+    "desktopWeeklyActivitySubtitle": "Movement and calorie trends",
+    "featuredServicesTitle": "Featured Programs",
+    "testimonialTitle": "What Pet Parents Say",
+    "verifiedClient": "Verified Client",
+    "premiumExperience": "Premium Care Experience",
+    "storyGalleryTitle": "Story Gallery",
+    "conciergeNoteTitle": "Concierge Note",
+    "conciergeNoteBody": "Pickup routes are prepared for {count} active pets.",
+    "openLiveRoute": "Open Live Route",
+    "testimonials": {
+      "oneName": "Nattaporn S.",
+      "oneQuote": "The butler team brought visible energy and confidence back in only a few weeks. Every touchpoint felt intentional.",
+      "twoName": "Thanawat L.",
+      "twoQuote": "From route tracking to hydro recovery, the service feels polished, trusted and deeply caring.",
+      "threeName": "Pimchanok C.",
+      "threeQuote": "Our pet gets excited before every session. The app is elegant, warm and very easy to follow."
+    },
+    "stories": {
+      "one": "Joyful Park Sprint",
+      "two": "Hydro Recovery",
+      "three": "Butler Bonding",
+      "four": "Family Wellness"
+    }
+  },
+  "hero": {
+    "headline": "A Happier, Healthier Life for Your Best Friend",
+    "imageAlt": "Happy dog running with joyful energy"
+  },
+  "booking": {
+    "title": "Booking",
+    "steps": {
+      "selectProgram": "Select Program",
+      "selectDate": "Select Date",
+      "selectTime": "Select Time Slot",
+      "selectAddons": "Select Add-ons",
+      "summaryAndPayment": "Summary & Payment"
+    },
+    "stepLabel": "Step {current} of 5 · {name}",
+    "upcomingTitle": "Upcoming Sessions",
+    "upcomingSubtitle": "Latest booking overview",
+    "desktopServiceDetailsTitle": "Program Details",
+    "desktopServiceDetailsSubtitle": "Choose the right plan from the left panel",
+    "selectedServiceTitle": "Selected Program",
+    "selectedServiceSubtitle": "Program overview",
+    "selectedServiceHint": "Choose date, time and add-ons from the right form panel to confirm your booking.",
+    "selectedServiceEmpty": "Select a program card to begin your booking flow.",
+    "bookingFormTitle": "Booking Form",
+    "bookingFormHint": "Pick a preferred program from the left, then continue with date and time selection.",
+    "addOnDescription": "Add-ons are optional and can be adjusted before final confirmation.",
+    "noAddonsSelected": "No add-ons selected",
+    "chooseAddons": "Choose Add-ons",
+    "saveAddons": "Save Add-ons",
+    "confirmed": "Booking confirmed successfully",
+    "recentSessionsTitle": "Recent Sessions",
+    "recentSessionsSubtitle": "Compact history preview"
+  },
+  "bookingCard": {
+    "addonsLabel": "Add-ons"
+  },
+  "membershipCard": {
+    "title": "Membership Status",
+    "subtitle": "Premium wellness coverage with dedicated concierge support",
+    "priority": "Priority scheduling with premium recovery protocols"
+  },
+  "health": {
+    "heroTag": "Daily Activity Overview",
+    "heroSubtitle": "Average energy burned per session this month.",
+    "snapshotTitle": "Wellness Snapshot",
+    "snapshotSubtitle": "Clear and calm performance indicators",
+    "weightTracking": "Weight Tracking",
+    "weightBaseline": "12-month baseline average",
+    "sessionRecords": "Session Records",
+    "sessionRecordsValue": "{count} activities tracked",
+    "calorieBenchmark": "Calorie Benchmark",
+    "calorieBenchmarkValue": "{value} kcal per session",
+    "weightGraphTitle": "Weight Graph",
+    "weightGraphSubtitle": "12-month timeline",
+    "activityCurveTitle": "Activity Curve",
+    "activityCurveSubtitle": "Daily score and calorie trend",
+    "caloriesGraphTitle": "Calories Burned",
+    "caloriesGraphSubtitle": "Monthly aggregate trend",
+    "activityScore": "Activity Score",
+    "weightSeries": "Weight (kg)"
+  },
+  "tracking": {
+    "liveTag": "Live Tracking",
+    "rideForPet": "Current ride for {petName}",
+    "arriveIn": "Arriving in {minutes} min",
+    "waypoints": "Route Waypoints",
+    "progressTitle": "Trip Progress",
+    "progressSubtitle": "Real-time status timeline",
+    "quickActionsTitle": "Quick Actions",
+    "quickActionsSubtitle": "Need another view?",
+    "openLiveCam": "Open Live Cam",
+    "openLiveCamSubtitle": "Switch to studio camera",
+    "shareRoute": "Share Route",
+    "shareRouteSubtitle": "Send secure tracking link",
+    "openWaypointList": "Open detailed waypoint list"
+  },
+  "driverCard": {
+    "title": "Butler Driver",
+    "subtitle": "Premium pet transfer in progress",
+    "eta": "ETA {minutes} min",
+    "rating": "{rating} rating"
+  },
+  "timeline": {
+    "current": "Current"
+  },
+  "liveCam": {
+    "heroTag": "Secure livestream access",
+    "feedsTitle": "Camera Feeds",
+    "feedsSubtitle": "Switch across 5 secure channels",
+    "liveBadge": "LIVE",
+    "streamPlaceholderTitle": "Video Stream Placeholder",
+    "streamPlaceholderSubtitle": "Encrypted wellness monitoring feed",
+    "secureOn": "Secure access enabled",
+    "secureOff": "Access not secure",
+    "cameraAuthenticated": "Camera authenticated",
+    "cameraAuthRequired": "Authentication required"
+  },
+  "reports": {
+    "heroTag": "Today's Fit Report",
+    "heroSubtitle": "Calories burned by {petName}",
+    "breakdownTitle": "Performance Breakdown",
+    "breakdownSubtitle": "Stacked wellness metrics",
+    "swimTime": "Swim Time",
+    "butlerNoteTitle": "Butler Note",
+    "butlerNoteSubtitle": "Personal coaching observation",
+    "caloriePatternTitle": "Calorie Pattern",
+    "caloriePatternSubtitle": "Recent session trend",
+    "recentReportsTitle": "Recent Reports",
+    "recentReportsSubtitle": "{count} reports generated",
+    "round": "R{index}"
+  },
+  "pets": {
+    "heroTag": "Selected Pet",
+    "heroDetail": "{breed} · {age} years · {weight} kg",
+    "yourPetsTitle": "Your Pets",
+    "yourPetsSubtitle": "{count} registered profiles",
+    "profileDetailsTitle": "Profile Details",
+    "currentWeight": "Current Weight",
+    "medicalConditions": "Medical Conditions",
+    "allergies": "Allergies",
+    "weightHistoryTitle": "Weight History",
+    "weightHistorySubtitle": "12-month trend",
+    "activityHistoryTitle": "Activity History",
+    "activityHistorySubtitle": "20 recent sessions",
+    "wellnessSnapshotTitle": "Wellness Snapshot",
+    "wellnessSnapshotSubtitle": "Monthly movement performance",
+    "round": "S{index}",
+    "ownerAndGender": "{owner} · {gender}"
+  },
+  "profile": {
+    "heroTag": "Profile Overview",
+    "heroTitle": "Your premium account, {name}",
+    "membershipSubtitle": "Premium wellness membership account",
+    "bookingHistoryTitle": "Booking History",
+    "bookingHistorySubtitle": "{count} records",
+    "fields": {
+      "fullName": "Full Name",
+      "phone": "Phone Number",
+      "email": "Email",
+      "address": "Address",
+      "coordinates": "Pickup Coordinates",
+      "paymentMethod": "Payment Method"
+    },
+    "mobileLanguageTitle": "App Language",
+    "mobileLanguageSubtitle": "Choose your preferred language"
+  },
+  "gallery": {
+    "heroTag": "Captured Moments",
+    "heroTitle": "Memories & Training Clips",
+    "heroCount": "{images} images · {videos} videos",
+    "photoTitle": "Photo Gallery",
+    "photoSubtitle": "{count} sample photos",
+    "videoTitle": "Video Thumbnails",
+    "videoSubtitle": "{count} training clips",
+    "imageIndex": "Image {index}",
+    "clipIndex": "Clip {index}",
+    "download": "Download",
+    "sizeUnit": "MB",
+    "secondsUnit": "sec"
+  }
+}

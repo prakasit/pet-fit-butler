@@ -2,10 +2,12 @@
 
 import type { ReactNode } from "react";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 
+import { LanguageSwitcher } from "@/components/i18n/LanguageSwitcher";
+import { LocaleLink } from "@/components/i18n/LocaleLink";
 import { BrandLogo } from "@/components/BrandLogo";
-import { navLabelThai } from "@/lib/thai";
+import { stripLocalePrefix } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 interface DesktopLayoutProps {
@@ -13,23 +15,30 @@ interface DesktopLayoutProps {
   pathname: string;
 }
 
-const navItems = [
-  { href: "/dashboard", label: navLabelThai.home },
-  { href: "/booking", label: navLabelThai.booking },
-  { href: "/health", label: navLabelThai.activity },
-  { href: "/tracking", label: navLabelThai.live },
-  { href: "/profile", label: navLabelThai.profile },
-];
-
 export function DesktopLayout({ children, pathname }: DesktopLayoutProps) {
+  const tNav = useTranslations("nav");
+  const tLayout = useTranslations("layout");
+  const cleanPathname = stripLocalePrefix(pathname);
+  const activePath = cleanPathname === "/" ? "/dashboard" : cleanPathname;
+
+  const navItems = [
+    { href: "/dashboard", label: tNav("home") },
+    { href: "/booking", label: tNav("booking") },
+    { href: "/health", label: tNav("activity") },
+    { href: "/tracking", label: tNav("live") },
+    { href: "/profile", label: tNav("profile") },
+  ];
+
   const isActive = (href: string) => {
     if (href === "/health") {
-      return ["/health", "/reports", "/pets", "/gallery"].some((route) => pathname.startsWith(route));
+      return ["/health", "/reports", "/pets", "/gallery"].some((route) =>
+        activePath.startsWith(route),
+      );
     }
     if (href === "/tracking") {
-      return ["/tracking", "/live-cam"].some((route) => pathname.startsWith(route));
+      return ["/tracking", "/live-cam"].some((route) => activePath.startsWith(route));
     }
-    return pathname.startsWith(href);
+    return activePath.startsWith(href);
   };
 
   return (
@@ -39,7 +48,7 @@ export function DesktopLayout({ children, pathname }: DesktopLayoutProps) {
           <BrandLogo href="/dashboard" />
           <nav className="flex items-center gap-2">
             {navItems.map((item) => (
-              <Link
+              <LocaleLink
                 key={item.href}
                 href={item.href}
                 className={cn(
@@ -50,15 +59,18 @@ export function DesktopLayout({ children, pathname }: DesktopLayoutProps) {
                 )}
               >
                 {item.label}
-              </Link>
+              </LocaleLink>
             ))}
           </nav>
-          <Link
-            href="/booking"
-            className="rounded-xl bg-sage px-4 py-2 text-sm font-semibold text-brand-navy shadow-premium-sm transition hover:-translate-y-0.5"
-          >
-            จองเลย
-          </Link>
+          <div className="flex items-center gap-3">
+            <LanguageSwitcher />
+            <LocaleLink
+              href="/booking"
+              className="rounded-xl bg-sage px-4 py-2 text-sm font-semibold text-brand-navy shadow-premium-sm transition hover:-translate-y-0.5"
+            >
+              {tLayout("desktopBookButton")}
+            </LocaleLink>
+          </div>
         </div>
       </header>
 
