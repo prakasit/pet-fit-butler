@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 
 import {
@@ -23,7 +23,6 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
   const locale = resolveLocale(useLocale());
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const router = useRouter();
 
   const basePath = useMemo(() => stripLocalePrefix(pathname || "/"), [pathname]);
   const queryString = searchParams.toString();
@@ -36,7 +35,10 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
 
     const localizedPath = withLocalePrefix(basePath, nextLocale);
     const nextHref = queryString ? `${localizedPath}?${queryString}` : localizedPath;
-    router.replace(nextHref);
+
+    // Force a full navigation so locale-prefixed rewrites always reload
+    // the correct server-rendered message bundle.
+    window.location.replace(nextHref);
   };
 
   return (
