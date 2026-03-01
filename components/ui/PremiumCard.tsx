@@ -22,21 +22,21 @@ export function PremiumCard({
   return (
     <section
       className={cn(
-        "animate-fade-in-up rounded-2xl border border-line-soft/80 bg-surface/92 p-6 shadow-premium-sm backdrop-blur-sm",
+        "animate-fade-in-up relative overflow-hidden rounded-2xl border border-line-soft/70 bg-surface/92 p-8 shadow-xl shadow-brand-navy/8 ring-1 ring-brand-navy/4 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-brand-navy/12 before:pointer-events-none before:absolute before:inset-[1px] before:rounded-[15px] before:bg-gradient-to-b before:from-white/65 before:to-transparent before:opacity-70",
         className,
       )}
     >
       {(title || subtitle || action) && (
-        <header className="mb-5 flex items-start justify-between gap-3">
+        <header className="relative z-10 mb-7 flex items-start justify-between gap-3">
           <div className="space-y-1">
-            {title && <h3 className="text-[1.45rem] leading-tight text-brand-navy">{title}</h3>}
+            {title && <h3 className="text-[1.7rem] leading-tight text-brand-navy">{title}</h3>}
             {subtitle && <p className="text-sm text-text-muted">{subtitle}</p>}
           </div>
           {action}
         </header>
       )}
-      <div>{children}</div>
-      {footer && <footer className="mt-4 border-t border-line-soft pt-4">{footer}</footer>}
+      <div className="relative z-10">{children}</div>
+      {footer && <footer className="relative z-10 mt-6 border-t border-line-soft pt-6">{footer}</footer>}
     </section>
   );
 }

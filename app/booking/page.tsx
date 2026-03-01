@@ -20,6 +20,15 @@ const steps = [
   "Summary",
 ];
 
+const categoryTint: Record<string, string> = {
+  "Single Session":
+    "border-[#e8dbca] bg-[linear-gradient(145deg,rgba(248,244,237,0.95),rgba(233,216,195,0.55))]",
+  Membership:
+    "border-[#d6e4da] bg-[linear-gradient(145deg,rgba(248,244,237,0.95),rgba(143,175,155,0.24))]",
+  "Special Program":
+    "border-[#e4ddcf] bg-[linear-gradient(145deg,rgba(248,244,237,0.95),rgba(201,167,100,0.18))]",
+};
+
 const availableDates = Array.from({ length: 10 }, (_, index) => {
   const date = new Date();
   date.setDate(date.getDate() + index + 1);
@@ -83,16 +92,16 @@ export default function BookingPage() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-10">
       <PremiumCard
-        title="Book a Premium Session"
+        title="Booking"
         subtitle={`Step ${step} of 5 · ${steps[step - 1]}`}
       >
-        <div className="mb-6 flex gap-2 overflow-x-auto">
+        <div className="mb-8 flex gap-2 overflow-x-auto">
           {steps.map((label, index) => (
             <div
               key={label}
-              className={`rounded-full px-4 py-2 text-xs font-semibold tracking-wide ${
+              className={`rounded-full px-4 py-2 text-xs font-semibold tracking-[0.06em] ${
                 step === index + 1
                   ? "bg-brand-navy text-soft-cream"
                   : step > index + 1
@@ -115,27 +124,40 @@ export default function BookingPage() {
             className="min-h-[360px] space-y-4 md:min-h-[420px]"
           >
             {step === 1 && (
-              <div className="space-y-4">
+              <div className="space-y-6">
                 {Object.entries(groupedServices).map(([category, items]) => (
-                  <section key={category} className="space-y-2">
-                    <p className="text-xs font-semibold tracking-[0.14em] text-text-muted">
+                  <section key={category} className="space-y-3">
+                    <p className="text-xs font-semibold tracking-[0.08em] text-text-muted">
                       {category.toUpperCase()}
                     </p>
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                       {items.map((item) => (
                         <button
                           key={item.id}
                           type="button"
                           onClick={() => setService(item)}
-                          className={`w-full rounded-2xl border p-5 text-left transition ${
+                          className={`w-full rounded-2xl border p-8 text-left transition duration-300 ${
                             service?.id === item.id
-                              ? "border-brand-navy bg-brand-navy text-soft-cream"
-                              : "border-line-soft bg-soft-cream text-brand-navy hover:-translate-y-0.5"
+                              ? "border-brand-navy bg-brand-navy text-soft-cream shadow-xl shadow-brand-navy/25"
+                              : `${categoryTint[category] ?? "border-line-soft bg-soft-cream"} text-brand-navy shadow-xl shadow-brand-navy/8 hover:-translate-y-1 hover:scale-[1.01] hover:shadow-2xl hover:shadow-brand-navy/12`
                           }`}
                         >
-                          <p className="text-lg font-semibold">{item.name}</p>
-                          <p className="mt-1 text-sm opacity-80">{item.description}</p>
-                          <p className="mt-3 text-base font-semibold">{formatCurrency(item.price)}</p>
+                          <h3 className="text-[1.65rem] leading-tight">{item.name}</h3>
+                          <p
+                            className={`mt-2 text-sm ${
+                              service?.id === item.id ? "text-soft-cream/85" : "text-text-muted"
+                            }`}
+                          >
+                            {item.description}
+                          </p>
+                          <div
+                            className={`mt-5 h-px w-full ${
+                              service?.id === item.id ? "bg-soft-cream/24" : "bg-brand-navy/12"
+                            }`}
+                          />
+                          <p className="mt-5 text-3xl leading-none font-semibold">
+                            {formatCurrency(item.price)}
+                          </p>
                         </button>
                       ))}
                     </div>

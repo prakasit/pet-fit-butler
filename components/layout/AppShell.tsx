@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 
 import { BrandLogo } from "@/components/BrandLogo";
 import { BottomNav } from "@/components/layout/BottomNav";
+import { cn } from "@/lib/utils";
 import { currentUserProfile, pets } from "@/mock";
 
 interface AppShellProps {
@@ -32,6 +33,7 @@ export function AppShell({ children }: AppShellProps) {
   const firstName = currentUserProfile.name.split(" ")[0];
   const featuredPet = pets[0]?.name ?? "your pet";
   const title = pageTitles[pathname] ?? "Pet Fit Butler";
+  const isBooking = pathname.startsWith("/booking");
   const today = new Intl.DateTimeFormat("en-US", {
     weekday: "long",
     month: "short",
@@ -53,10 +55,21 @@ export function AppShell({ children }: AppShellProps) {
               {today}
             </span>
           </div>
-          <div className="space-y-1">
-            <p className="text-xs tracking-[0.16em] text-text-muted">GOOD TO SEE YOU, {firstName.toUpperCase()}</p>
-            <h1 className="text-3xl leading-tight text-brand-navy">{title}</h1>
-            <p className="text-sm text-text-muted">{featuredPet} is ready for a premium wellness day.</p>
+          <div className="space-y-2 rounded-[24px] border border-line-soft/60 bg-gradient-to-br from-beige/35 via-soft-cream/70 to-surface/75 p-5 shadow-premium-sm">
+            <p className="text-xs tracking-[0.06em] text-text-muted">
+              Good to see you, {firstName}
+            </p>
+            <h1
+              className={cn(
+                "leading-tight text-brand-navy",
+                isBooking ? "text-[2.35rem] md:text-[2.65rem]" : "text-4xl md:text-[2.5rem]",
+              )}
+            >
+              {title}
+            </h1>
+            <p className="text-sm text-text-muted">
+              {featuredPet} is ready for a premium wellness day.
+            </p>
           </div>
         </header>
 

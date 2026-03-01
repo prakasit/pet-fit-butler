@@ -21,7 +21,7 @@ export default function LiveCamPage() {
   if (!selectedFeed) return null;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-10">
       <motion.section
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}

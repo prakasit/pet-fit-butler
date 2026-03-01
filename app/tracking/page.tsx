@@ -43,7 +43,7 @@ export default function TrackingPage() {
   const progressPercentage = ((activeStage + 1) / selectedRide.timeline.length) * 100;
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-9">
       <div className="-mx-4">
         <section className="relative min-h-[67vh] overflow-hidden rounded-[34px] border border-line-soft bg-brand-navy text-soft-cream shadow-premium-lg">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_22%,rgba(143,175,155,0.6),transparent_32%),radial-gradient(circle_at_82%_70%,rgba(248,244,237,0.16),transparent_40%)]" />

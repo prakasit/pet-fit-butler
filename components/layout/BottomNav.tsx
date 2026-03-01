@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -34,7 +35,7 @@ export function BottomNav() {
   };
 
   return (
-    <nav className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-1.5rem)] max-w-[700px] -translate-x-1/2 rounded-3xl border border-line-soft bg-surface/95 p-2 shadow-premium backdrop-blur md:w-[calc(100%-2.5rem)] md:max-w-[640px] lg:w-[calc(100%-4rem)] lg:max-w-[700px]">
+    <nav className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-1.5rem)] max-w-[700px] -translate-x-1/2 rounded-3xl border border-white/55 bg-surface/68 p-2 shadow-xl shadow-brand-navy/14 backdrop-blur-xl md:w-[calc(100%-2.5rem)] md:max-w-[640px] lg:w-[calc(100%-4rem)] lg:max-w-[700px]">
       <ul className="grid grid-cols-5 gap-1">
         {navItems.map((item) => {
           const Icon = item.icon;
@@ -44,14 +45,19 @@ export function BottomNav() {
               <Link
                 href={item.href}
                 className={cn(
-                  "flex flex-col items-center gap-1 rounded-2xl py-2 text-[11px] font-medium transition",
-                  active
-                    ? "bg-brand-navy text-soft-cream shadow-premium-sm"
-                    : "text-text-muted hover:bg-brand-navy/8",
+                  "relative flex flex-col items-center gap-1 rounded-2xl py-2 text-[11px] font-medium transition",
+                  active ? "text-soft-cream" : "text-text-muted hover:bg-brand-navy/8",
                 )}
               >
-                <Icon className="h-4.5 w-4.5" />
-                <span>{item.label}</span>
+                {active && (
+                  <motion.span
+                    layoutId="bottom-active-pill"
+                    transition={{ type: "spring", stiffness: 320, damping: 28 }}
+                    className="absolute inset-0 rounded-2xl bg-brand-navy/95 shadow-lg shadow-brand-navy/25"
+                  />
+                )}
+                <Icon className="relative z-10 h-4.5 w-4.5" />
+                <span className="relative z-10">{item.label}</span>
               </Link>
             </li>
           );
