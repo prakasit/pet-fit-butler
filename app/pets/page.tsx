@@ -98,7 +98,7 @@ export default function PetsPage() {
           data={selectedPet.weightHistory}
           xKey="month"
           chartType="area"
-          series={[{ key: "weightKg", label: "Weight (kg)", color: "#7FB8A4" }]}
+          series={[{ key: "weightKg", label: "Weight (kg)", color: "#5FBF9F" }]}
         />
       </PremiumCard>
 
@@ -133,8 +133,8 @@ export default function PetsPage() {
           xKey="label"
           chartType="line"
           series={[
-            { key: "calories", label: "Calories", color: "#142235" },
-            { key: "distanceKm", label: "Distance (km)", color: "#DCEEF2" },
+            { key: "calories", label: "Calories", color: "#1B2A41" },
+            { key: "distanceKm", label: "Distance (km)", color: "#E3F2FF" },
           ]}
         />
       </PremiumCard>

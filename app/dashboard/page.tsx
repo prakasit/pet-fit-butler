@@ -169,8 +169,8 @@ export default function DashboardPage() {
             xKey="day"
             chartType="line"
             series={[
-              { key: "calories", label: "Calories", color: "#142235" },
-              { key: "distanceKm", label: "Distance (km)", color: "#7FB8A4" },
+              { key: "calories", label: "Calories", color: "#1B2A41" },
+              { key: "distanceKm", label: "Distance (km)", color: "#5FBF9F" },
             ]}
           />
           <div className="mt-4 flex gap-3 text-sm">

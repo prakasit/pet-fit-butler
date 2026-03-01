@@ -22,11 +22,11 @@ const steps = [
 
 const categoryTint: Record<string, string> = {
   "Single Session":
-    "border-[#efe1d2] bg-[linear-gradient(145deg,rgba(255,253,249,0.95),rgba(241,226,211,0.58))]",
+    "border-[#f4dece] bg-[linear-gradient(145deg,rgba(255,255,255,0.98),rgba(250,215,196,0.42))]",
   Membership:
-    "border-[#d5e8e0] bg-[linear-gradient(145deg,rgba(255,253,249,0.95),rgba(127,184,164,0.24))]",
+    "border-[#d3ece4] bg-[linear-gradient(145deg,rgba(255,255,255,0.98),rgba(95,191,159,0.22))]",
   "Special Program":
-    "border-[#f0dccc] bg-[linear-gradient(145deg,rgba(255,253,249,0.95),rgba(247,216,200,0.28))]",
+    "border-[#d9ebf8] bg-[linear-gradient(145deg,rgba(255,255,255,0.98),rgba(227,242,255,0.5))]",
 };
 
 const availableDates = Array.from({ length: 10 }, (_, index) => {

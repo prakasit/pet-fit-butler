@@ -24,15 +24,15 @@ export function HealthChartClient({
 }: HealthChartProps) {
   const commonAxes = (
     <>
-      <CartesianGrid strokeDasharray="4 4" stroke="rgba(15, 27, 45, 0.12)" />
-      <XAxis dataKey={xKey} tick={{ fill: "#516174", fontSize: 12 }} />
-      <YAxis tick={{ fill: "#516174", fontSize: 12 }} />
+      <CartesianGrid strokeDasharray="4 4" stroke="rgba(27, 42, 65, 0.12)" />
+      <XAxis dataKey={xKey} tick={{ fill: "#5B7896", fontSize: 12 }} />
+      <YAxis tick={{ fill: "#5B7896", fontSize: 12 }} />
       <Tooltip
         contentStyle={{
           borderRadius: "12px",
-          border: "1px solid rgba(15,27,45,0.1)",
+          border: "1px solid rgba(27,42,65,0.1)",
           backgroundColor: "#FFFFFF",
-          boxShadow: "0 12px 28px rgba(15,27,45,0.12)",
+          boxShadow: "0 12px 28px rgba(27,42,65,0.12)",
           fontSize: "12px",
         }}
       />
