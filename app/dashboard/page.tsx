@@ -83,17 +83,17 @@ export default function DashboardPage() {
     {
       id: "g-2",
       title: tDashboard("stories.two"),
-      imageUrl: "https://assets.mixkit.co/videos/13950/13950-thumb-720-0.jpg",
+      imageUrl: "https://assets.mixkit.co/videos/45347/45347-thumb-720-3.jpg",
     },
     {
       id: "g-3",
       title: tDashboard("stories.three"),
-      imageUrl: "https://assets.mixkit.co/videos/42736/42736-thumb-720-0.jpg",
+      imageUrl: "https://assets.mixkit.co/videos/46206/46206-thumb-720-3.jpg",
     },
     {
       id: "g-4",
       title: tDashboard("stories.four"),
-      imageUrl: "https://assets.mixkit.co/videos/42727/42727-thumb-720-0.jpg",
+      imageUrl: "https://assets.mixkit.co/videos/14371/14371-thumb-720-0.jpg",
     },
   ];
 
@@ -139,7 +139,7 @@ export default function DashboardPage() {
               <div className="rounded-2xl bg-soft-cream p-5">
                 <p className="text-2xl text-brand-navy">{nextBooking.petName}</p>
                 <p className="mt-1 text-sm text-text-muted">{nextBooking.serviceName}</p>
-                <p className="mt-3 text-sm text-brand-navy">
+                <p className="mt-3 text-sm text-brand-navy" suppressHydrationWarning>
                   {formatDate(nextBooking.date, locale)} · {formatTime(nextBooking.date, locale)} (
                   {tTimeSlot(timeSlotKey[nextBooking.timeSlot])})
                 </p>

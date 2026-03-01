@@ -12,17 +12,21 @@ import { StatusBadge } from "./StatusBadge";
 interface ButlerDriverCardProps {
   driver: ButlerDriver;
   etaMinutes: number;
+  closeButton?: React.ReactNode;
+  /** เมื่อ true ไม่ห่อด้วย PremiumCard แสดงเฉพาะเนื้อหา */
+  noCard?: boolean;
 }
 
-export function ButlerDriverCard({ driver, etaMinutes }: ButlerDriverCardProps) {
+export function ButlerDriverCard({ driver, etaMinutes, closeButton, noCard = false }: ButlerDriverCardProps) {
   const t = useTranslations("driverCard");
 
-  return (
-    <PremiumCard
-      title={t("title")}
-      subtitle={t("subtitle")}
-      action={<StatusBadge label={t("eta", { minutes: etaMinutes })} tone="active" />}
-    >
+  const body = (
+    <>
+      {closeButton && (
+        <div className="mb-4 flex justify-end">
+          {closeButton}
+        </div>
+      )}
       <div className="flex items-center gap-4">
         <div className="h-16 w-16 overflow-hidden rounded-2xl border border-line-soft bg-soft-cream">
           <Image
@@ -49,6 +53,32 @@ export function ButlerDriverCard({ driver, etaMinutes }: ButlerDriverCardProps) 
           </p>
         </div>
       </div>
+    </>
+  );
+
+  if (noCard) {
+    return (
+      <div className="text-brand-navy">
+        <div className="mb-7 flex items-start justify-between gap-3">
+          <div className="space-y-1">
+            <h3 className="text-[1.7rem] leading-tight text-brand-navy">{t("title")}</h3>
+            <p className="text-sm text-text-muted">{t("subtitle")}</p>
+          </div>
+          <StatusBadge label={t("eta", { minutes: etaMinutes })} tone="active" />
+        </div>
+        {body}
+      </div>
+    );
+  }
+
+  return (
+    <PremiumCard
+      title={t("title")}
+      subtitle={t("subtitle")}
+      action={<StatusBadge label={t("eta", { minutes: etaMinutes })} tone="active" />}
+      className="!border-0 !ring-0 shadow-none outline-none"
+    >
+      <>{body}</>
     </PremiumCard>
   );
 }

@@ -24,6 +24,7 @@ export function DesktopLayout({ children, pathname }: DesktopLayoutProps) {
   const navItems = [
     { href: "/dashboard", label: tNav("home") },
     { href: "/booking", label: tNav("booking") },
+    { href: "/upcoming", label: tNav("upcoming") },
     { href: "/health", label: tNav("activity") },
     { href: "/tracking", label: tNav("live") },
     { href: "/profile", label: tNav("profile") },
@@ -54,7 +55,7 @@ export function DesktopLayout({ children, pathname }: DesktopLayoutProps) {
                 className={cn(
                   "rounded-xl px-4 py-2 text-sm font-medium transition",
                   isActive(item.href)
-                    ? "bg-sage text-surface shadow-premium-sm"
+                    ? "bg-sage !text-white shadow-premium-sm"
                     : "text-text-muted hover:bg-soft-cream hover:text-brand-navy",
                 )}
               >
@@ -66,7 +67,7 @@ export function DesktopLayout({ children, pathname }: DesktopLayoutProps) {
             <LanguageSwitcher />
             <LocaleLink
               href="/booking"
-              className="rounded-xl bg-sage px-4 py-2 text-sm font-semibold text-brand-navy shadow-premium-sm transition hover:-translate-y-0.5"
+              className="rounded-xl bg-sage px-4 py-2 text-sm font-semibold !text-white shadow-premium-sm transition hover:-translate-y-0.5"
             >
               {tLayout("desktopBookButton")}
             </LocaleLink>

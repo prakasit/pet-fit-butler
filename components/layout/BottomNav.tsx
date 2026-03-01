@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import {
   Activity,
+  CalendarCheck,
   CalendarClock,
   Home,
   Radio,
@@ -24,6 +25,7 @@ export function BottomNav() {
   const navItems = [
     { href: "/dashboard", label: tNav("home"), icon: Home },
     { href: "/booking", label: tNav("booking"), icon: CalendarClock },
+    { href: "/upcoming", label: tNav("upcoming"), icon: CalendarCheck },
     { href: "/health", label: tNav("activity"), icon: Activity },
     { href: "/tracking", label: tNav("live"), icon: Radio },
     { href: "/profile", label: tNav("profile"), icon: UserRound },
@@ -53,7 +55,7 @@ export function BottomNav() {
                 href={item.href}
                 className={cn(
                   "relative flex flex-col items-center gap-1 rounded-2xl py-2 text-[11px] font-medium transition",
-                  active ? "text-surface" : "text-text-muted hover:bg-soft-cream",
+                  active ? "text-white" : "text-text-muted hover:bg-soft-cream",
                 )}
               >
                 {active && (

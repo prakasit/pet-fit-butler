@@ -17,6 +17,7 @@
   "nav": {
     "home": "Home",
     "booking": "Booking",
+    "upcoming": "Appointments",
     "activity": "Activity",
     "live": "Live",
     "profile": "Profile"
@@ -24,6 +25,7 @@
   "routeTitles": {
     "dashboard": "Home",
     "booking": "Booking",
+    "upcoming": "Appointments",
     "health": "Activity",
     "tracking": "Live",
     "profile": "Profile",
@@ -203,14 +205,14 @@
     },
     "stories": {
       "one": "Joyful Park Sprint",
-      "two": "Hydro Recovery",
-      "three": "Butler Bonding",
-      "four": "Family Wellness"
+      "two": "Cozy Cat at Home",
+      "three": "Little Bird on a Spring Day",
+      "four": "Small Pet Joy"
     }
   },
   "hero": {
     "headline": "A Happier, Healthier Life for Your Best Friend",
-    "imageAlt": "Happy dog running with joyful energy"
+    "imageAlt": "Golden Retriever on the grass"
   },
   "booking": {
     "title": "Booking",
@@ -224,6 +226,7 @@
     "stepLabel": "Step {current} of 5 · {name}",
     "upcomingTitle": "Upcoming Sessions",
     "upcomingSubtitle": "Latest booking overview",
+    "upcomingEmpty": "No upcoming sessions yet",
     "desktopServiceDetailsTitle": "Program Details",
     "desktopServiceDetailsSubtitle": "Choose the right plan from the left panel",
     "selectedServiceTitle": "Selected Program",
@@ -231,6 +234,8 @@
     "selectedServiceHint": "Choose date, time and add-ons from the right form panel to confirm your booking.",
     "selectedServiceEmpty": "Select a program card to begin your booking flow.",
     "bookingFormTitle": "Booking Form",
+    "bookingFormSubtitle": "Follow the steps above",
+    "stepsAriaLabel": "Booking steps",
     "bookingFormHint": "Pick a preferred program from the left, then continue with date and time selection.",
     "addOnDescription": "Add-ons are optional and can be adjusted before final confirmation.",
     "noAddonsSelected": "No add-ons selected",
@@ -282,7 +287,9 @@
     "shareRoute": "Share Route",
     "shareRouteSubtitle": "Send secure tracking link",
     "openWaypointList": "Open detailed waypoint list",
-    "hideLiveDetails": "Hide details"
+    "hideLiveDetails": "Hide details",
+    "livePetStream": "Live pet stream",
+    "livePetStreamSubtitle": "Connecting to in-vehicle camera..."
   },
   "driverCard": {
     "title": "Butler Driver",

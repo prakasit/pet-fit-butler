@@ -30,6 +30,7 @@ export function AppShell({ children }: AppShellProps) {
     "/": "dashboard",
     "/dashboard": "dashboard",
     "/booking": "booking",
+    "/upcoming": "upcoming",
     "/health": "health",
     "/tracking": "tracking",
     "/profile": "profile",

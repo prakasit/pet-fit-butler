@@ -95,7 +95,7 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
         onClick={() => onChangeLocale("th")}
         className={cn(
           "rounded-full px-3 py-1 text-xs font-semibold transition",
-          locale === "th" ? "bg-sage text-surface" : "text-brand-navy hover:bg-soft-cream",
+          locale === "th" ? "bg-sage text-white" : "text-brand-navy hover:bg-soft-cream",
         )}
       >
         {t("thai")}
@@ -105,7 +105,7 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
         onClick={() => onChangeLocale("en")}
         className={cn(
           "rounded-full px-3 py-1 text-xs font-semibold transition",
-          locale === "en" ? "bg-sage text-surface" : "text-brand-navy hover:bg-soft-cream",
+          locale === "en" ? "bg-sage text-white" : "text-brand-navy hover:bg-soft-cream",
         )}
       >
         {t("english")}

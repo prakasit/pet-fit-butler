@@ -1,8 +1,9 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useEffect, useMemo, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { ChevronRight, MapPin, Navigation, Radio, X } from "lucide-react";
+import { motion } from "framer-motion";
+import { ChevronRight, Navigation, Video } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { ButlerDriverCard } from "@/components/ui/ButlerDriverCard";
@@ -12,6 +13,18 @@ import { Timeline } from "@/components/ui/Timeline";
 import { rideStatusKey } from "@/lib/translation-keys";
 import { useMockData } from "@/mock/useMockData";
 
+const RouteMapClient = dynamic(
+  () => import("@/components/ui/RouteMap").then((m) => ({ default: m.RouteMap })),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex min-h-[200px] items-center justify-center rounded-xl bg-soft-cream/50 text-sm text-text-muted">
+        กำลังโหลดแผนที่...
+      </div>
+    ),
+  },
+);
+
 export default function TrackingPage() {
   const locale = useLocale();
   const tTracking = useTranslations("tracking");
@@ -20,7 +33,6 @@ export default function TrackingPage() {
   const { rides } = useMockData();
 
   const [rideId, setRideId] = useState(rides[0]?.id ?? "");
-  const [isLiveDetailsVisible, setIsLiveDetailsVisible] = useState(false);
   const [etaByRide, setEtaByRide] = useState<Record<string, number>>(() =>
     Object.fromEntries(rides.map((ride) => [ride.id, ride.etaMinutes])),
   );
@@ -66,10 +78,6 @@ export default function TrackingPage() {
                 tone="active"
                 className="bg-sage/36 text-brand-navy"
               />
-              <span className="inline-flex items-center gap-1 rounded-full bg-beige/30 px-3 py-1 text-xs font-semibold text-brand-navy">
-                <Radio className="h-3.5 w-3.5" />
-                {tTracking("liveTag")}
-              </span>
             </div>
             <div className="space-y-1">
               <p className="text-sm text-text-muted">
@@ -104,54 +112,38 @@ export default function TrackingPage() {
               ))}
             </div>
 
-            {!isLiveDetailsVisible && (
-              <button
-                type="button"
-                onClick={() => setIsLiveDetailsVisible(true)}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-sage px-4 py-3 text-sm font-semibold text-surface shadow-premium-sm transition hover:-translate-y-0.5"
-              >
-                <Radio className="h-4 w-4" />
-                {tTracking("liveTag")}
-              </button>
-            )}
+            <div className="space-y-4 pt-2">
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-[auto_1fr]">
+                <ButlerDriverCard
+                  driver={selectedRide.driver}
+                  etaMinutes={etaCountdown}
+                  noCard
+                />
+                <div className="relative flex min-h-[200px] items-center justify-center overflow-hidden rounded-2xl bg-brand-navy/90">
+                  <div className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full bg-red-500 px-2.5 py-1 text-xs font-bold text-white">
+                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white" />
+                    {tTracking("livePetStream")}
+                  </div>
+                  <div className="flex flex-col items-center gap-3 text-center">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-surface/10">
+                      <Video className="h-8 w-8 text-surface/70" />
+                    </div>
+                    <p className="max-w-[200px] text-sm text-surface/80">
+                      {tTracking("livePetStreamSubtitle")}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <p className="mb-3 text-xs uppercase tracking-[0.12em] text-text-muted">
+                  {tTracking("waypoints")}
+                </p>
+                <div className="min-h-[200px]">
+                  <RouteMapClient route={selectedRide.route} className="h-full min-h-[200px]" />
+                </div>
+              </div>
+            </div>
           </div>
-
-          <AnimatePresence>
-            {isLiveDetailsVisible && (
-              <motion.div
-                initial={{ y: 60, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: 30, opacity: 0 }}
-                transition={{ delay: 0.1, duration: 0.35 }}
-                className="absolute right-4 bottom-4 left-4 z-20 space-y-3"
-              >
-                <div className="flex justify-end">
-                  <button
-                    type="button"
-                    onClick={() => setIsLiveDetailsVisible(false)}
-                    className="inline-flex items-center gap-1 rounded-full border border-line-soft bg-surface/95 px-3 py-1.5 text-xs font-semibold text-brand-navy shadow-premium-sm backdrop-blur"
-                  >
-                    <X className="h-3.5 w-3.5" />
-                    {tTracking("hideLiveDetails")}
-                  </button>
-                </div>
-                <ButlerDriverCard driver={selectedRide.driver} etaMinutes={etaCountdown} />
-                <div className="rounded-2xl border border-line-soft bg-surface/95 px-4 py-3 text-brand-navy shadow-premium-sm backdrop-blur">
-                  <p className="mb-2 text-xs uppercase tracking-[0.12em] text-text-muted">
-                    {tTracking("waypoints")}
-                  </p>
-                  <ul className="space-y-1.5 text-sm">
-                    {selectedRide.route.map((coordinate, index) => (
-                      <li key={`${selectedRide.id}-route-${index}`} className="flex items-center gap-2">
-                        <MapPin className="h-3.5 w-3.5 text-sage" />
-                        {coordinate.lat}, {coordinate.lng}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
         </section>
       </div>
 

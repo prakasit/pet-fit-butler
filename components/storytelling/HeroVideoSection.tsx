@@ -8,9 +8,10 @@ import { useTranslations } from "next-intl";
 import { LocaleLink } from "@/components/i18n/LocaleLink";
 import { ElegantButton } from "@/components/ui/ElegantButton";
 
-const HERO_POSTER = "https://assets.mixkit.co/videos/45843/45843-thumb-720-3.jpg";
-const HERO_VIDEO_LARGE = "https://assets.mixkit.co/videos/45843/45843-720.mp4";
-const HERO_VIDEO_SMALL = "https://assets.mixkit.co/videos/45843/45843-360.mp4";
+// Golden Retriever – Mixkit 1478 (dog being petted on grass)
+const HERO_POSTER = "https://assets.mixkit.co/videos/1478/1478-thumb-720-3.jpg";
+const HERO_VIDEO_LARGE = "https://assets.mixkit.co/videos/1478/1478-720.mp4";
+const HERO_VIDEO_SMALL = "https://assets.mixkit.co/videos/1478/1478-360.mp4";
 
 export function HeroVideoSection() {
   const tHero = useTranslations("hero");
