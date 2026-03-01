@@ -24,11 +24,11 @@ export default function HealthPage() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35 }}
-        className="rounded-[28px] bg-brand-navy px-6 py-7 text-soft-cream shadow-premium"
+        className="rounded-[28px] border border-line-soft bg-surface px-6 py-7 text-brand-navy shadow-premium"
       >
-        <p className="text-xs tracking-[0.15em] text-soft-cream/75">{tHealth("heroTag")}</p>
+        <p className="text-xs tracking-[0.15em] text-text-muted">{tHealth("heroTag")}</p>
         <p className="mt-1 text-4xl leading-tight">{tLabels("kilocalorie", { value: avgCalories })}</p>
-        <p className="mt-2 text-sm text-soft-cream/80">{tHealth("heroSubtitle")}</p>
+        <p className="mt-2 text-sm text-text-muted">{tHealth("heroSubtitle")}</p>
       </motion.section>
 
       <PremiumCard title={tHealth("snapshotTitle")} subtitle={tHealth("snapshotSubtitle")}>
@@ -66,7 +66,7 @@ export default function HealthPage() {
           data={healthDashboardSeries.weightByMonth}
           xKey="month"
           chartType="area"
-          series={[{ key: "avgWeightKg", label: tHealth("weightSeries"), color: "#5FBF9F" }]}
+          series={[{ key: "avgWeightKg", label: tHealth("weightSeries"), color: "#6E9E8F" }]}
         />
       </PremiumCard>
 
@@ -76,8 +76,8 @@ export default function HealthPage() {
           xKey="day"
           chartType="line"
           series={[
-            { key: "activityScore", label: tHealth("activityScore"), color: "#1B2A41" },
-            { key: "calories", label: tLabels("caloriesBurned"), color: "#FAD7C4" },
+            { key: "activityScore", label: tHealth("activityScore"), color: "#1E2C3A" },
+            { key: "calories", label: tLabels("caloriesBurned"), color: "#D9A066" },
           ]}
         />
       </PremiumCard>
@@ -87,7 +87,7 @@ export default function HealthPage() {
           data={healthDashboardSeries.caloriesByMonth}
           xKey="month"
           chartType="bar"
-          series={[{ key: "calories", label: tLabels("caloriesBurned"), color: "#1B2A41" }]}
+          series={[{ key: "calories", label: tLabels("caloriesBurned"), color: "#1E2C3A" }]}
         />
       </PremiumCard>
     </div>

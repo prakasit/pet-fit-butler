@@ -54,8 +54,8 @@ export function DesktopLayout({ children, pathname }: DesktopLayoutProps) {
                 className={cn(
                   "rounded-xl px-4 py-2 text-sm font-medium transition",
                   isActive(item.href)
-                    ? "bg-brand-navy text-soft-cream shadow-premium-sm"
-                    : "text-text-muted hover:bg-brand-navy/8 hover:text-brand-navy",
+                    ? "bg-sage text-surface shadow-premium-sm"
+                    : "text-text-muted hover:bg-soft-cream hover:text-brand-navy",
                 )}
               >
                 {item.label}

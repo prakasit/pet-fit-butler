@@ -9,9 +9,9 @@ interface StatusBadgeProps {
 const toneClass: Record<NonNullable<StatusBadgeProps["tone"]>, string> = {
   neutral: "bg-brand-navy/10 text-brand-navy",
   success: "bg-sage/28 text-brand-navy",
-  warning: "bg-joy-peach/45 text-brand-navy",
-  danger: "bg-joy-peach/55 text-brand-navy",
-  active: "status-pulse bg-sage/35 text-brand-navy",
+  warning: "bg-beige/28 text-brand-navy",
+  danger: "bg-beige/36 text-brand-navy",
+  active: "status-pulse bg-sage/36 text-brand-navy",
 };
 
 export function StatusBadge({ label, tone = "neutral", className }: StatusBadgeProps) {

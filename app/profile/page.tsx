@@ -40,11 +40,11 @@ export default function ProfilePage() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35 }}
-        className="rounded-[28px] bg-brand-navy px-6 py-7 text-soft-cream shadow-premium"
+        className="rounded-[28px] border border-line-soft bg-surface px-6 py-7 text-brand-navy shadow-premium"
       >
-        <p className="text-sm text-soft-cream/80">{tProfile("heroTag")}</p>
+        <p className="text-sm text-text-muted">{tProfile("heroTag")}</p>
         <h2 className="mt-1 text-3xl leading-tight">{tProfile("heroTitle", { name: firstName })}</h2>
-        <p className="mt-2 text-sm text-soft-cream/80">{currentUserProfile.email}</p>
+        <p className="mt-2 text-sm text-text-muted">{currentUserProfile.email}</p>
       </motion.section>
 
       <PremiumCard
