@@ -1,0 +1,30 @@
+:root {
+  --brand-navy: #0f1b2d;
+  --soft-cream: #f8f4ed;
+  --sage-green: #8faf9b;
+  --beige: #e9d8c3;
+  --gold: #c9a764;
+  --surface: #ffffff;
+  --text-muted: #516174;
+  --line-soft: rgba(15, 27, 45, 0.12);
+}
+
+@theme inline {
+  --color-brand-navy: #0f1b2d;
+  --color-soft-cream: #f8f4ed;
+  --color-sage: #8faf9b;
+  --color-beige: #e9d8c3;
+  --color-gold: #c9a764;
+  --color-surface: #ffffff;
+  --color-line-soft: rgba(15, 27, 45, 0.12);
+  --color-text-muted: #516174;
+
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-playfair);
+
+  --shadow-premium-sm: 0 8px 24px rgba(15, 27, 45, 0.08);
+  --shadow-premium: 0 16px 36px rgba(15, 27, 45, 0.12);
+  --shadow-premium-lg: 0 24px 64px rgba(15, 27, 45, 0.18);
+
+  --radius-premium: 1rem;
+}
