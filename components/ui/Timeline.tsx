@@ -46,7 +46,9 @@ export function Timeline({ items, className }: TimelineProps) {
           <div className="flex min-h-8 flex-1 items-center justify-between gap-2">
             <div>
               <p className="text-sm font-medium text-brand-navy">{item.label}</p>
-              <p className="text-xs text-text-muted">{item.timestamp}</p>
+              <p className="text-xs text-text-muted" suppressHydrationWarning>
+                {item.timestamp}
+              </p>
             </div>
             {item.active && <StatusBadge label={tTimeline("current")} tone="active" />}
           </div>
