@@ -16,7 +16,7 @@ const variantClasses: Record<ElegantButtonVariant, string> = {
   primary:
     "bg-brand-navy text-soft-cream hover:-translate-y-0.5 hover:shadow-premium disabled:bg-brand-navy/60",
   secondary:
-    "bg-sage text-brand-navy hover:-translate-y-0.5 hover:shadow-premium-sm disabled:bg-sage/60",
+    "bg-sage/90 text-brand-navy hover:-translate-y-0.5 hover:shadow-premium-sm disabled:bg-sage/60",
   ghost:
     "bg-brand-navy/5 text-brand-navy hover:bg-brand-navy/10 border border-line-soft disabled:bg-brand-navy/5",
 };
@@ -31,7 +31,7 @@ export function ElegantButton({
   return (
     <button
       className={cn(
-        "inline-flex h-12 items-center justify-center rounded-2xl px-6 text-sm font-semibold tracking-wide transition duration-300 focus-visible:ring-2 focus-visible:ring-gold/60 focus-visible:outline-none disabled:cursor-not-allowed",
+        "inline-flex h-12 items-center justify-center rounded-2xl px-6 text-sm font-semibold tracking-wide transition duration-300 focus-visible:ring-2 focus-visible:ring-sage/60 focus-visible:outline-none disabled:cursor-not-allowed",
         variantClasses[variant],
         fullWidth && "w-full",
         className,

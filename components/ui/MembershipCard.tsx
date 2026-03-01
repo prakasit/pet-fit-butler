@@ -33,7 +33,7 @@ export function MembershipCard({ membership }: MembershipCardProps) {
       </div>
       <div className="mt-4 grid gap-2 text-sm text-text-muted">
         <p className="flex items-center gap-2">
-          <Crown className="h-4 w-4 text-gold" />
+          <Crown className="h-4 w-4 text-joy-peach" />
           Dedicated concierge: {membership.conciergeContact}
         </p>
         <p className="flex items-center gap-2">

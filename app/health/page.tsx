@@ -59,7 +59,7 @@ export default function HealthPage() {
           data={healthDashboardSeries.weightByMonth}
           xKey="month"
           chartType="area"
-          series={[{ key: "avgWeightKg", label: "Weight (kg)", color: "#8FAF9B" }]}
+          series={[{ key: "avgWeightKg", label: "Weight (kg)", color: "#7FB8A4" }]}
         />
       </PremiumCard>
 
@@ -69,8 +69,8 @@ export default function HealthPage() {
           xKey="day"
           chartType="line"
           series={[
-            { key: "activityScore", label: "Activity Score", color: "#0F1B2D" },
-            { key: "calories", label: "Calories", color: "#C9A764" },
+            { key: "activityScore", label: "Activity Score", color: "#142235" },
+            { key: "calories", label: "Calories", color: "#F7D8C8" },
           ]}
         />
       </PremiumCard>
@@ -80,7 +80,7 @@ export default function HealthPage() {
           data={healthDashboardSeries.caloriesByMonth}
           xKey="month"
           chartType="bar"
-          series={[{ key: "calories", label: "Calories", color: "#0F1B2D" }]}
+          series={[{ key: "calories", label: "Calories", color: "#142235" }]}
         />
       </PremiumCard>
     </div>

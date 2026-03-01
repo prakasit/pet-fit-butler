@@ -68,7 +68,7 @@ export default function DashboardPage() {
           <StatusBadge
             label={membershipStatus.tier}
             tone="warning"
-            className="bg-gold/25 text-soft-cream"
+            className="bg-joy-peach/40 text-soft-cream"
           />
         </div>
         <p className="text-sm text-soft-cream/85">
@@ -149,8 +149,8 @@ export default function DashboardPage() {
             xKey="day"
             chartType="line"
             series={[
-              { key: "calories", label: "Calories", color: "#0F1B2D" },
-              { key: "distanceKm", label: "Distance (km)", color: "#8FAF9B" },
+              { key: "calories", label: "Calories", color: "#142235" },
+              { key: "distanceKm", label: "Distance (km)", color: "#7FB8A4" },
             ]}
           />
           <div className="mt-4 flex gap-3 text-sm">
@@ -197,7 +197,7 @@ export default function DashboardPage() {
         className="rounded-2xl border border-line-soft bg-surface px-5 py-4 shadow-premium-sm"
       >
         <div className="flex items-start gap-3">
-          <span className="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-full bg-beige">
+          <span className="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-full bg-joy-sky/70">
             <Sparkles className="h-4 w-4 text-brand-navy" />
           </span>
           <div className="space-y-1">

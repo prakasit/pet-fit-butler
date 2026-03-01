@@ -39,7 +39,7 @@ export function ButlerDriverCard({ driver, etaMinutes }: ButlerDriverCardProps) 
             {driver.phone}
           </p>
           <p className="flex items-center gap-1 text-text-muted">
-            <Star className="h-4 w-4 fill-gold text-gold" />
+            <Star className="h-4 w-4 fill-joy-peach text-joy-peach" />
             {driver.rating.toFixed(1)} rating
           </p>
         </div>

@@ -80,7 +80,7 @@ export default function ReportsPage() {
           }))}
           xKey="label"
           chartType="line"
-          series={[{ key: "calories", label: "Calories", color: "#0F1B2D" }]}
+          series={[{ key: "calories", label: "Calories", color: "#142235" }]}
         />
       </PremiumCard>
 

@@ -1,36 +1,38 @@
 :root {
-  --brand-navy: #0f1b2d;
-  --soft-cream: #f8f4ed;
-  --sage-green: #8faf9b;
-  --beige: #e9d8c3;
-  --gold: #c9a764;
-  --surface: #ffffff;
-  --text-muted: #516174;
-  --line-soft: rgba(15, 27, 45, 0.12);
+  --brand-navy: #142235;
+  --soft-cream: #fbf8f3;
+  --sage-green: #7fb8a4;
+  --beige: #f1e2d3;
+  --joy-sky: #dceef2;
+  --joy-peach: #f7d8c8;
+  --surface: #fffdf9;
+  --text-muted: #5b6b7c;
+  --line-soft: rgba(20, 34, 53, 0.12);
 }
 
 @theme inline {
-  --color-brand-navy: #0f1b2d;
-  --color-soft-cream: #f8f4ed;
-  --color-sage: #8faf9b;
-  --color-beige: #e9d8c3;
-  --color-gold: #c9a764;
-  --color-surface: #ffffff;
-  --color-line-soft: rgba(15, 27, 45, 0.12);
-  --color-text-muted: #516174;
+  --color-brand-navy: #142235;
+  --color-soft-cream: #fbf8f3;
+  --color-sage: #7fb8a4;
+  --color-beige: #f1e2d3;
+  --color-joy-sky: #dceef2;
+  --color-joy-peach: #f7d8c8;
+  --color-surface: #fffdf9;
+  --color-line-soft: rgba(20, 34, 53, 0.12);
+  --color-text-muted: #5b6b7c;
 
   --font-sans: var(--font-inter);
   --font-heading: var(--font-playfair);
 
   --shadow-premium-sm:
-    0 12px 24px rgba(15, 27, 45, 0.06),
-    0 1px 2px rgba(15, 27, 45, 0.08);
+    0 14px 26px rgba(20, 34, 53, 0.05),
+    0 1px 2px rgba(20, 34, 53, 0.08);
   --shadow-premium:
-    0 20px 42px rgba(15, 27, 45, 0.09),
-    0 2px 5px rgba(15, 27, 45, 0.1);
+    0 24px 48px rgba(20, 34, 53, 0.08),
+    0 3px 8px rgba(20, 34, 53, 0.1);
   --shadow-premium-lg:
-    0 32px 72px rgba(15, 27, 45, 0.13),
-    0 3px 8px rgba(15, 27, 45, 0.14);
+    0 34px 78px rgba(20, 34, 53, 0.12),
+    0 4px 10px rgba(20, 34, 53, 0.13);
 
   --radius-premium: 1rem;
 }

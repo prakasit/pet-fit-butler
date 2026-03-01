@@ -26,7 +26,7 @@ export function Timeline({ items, className }: TimelineProps) {
                 "mt-1 h-3.5 w-3.5 rounded-full border-2",
                 item.completed && "border-sage bg-sage",
                 !item.completed && !item.active && "border-brand-navy/20 bg-surface",
-                item.active && "border-gold bg-gold",
+                item.active && "border-joy-peach bg-joy-peach",
               )}
             />
             {index !== items.length - 1 && (

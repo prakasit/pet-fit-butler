@@ -64,9 +64,9 @@ export default function LiveCamPage() {
               {selectedFeed.viewers} viewers
             </div>
 
-            <div className="flex h-[340px] items-center justify-center bg-[radial-gradient(circle_at_35%_35%,rgba(143,175,155,0.55),transparent_45%),radial-gradient(circle_at_70%_60%,rgba(233,216,195,0.45),transparent_50%)]">
+            <div className="flex h-[340px] items-center justify-center bg-[radial-gradient(circle_at_35%_35%,rgba(127,184,164,0.52),transparent_45%),radial-gradient(circle_at_70%_60%,rgba(247,216,200,0.42),transparent_50%)]">
               <div className="rounded-2xl border border-soft-cream/25 bg-brand-navy/70 px-6 py-4 text-center text-soft-cream">
-                <Camera className="mx-auto h-8 w-8 text-gold" />
+                <Camera className="mx-auto h-8 w-8 text-joy-peach" />
                 <p className="mt-2 text-lg">Video Stream Placeholder</p>
                 <p className="text-xs text-soft-cream/80">Encrypted wellness monitoring feed</p>
               </div>
