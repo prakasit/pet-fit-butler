@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Download, Image as ImageIcon, PlayCircle } from "lucide-react";
 
 import { PremiumCard } from "@/components/ui/PremiumCard";
@@ -10,17 +13,23 @@ export default function GalleryPage() {
 
   return (
     <div className="space-y-6">
-      <header className="space-y-1">
-        <p className="text-xs tracking-[0.2em] text-text-muted">WELLNESS GALLERY</p>
-        <h1 className="text-3xl text-brand-navy md:text-4xl">Memories & Clips</h1>
-      </header>
+      <motion.section
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.35 }}
+        className="rounded-[28px] bg-brand-navy px-6 py-7 text-soft-cream shadow-premium"
+      >
+        <p className="text-sm text-soft-cream/80">Captured moments</p>
+        <h2 className="mt-1 text-3xl leading-tight">Memories & Clips</h2>
+        <p className="mt-2 text-sm text-soft-cream/80">{imageAssets.length} images · {videoAssets.length} videos</p>
+      </motion.section>
 
       <PremiumCard title="Photo Gallery" subtitle={`${imageAssets.length} mock images`}>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="flex gap-3 overflow-x-auto pb-1">
           {imageAssets.map((asset, index) => (
             <article
               key={asset.id}
-              className="overflow-hidden rounded-2xl border border-line-soft bg-surface shadow-premium-sm"
+              className="min-w-[240px] overflow-hidden rounded-2xl border border-line-soft bg-surface shadow-premium-sm"
             >
               <div className="grid h-40 place-items-center bg-[linear-gradient(135deg,rgba(15,27,45,0.86),rgba(143,175,155,0.85),rgba(233,216,195,0.85))] text-soft-cream">
                 <div className="text-center">
@@ -47,7 +56,7 @@ export default function GalleryPage() {
       </PremiumCard>
 
       <PremiumCard title="Video Thumbnails" subtitle={`${videoAssets.length} training clips`}>
-        <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+        <div className="space-y-3">
           {videoAssets.map((asset, index) => (
             <article
               key={asset.id}

@@ -2,45 +2,65 @@
 
 import type { ReactNode } from "react";
 
-import { ShieldCheck } from "lucide-react";
+import { CalendarDays } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 import { BrandLogo } from "@/components/BrandLogo";
 import { BottomNav } from "@/components/layout/BottomNav";
-import { SidebarNav } from "@/components/layout/SidebarNav";
+import { currentUserProfile, pets } from "@/mock";
 
 interface AppShellProps {
   children: ReactNode;
 }
 
 const standaloneRoutes = ["/auth", "/offline"];
+const pageTitles: Record<string, string> = {
+  "/dashboard": "Home",
+  "/booking": "Booking",
+  "/health": "Activity",
+  "/tracking": "Live",
+  "/profile": "Profile",
+  "/reports": "Activity",
+  "/pets": "Activity",
+  "/live-cam": "Live",
+  "/gallery": "Activity",
+};
 
 export function AppShell({ children }: AppShellProps) {
   const pathname = usePathname();
   const isStandalone = standaloneRoutes.some((route) => pathname.startsWith(route));
+  const firstName = currentUserProfile.name.split(" ")[0];
+  const featuredPet = pets[0]?.name ?? "your pet";
+  const title = pageTitles[pathname] ?? "Pet Fit Butler";
+  const today = new Intl.DateTimeFormat("en-US", {
+    weekday: "long",
+    month: "short",
+    day: "numeric",
+  }).format(new Date());
 
   if (isStandalone) {
     return <>{children}</>;
   }
 
   return (
-    <div className="min-h-screen bg-soft-cream text-brand-navy">
-      <div className="mx-auto flex w-full max-w-[1280px]">
-        <SidebarNav />
+    <div className="min-h-screen bg-soft-cream px-0 text-brand-navy md:px-4">
+      <div className="mx-auto min-h-screen w-full max-w-[480px] bg-soft-cream md:border-x md:border-line-soft/60 md:shadow-premium-sm">
+        <header className="sticky top-0 z-30 border-b border-line-soft/80 bg-soft-cream/95 px-5 pt-5 pb-4 backdrop-blur">
+          <div className="mb-4 flex items-center justify-between">
+            <BrandLogo compact />
+            <span className="inline-flex items-center gap-1 rounded-full bg-sage/30 px-3 py-1 text-xs font-semibold text-brand-navy">
+              <CalendarDays className="h-3.5 w-3.5" />
+              {today}
+            </span>
+          </div>
+          <div className="space-y-1">
+            <p className="text-xs tracking-[0.16em] text-text-muted">GOOD TO SEE YOU, {firstName.toUpperCase()}</p>
+            <h1 className="text-3xl leading-tight text-brand-navy">{title}</h1>
+            <p className="text-sm text-text-muted">{featuredPet} is ready for a premium wellness day.</p>
+          </div>
+        </header>
 
-        <div className="flex min-h-screen flex-1 flex-col">
-          <header className="sticky top-0 z-30 border-b border-line-soft bg-soft-cream/95 px-4 py-3 backdrop-blur lg:hidden">
-            <div className="flex items-center justify-between">
-              <BrandLogo compact />
-              <span className="inline-flex items-center gap-1 rounded-full bg-sage/30 px-3 py-1 text-xs font-semibold text-brand-navy">
-                <ShieldCheck className="h-3.5 w-3.5" />
-                Wellness Secure
-              </span>
-            </div>
-          </header>
-
-          <main className="flex-1 px-4 py-5 pb-24 md:px-6 md:py-6 md:pb-8">{children}</main>
-        </div>
+        <main className="px-4 pt-6 pb-28">{children}</main>
       </div>
 
       <BottomNav />

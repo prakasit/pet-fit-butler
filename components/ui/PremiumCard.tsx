@@ -22,14 +22,14 @@ export function PremiumCard({
   return (
     <section
       className={cn(
-        "animate-fade-in-up rounded-2xl border border-line-soft bg-surface/90 p-5 shadow-premium-sm backdrop-blur",
+        "animate-fade-in-up rounded-2xl border border-line-soft/80 bg-surface/92 p-6 shadow-premium-sm backdrop-blur-sm",
         className,
       )}
     >
       {(title || subtitle || action) && (
-        <header className="mb-4 flex items-start justify-between gap-3">
+        <header className="mb-5 flex items-start justify-between gap-3">
           <div className="space-y-1">
-            {title && <h3 className="text-xl text-brand-navy">{title}</h3>}
+            {title && <h3 className="text-[1.45rem] leading-tight text-brand-navy">{title}</h3>}
             {subtitle && <p className="text-sm text-text-muted">{subtitle}</p>}
           </div>
           {action}

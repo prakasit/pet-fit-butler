@@ -31,7 +31,7 @@ export function ElegantButton({
   return (
     <button
       className={cn(
-        "inline-flex h-11 items-center justify-center rounded-xl px-5 text-sm font-semibold tracking-wide transition duration-300 focus-visible:ring-2 focus-visible:ring-gold/60 focus-visible:outline-none disabled:cursor-not-allowed",
+        "inline-flex h-12 items-center justify-center rounded-2xl px-6 text-sm font-semibold tracking-wide transition duration-300 focus-visible:ring-2 focus-visible:ring-gold/60 focus-visible:outline-none disabled:cursor-not-allowed",
         variantClasses[variant],
         fullWidth && "w-full",
         className,

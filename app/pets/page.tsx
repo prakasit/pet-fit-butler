@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { motion } from "framer-motion";
 import { Activity, AlertCircle, Stethoscope } from "lucide-react";
 
 import { HealthChart } from "@/components/ui/HealthChart";
@@ -20,10 +21,18 @@ export default function PetsPage() {
 
   return (
     <div className="space-y-6">
-      <header className="space-y-1">
-        <p className="text-xs tracking-[0.2em] text-text-muted">PET PROFILE CENTER</p>
-        <h1 className="text-3xl text-brand-navy md:text-4xl">Pet Profile</h1>
-      </header>
+      <motion.section
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.35 }}
+        className="rounded-[28px] bg-brand-navy px-6 py-7 text-soft-cream shadow-premium"
+      >
+        <p className="text-sm text-soft-cream/80">Selected Pet</p>
+        <h2 className="mt-1 text-3xl leading-tight">{selectedPet.name}</h2>
+        <p className="mt-2 text-sm text-soft-cream/80">
+          {selectedPet.breed} · {selectedPet.age} years · {selectedPet.currentWeightKg} kg
+        </p>
+      </motion.section>
 
       <PremiumCard title="Your Pets" subtitle="15 registered wellness profiles">
         <div className="flex gap-3 overflow-x-auto pb-2">
@@ -32,7 +41,7 @@ export default function PetsPage() {
               key={pet.id}
               type="button"
               onClick={() => setSelectedPetId(pet.id)}
-              className={`min-w-[180px] rounded-xl border p-3 text-left transition ${
+              className={`min-w-[180px] rounded-2xl border p-4 text-left transition ${
                 selectedPet.id === pet.id
                   ? "border-brand-navy bg-brand-navy text-soft-cream shadow-premium-sm"
                   : "border-line-soft bg-soft-cream text-brand-navy hover:-translate-y-0.5"
@@ -45,89 +54,72 @@ export default function PetsPage() {
         </div>
       </PremiumCard>
 
-      <div className="grid gap-4 xl:grid-cols-3">
-        <PremiumCard title={selectedPet.name} subtitle={`${selectedPet.breed} • ${selectedPet.age} years`}>
-          <div className="space-y-3 text-sm text-text-muted">
-            <p>
-              Owner: <span className="font-semibold text-brand-navy">{selectedPet.ownerName}</span>
-            </p>
+      <PremiumCard title="Profile Details" subtitle={`${selectedPet.ownerName} · ${selectedPet.gender}`}>
+        <div className="space-y-4 text-sm text-text-muted">
+          <div className="rounded-2xl bg-soft-cream p-4">
             <p>
               Current Weight:{" "}
               <span className="font-semibold text-brand-navy">{selectedPet.currentWeightKg} kg</span>
             </p>
-            <p>
-              Gender: <span className="font-semibold text-brand-navy">{selectedPet.gender}</span>
+          </div>
+
+          <div className="rounded-2xl bg-soft-cream p-4">
+            <p className="mb-2 flex items-center gap-2 text-xs uppercase tracking-wide">
+              <Stethoscope className="h-3.5 w-3.5 text-sage" />
+              Medical Conditions
             </p>
-
-            <div className="rounded-xl bg-soft-cream p-3">
-              <p className="mb-1 flex items-center gap-2 text-xs uppercase tracking-wide">
-                <Stethoscope className="h-3.5 w-3.5 text-sage" />
-                Medical Conditions
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {selectedPet.medicalConditions.map((condition) => (
-                  <StatusBadge key={condition} label={condition} tone="warning" />
-                ))}
-              </div>
-            </div>
-
-            <div className="rounded-xl bg-soft-cream p-3">
-              <p className="mb-1 flex items-center gap-2 text-xs uppercase tracking-wide">
-                <AlertCircle className="h-3.5 w-3.5 text-sage" />
-                Allergies
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {selectedPet.allergies.map((allergy) => (
-                  <StatusBadge
-                    key={`${selectedPet.id}-${allergy}`}
-                    label={allergy}
-                    tone={allergy === "None" ? "success" : "danger"}
-                  />
-                ))}
-              </div>
+            <div className="flex flex-wrap gap-2">
+              {selectedPet.medicalConditions.map((condition) => (
+                <StatusBadge key={condition} label={condition} tone="warning" />
+              ))}
             </div>
           </div>
-        </PremiumCard>
 
-        <PremiumCard title="Weight History" subtitle="12-month trend" className="xl:col-span-2">
-          <HealthChart
-            data={selectedPet.weightHistory}
-            xKey="month"
-            chartType="area"
-            series={[{ key: "weightKg", label: "Weight (kg)", color: "#8FAF9B" }]}
-          />
-        </PremiumCard>
-      </div>
+          <div className="rounded-2xl bg-soft-cream p-4">
+            <p className="mb-2 flex items-center gap-2 text-xs uppercase tracking-wide">
+              <AlertCircle className="h-3.5 w-3.5 text-sage" />
+              Allergies
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {selectedPet.allergies.map((allergy) => (
+                <StatusBadge
+                  key={`${selectedPet.id}-${allergy}`}
+                  label={allergy}
+                  tone={allergy === "None" ? "success" : "warning"}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </PremiumCard>
+
+      <PremiumCard title="Weight History" subtitle="12-month trend">
+        <HealthChart
+          data={selectedPet.weightHistory}
+          xKey="month"
+          chartType="area"
+          series={[{ key: "weightKg", label: "Weight (kg)", color: "#8FAF9B" }]}
+        />
+      </PremiumCard>
 
       <PremiumCard title="Activity History" subtitle="20 recent sessions">
-        <div className="overflow-x-auto">
-          <table className="min-w-full text-left text-sm">
-            <thead>
-              <tr className="border-b border-line-soft text-text-muted">
-                <th className="px-2 py-2">Date</th>
-                <th className="px-2 py-2">Type</th>
-                <th className="px-2 py-2">Duration</th>
-                <th className="px-2 py-2">Distance</th>
-                <th className="px-2 py-2">Calories</th>
-              </tr>
-            </thead>
-            <tbody>
-              {selectedPet.activityHistory.map((activity) => (
-                <tr key={activity.id} className="border-b border-line-soft/70">
-                  <td className="px-2 py-2 text-text-muted">{formatDate(activity.date)}</td>
-                  <td className="px-2 py-2 text-brand-navy">
-                    <span className="inline-flex items-center gap-1">
-                      <Activity className="h-3.5 w-3.5 text-sage" />
-                      {activity.category}
-                    </span>
-                  </td>
-                  <td className="px-2 py-2 text-text-muted">{activity.durationMin} min</td>
-                  <td className="px-2 py-2 text-text-muted">{activity.distanceKm} km</td>
-                  <td className="px-2 py-2 font-semibold text-brand-navy">{activity.calories}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="space-y-3">
+          {selectedPet.activityHistory.map((activity) => (
+            <article key={activity.id} className="rounded-2xl bg-soft-cream p-4">
+              <div className="mb-2 flex items-start justify-between">
+                <p className="inline-flex items-center gap-2 text-sm font-semibold text-brand-navy">
+                  <Activity className="h-4 w-4 text-sage" />
+                  {activity.category}
+                </p>
+                <p className="text-xs text-text-muted">{formatDate(activity.date)}</p>
+              </div>
+              <div className="flex flex-wrap gap-4 text-sm text-text-muted">
+                <p>{activity.durationMin} min</p>
+                <p>{activity.distanceKm} km</p>
+                <p className="font-semibold text-brand-navy">{activity.calories} kcal</p>
+              </div>
+            </article>
+          ))}
         </div>
       </PremiumCard>
 
