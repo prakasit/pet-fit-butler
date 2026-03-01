@@ -74,8 +74,11 @@ export default async function RootLayout({
   const messages = allMessages[locale];
 
   return (
-    <html lang={locale}>
-      <body className={`${notoSansThai.variable} ${notoSerifThai.variable} antialiased`}>
+    <html lang={locale} suppressHydrationWarning>
+      <body
+        suppressHydrationWarning
+        className={`${notoSansThai.variable} ${notoSerifThai.variable} antialiased`}
+      >
         <NextIntlClientProvider locale={locale} messages={messages}>
           <LocaleHydrationSync locale={locale} />
           <AppShell>{children}</AppShell>
