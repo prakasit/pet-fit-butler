@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { ChevronRight, MapPin, Navigation, Radio } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
@@ -20,6 +20,7 @@ export default function TrackingPage() {
   const { rides } = useMockData();
 
   const [rideId, setRideId] = useState(rides[0]?.id ?? "");
+  const [isLiveDetailsVisible, setIsLiveDetailsVisible] = useState(false);
   const [etaByRide, setEtaByRide] = useState<Record<string, number>>(() =>
     Object.fromEntries(rides.map((ride) => [ride.id, ride.etaMinutes])),
   );
@@ -102,29 +103,45 @@ export default function TrackingPage() {
                 </button>
               ))}
             </div>
+
+            {!isLiveDetailsVisible && (
+              <button
+                type="button"
+                onClick={() => setIsLiveDetailsVisible(true)}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-sage px-4 py-3 text-sm font-semibold text-surface shadow-premium-sm transition hover:-translate-y-0.5"
+              >
+                <Radio className="h-4 w-4" />
+                {tTracking("liveTag")}
+              </button>
+            )}
           </div>
 
-          <motion.div
-            initial={{ y: 60, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.1, duration: 0.35 }}
-            className="absolute right-4 bottom-4 left-4 z-20 space-y-3"
-          >
-            <ButlerDriverCard driver={selectedRide.driver} etaMinutes={etaCountdown} />
-            <div className="rounded-2xl border border-line-soft bg-surface/95 px-4 py-3 text-brand-navy shadow-premium-sm backdrop-blur">
-              <p className="mb-2 text-xs uppercase tracking-[0.12em] text-text-muted">
-                {tTracking("waypoints")}
-              </p>
-              <ul className="space-y-1.5 text-sm">
-                {selectedRide.route.map((coordinate, index) => (
-                  <li key={`${selectedRide.id}-route-${index}`} className="flex items-center gap-2">
-                    <MapPin className="h-3.5 w-3.5 text-sage" />
-                    {coordinate.lat}, {coordinate.lng}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
+          <AnimatePresence>
+            {isLiveDetailsVisible && (
+              <motion.div
+                initial={{ y: 60, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: 30, opacity: 0 }}
+                transition={{ delay: 0.1, duration: 0.35 }}
+                className="absolute right-4 bottom-4 left-4 z-20 space-y-3"
+              >
+                <ButlerDriverCard driver={selectedRide.driver} etaMinutes={etaCountdown} />
+                <div className="rounded-2xl border border-line-soft bg-surface/95 px-4 py-3 text-brand-navy shadow-premium-sm backdrop-blur">
+                  <p className="mb-2 text-xs uppercase tracking-[0.12em] text-text-muted">
+                    {tTracking("waypoints")}
+                  </p>
+                  <ul className="space-y-1.5 text-sm">
+                    {selectedRide.route.map((coordinate, index) => (
+                      <li key={`${selectedRide.id}-route-${index}`} className="flex items-center gap-2">
+                        <MapPin className="h-3.5 w-3.5 text-sage" />
+                        {coordinate.lat}, {coordinate.lng}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </section>
       </div>
 
