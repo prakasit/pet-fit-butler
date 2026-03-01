@@ -13,6 +13,9 @@ const withPWA = nextPwa({
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  // Keep this empty block to avoid Turbopack/webpack mismatch warnings in Next 16
+  // when a plugin (next-pwa) augments webpack config.
+  turbopack: {},
   images: {
     remotePatterns: [
       {
