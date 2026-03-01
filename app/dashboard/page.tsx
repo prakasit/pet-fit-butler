@@ -11,6 +11,8 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 
+import { HeroVideoSection } from "@/components/storytelling/HeroVideoSection";
+import { StoryImageBlock } from "@/components/storytelling/StoryImageBlock";
 import { ElegantButton } from "@/components/ui/ElegantButton";
 import { HealthChart } from "@/components/ui/HealthChart";
 import { PremiumCard } from "@/components/ui/PremiumCard";
@@ -52,6 +54,10 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-10">
+      <div className="-mx-4 md:-mx-6">
+        <HeroVideoSection />
+      </div>
+
       <motion.section
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
@@ -124,6 +130,13 @@ export default function DashboardPage() {
         </PremiumCard>
       </motion.section>
 
+      <StoryImageBlock
+        title="Warm Butler Care, Every Step"
+        caption="Dedicated handling with gentle trust-building and joyful engagement."
+        imageUrl="https://assets.mixkit.co/videos/42736/42736-thumb-720-0.jpg"
+        alt="A woman warmly interacting with a dog on a sunny lawn"
+      />
+
       <motion.section initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15, duration: 0.35 }}>
         <PremiumCard title="Quick Actions" subtitle="Simple, one-tap flow">
           <div className="flex gap-3 overflow-x-auto pb-1">
@@ -141,6 +154,13 @@ export default function DashboardPage() {
           </div>
         </PremiumCard>
       </motion.section>
+
+      <StoryImageBlock
+        title="Hydro Therapy That Feels Like Play"
+        caption="Premium swim sessions designed to strengthen, recover, and brighten every day."
+        imageUrl="https://assets.mixkit.co/videos/13950/13950-thumb-720-0.jpg"
+        alt="Puppy swimming happily in warm therapy water"
+      />
 
       <motion.section initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.35 }}>
         <PremiumCard title="Daily Activity Curve" subtitle="Smooth movement and calorie trend">
@@ -212,6 +232,13 @@ export default function DashboardPage() {
           </div>
         </div>
       </motion.section>
+
+      <StoryImageBlock
+        title="Shared Moments, Healthier Memories"
+        caption="Fitness, affection, and family joy woven into every wellness routine."
+        imageUrl="https://assets.mixkit.co/videos/42727/42727-thumb-720-0.jpg"
+        alt="Happy couple petting their dog outdoors"
+      />
     </div>
   );
 }
