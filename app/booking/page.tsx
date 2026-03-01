@@ -16,11 +16,11 @@ import { useBookingStore } from "@/store/useBookingStore";
 
 const categoryTint: Record<string, string> = {
   "Single Session":
-    "border-[#f4dece] bg-[linear-gradient(145deg,rgba(255,255,255,0.98),rgba(250,215,196,0.42))]",
+    "border-beige bg-[linear-gradient(145deg,rgba(255,255,255,0.98),rgba(217,160,102,0.2))]",
   Membership:
-    "border-[#d3ece4] bg-[linear-gradient(145deg,rgba(255,255,255,0.98),rgba(95,191,159,0.22))]",
+    "border-sage bg-[linear-gradient(145deg,rgba(255,255,255,0.98),rgba(110,158,143,0.2))]",
   "Special Program":
-    "border-[#d9ebf8] bg-[linear-gradient(145deg,rgba(255,255,255,0.98),rgba(227,242,255,0.5))]",
+    "border-line-soft bg-[linear-gradient(145deg,rgba(255,255,255,0.98),rgba(244,230,214,0.9))]",
 };
 
 const availableDates = Array.from({ length: 10 }, (_, index) => {
@@ -118,7 +118,7 @@ export default function BookingPage() {
                 key={label}
                 className={`rounded-full px-4 py-2 text-xs font-semibold tracking-[0.06em] ${
                   step === index + 1
-                    ? "bg-brand-navy text-soft-cream"
+                    ? "bg-sage text-surface"
                     : step > index + 1
                       ? "bg-sage/30 text-brand-navy"
                       : "bg-soft-cream text-text-muted"
@@ -153,21 +153,21 @@ export default function BookingPage() {
                             onClick={() => setService(item)}
                             className={`w-full rounded-2xl border p-8 text-left transition duration-300 ${
                               activeService?.id === item.id
-                                ? "border-brand-navy bg-brand-navy text-soft-cream shadow-xl shadow-brand-navy/25"
-                                : `${categoryTint[category] ?? "border-line-soft bg-soft-cream"} text-brand-navy shadow-xl shadow-brand-navy/8 hover:-translate-y-1 hover:scale-[1.01] hover:shadow-2xl hover:shadow-brand-navy/12`
+                                ? "border-sage bg-sage text-surface shadow-premium"
+                                : `${categoryTint[category] ?? "border-line-soft bg-soft-cream"} text-brand-navy shadow-premium-sm hover:-translate-y-1 hover:scale-[1.01] hover:shadow-premium`
                             }`}
                           >
                             <h3 className="text-[1.65rem] leading-tight">{item.name}</h3>
                             <p
                               className={`mt-2 text-sm ${
-                                activeService?.id === item.id ? "text-soft-cream/85" : "text-text-muted"
+                                activeService?.id === item.id ? "text-surface/85" : "text-text-muted"
                               }`}
                             >
                               {item.description}
                             </p>
                             <div
                               className={`mt-5 h-px w-full ${
-                                activeService?.id === item.id ? "bg-soft-cream/24" : "bg-brand-navy/12"
+                                activeService?.id === item.id ? "bg-surface/24" : "bg-line-soft"
                               }`}
                             />
                             <p className="mt-5 text-3xl leading-none font-semibold">
@@ -190,7 +190,7 @@ export default function BookingPage() {
                       onClick={() => setDate(availableDate)}
                       className={`flex w-full items-center justify-between rounded-2xl border p-4 text-left transition ${
                         date === availableDate
-                          ? "border-brand-navy bg-brand-navy text-soft-cream"
+                          ? "border-sage bg-sage text-surface"
                           : "border-line-soft bg-soft-cream text-brand-navy"
                       }`}
                     >
@@ -213,7 +213,7 @@ export default function BookingPage() {
                       onClick={() => setTimeSlot(slot)}
                       className={`w-full rounded-2xl border p-5 text-left transition ${
                         timeSlot === slot
-                          ? "border-brand-navy bg-brand-navy text-soft-cream"
+                          ? "border-sage bg-sage text-surface"
                           : "border-line-soft bg-soft-cream text-brand-navy"
                       }`}
                     >
@@ -351,7 +351,7 @@ export default function BookingPage() {
                           onClick={() => setService(item)}
                           className={`w-full rounded-2xl border p-6 text-left transition ${
                             activeService?.id === item.id
-                              ? "border-brand-navy bg-brand-navy text-soft-cream shadow-premium"
+                              ? "border-sage bg-sage text-surface shadow-premium"
                               : `${categoryTint[category] ?? "border-line-soft bg-soft-cream"} text-brand-navy hover:-translate-y-0.5`
                           }`}
                         >
@@ -399,7 +399,7 @@ export default function BookingPage() {
                       key={label}
                       className={`rounded-full px-3 py-1.5 text-xs font-semibold ${
                         step === index + 1
-                          ? "bg-brand-navy text-soft-cream"
+                          ? "bg-sage text-surface"
                           : step > index + 1
                             ? "bg-sage/30 text-brand-navy"
                             : "bg-soft-cream text-text-muted"
@@ -426,7 +426,7 @@ export default function BookingPage() {
                           onClick={() => setDate(availableDate)}
                           className={`flex w-full items-center justify-between rounded-xl border px-4 py-3 text-left text-sm ${
                             date === availableDate
-                              ? "border-brand-navy bg-brand-navy text-soft-cream"
+                              ? "border-sage bg-sage text-surface"
                               : "border-line-soft bg-soft-cream text-brand-navy"
                           }`}
                         >
@@ -446,7 +446,7 @@ export default function BookingPage() {
                           onClick={() => setTimeSlot(slot)}
                           className={`rounded-xl border p-4 text-left ${
                             timeSlot === slot
-                              ? "border-brand-navy bg-brand-navy text-soft-cream"
+                              ? "border-sage bg-sage text-surface"
                               : "border-line-soft bg-soft-cream text-brand-navy"
                           }`}
                         >
@@ -470,7 +470,7 @@ export default function BookingPage() {
                             onClick={() => toggleAddOn(addon)}
                             className={`w-full rounded-xl border p-4 text-left ${
                               selected
-                                ? "border-brand-navy bg-brand-navy text-soft-cream"
+                                ? "border-sage bg-sage text-surface"
                                 : "border-line-soft bg-soft-cream text-brand-navy"
                             }`}
                           >
@@ -566,7 +566,7 @@ export default function BookingPage() {
       </div>
 
       {isAddOnModalOpen && (
-        <div className="fixed inset-0 z-50 bg-brand-navy/45 p-4 lg:hidden">
+        <div className="fixed inset-0 z-50 bg-brand-navy/20 p-4 lg:hidden">
           <motion.div
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
@@ -595,7 +595,7 @@ export default function BookingPage() {
                     onClick={() => toggleAddOn(addon)}
                     className={`w-full rounded-2xl border p-4 text-left transition ${
                       selected
-                        ? "border-brand-navy bg-brand-navy text-soft-cream"
+                        ? "border-sage bg-sage text-surface"
                         : "border-line-soft bg-soft-cream text-brand-navy"
                     }`}
                   >

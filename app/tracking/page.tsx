@@ -55,29 +55,29 @@ export default function TrackingPage() {
   return (
     <div className="space-y-9">
       <div className="-mx-4">
-        <section className="relative min-h-[67vh] overflow-hidden rounded-[34px] border border-line-soft bg-brand-navy text-soft-cream shadow-premium-lg">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_22%,rgba(143,175,155,0.6),transparent_32%),radial-gradient(circle_at_82%_70%,rgba(248,244,237,0.16),transparent_40%)]" />
+        <section className="relative min-h-[67vh] overflow-hidden rounded-[34px] border border-line-soft bg-surface text-brand-navy shadow-premium-lg">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_22%,rgba(110,158,143,0.36),transparent_32%),radial-gradient(circle_at_82%_70%,rgba(217,160,102,0.2),transparent_40%)]" />
 
           <div className="relative z-10 space-y-4 p-5">
             <div className="flex items-center justify-between">
               <StatusBadge
                 label={tRideStatus(rideStatusKey[selectedRide.currentStatus])}
                 tone="active"
-                className="bg-sage/35 text-soft-cream"
+                className="bg-sage/36 text-brand-navy"
               />
-              <span className="inline-flex items-center gap-1 rounded-full bg-soft-cream/16 px-3 py-1 text-xs font-semibold">
+              <span className="inline-flex items-center gap-1 rounded-full bg-beige/30 px-3 py-1 text-xs font-semibold text-brand-navy">
                 <Radio className="h-3.5 w-3.5" />
                 {tTracking("liveTag")}
               </span>
             </div>
             <div className="space-y-1">
-              <p className="text-sm text-soft-cream/80">
+              <p className="text-sm text-text-muted">
                 {tTracking("rideForPet", { petName: selectedRide.petName })}
               </p>
               <h2 className="text-3xl leading-tight">{tTracking("arriveIn", { minutes: etaCountdown })}</h2>
             </div>
 
-            <div className="h-2.5 overflow-hidden rounded-full bg-soft-cream/20">
+            <div className="h-2.5 overflow-hidden rounded-full bg-soft-cream/75">
               <motion.div
                 animate={{ width: `${progressPercentage}%` }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
@@ -93,8 +93,8 @@ export default function TrackingPage() {
                   onClick={() => setRideId(ride.id)}
                   className={`min-w-[140px] rounded-2xl border px-4 py-3 text-left text-xs transition ${
                     selectedRide.id === ride.id
-                      ? "border-soft-cream/30 bg-soft-cream/18 text-soft-cream"
-                      : "border-soft-cream/20 bg-soft-cream/8 text-soft-cream/85"
+                      ? "border-sage bg-sage text-surface"
+                      : "border-line-soft bg-soft-cream text-brand-navy"
                   }`}
                 >
                   <p className="text-sm font-semibold">{ride.petName}</p>
@@ -111,7 +111,7 @@ export default function TrackingPage() {
             className="absolute right-4 bottom-4 left-4 z-20 space-y-3"
           >
             <ButlerDriverCard driver={selectedRide.driver} etaMinutes={etaCountdown} />
-            <div className="rounded-2xl bg-surface/95 px-4 py-3 text-brand-navy shadow-premium-sm backdrop-blur">
+            <div className="rounded-2xl border border-line-soft bg-surface/95 px-4 py-3 text-brand-navy shadow-premium-sm backdrop-blur">
               <p className="mb-2 text-xs uppercase tracking-[0.12em] text-text-muted">
                 {tTracking("waypoints")}
               </p>

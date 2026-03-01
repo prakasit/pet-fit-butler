@@ -36,11 +36,11 @@ export default function PetsPage() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35 }}
-        className="rounded-[28px] bg-brand-navy px-6 py-7 text-soft-cream shadow-premium"
+        className="rounded-[28px] border border-line-soft bg-surface px-6 py-7 text-brand-navy shadow-premium"
       >
-        <p className="text-sm text-soft-cream/80">{tPets("heroTag")}</p>
+        <p className="text-sm text-text-muted">{tPets("heroTag")}</p>
         <h2 className="mt-1 text-3xl leading-tight">{selectedPet.name}</h2>
-        <p className="mt-2 text-sm text-soft-cream/80">
+        <p className="mt-2 text-sm text-text-muted">
           {tPets("heroDetail", {
             breed: selectedPet.breed,
             age: selectedPet.age,
@@ -58,7 +58,7 @@ export default function PetsPage() {
               onClick={() => setSelectedPetId(pet.id)}
               className={`min-w-[180px] rounded-2xl border p-4 text-left transition ${
                 selectedPet.id === pet.id
-                  ? "border-brand-navy bg-brand-navy text-soft-cream shadow-premium-sm"
+                  ? "border-sage bg-sage text-surface shadow-premium-sm"
                   : "border-line-soft bg-soft-cream text-brand-navy hover:-translate-y-0.5"
               }`}
             >
@@ -121,7 +121,7 @@ export default function PetsPage() {
           data={selectedPet.weightHistory}
           xKey="month"
           chartType="area"
-          series={[{ key: "weightKg", label: tHealth("weightSeries"), color: "#5FBF9F" }]}
+          series={[{ key: "weightKg", label: tHealth("weightSeries"), color: "#6E9E8F" }]}
         />
       </PremiumCard>
 
@@ -158,8 +158,8 @@ export default function PetsPage() {
           xKey="label"
           chartType="line"
           series={[
-            { key: "calories", label: tLabels("caloriesBurned"), color: "#1B2A41" },
-            { key: "distanceKm", label: tLabels("distance"), color: "#E3F2FF" },
+            { key: "calories", label: tLabels("caloriesBurned"), color: "#1E2C3A" },
+            { key: "distanceKm", label: tLabels("distance"), color: "#D9A066" },
           ]}
         />
       </PremiumCard>

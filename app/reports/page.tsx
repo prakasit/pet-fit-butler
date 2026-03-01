@@ -34,14 +34,14 @@ export default function ReportsPage() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35 }}
-        className="rounded-[28px] bg-brand-navy px-6 py-7 text-soft-cream shadow-premium"
+        className="rounded-[28px] border border-line-soft bg-surface px-6 py-7 text-brand-navy shadow-premium"
       >
-        <p className="text-xs tracking-[0.15em] text-soft-cream/75">{tReports("heroTag")}</p>
+        <p className="text-xs tracking-[0.15em] text-text-muted">{tReports("heroTag")}</p>
         <p className="mt-1 text-5xl leading-none">{latestReport.caloriesBurned}</p>
-        <p className="mt-2 text-sm text-soft-cream/80">
+        <p className="mt-2 text-sm text-text-muted">
           {tReports("heroSubtitle", { petName: latestReport.petName })}
         </p>
-        <div className="mt-4 inline-flex rounded-full bg-soft-cream/20 px-3 py-1 text-xs font-semibold">
+        <div className="mt-4 inline-flex rounded-full bg-beige/24 px-3 py-1 text-xs font-semibold text-brand-navy">
           {formatDate(latestReport.reportDate, locale)}
         </div>
       </motion.section>
@@ -99,7 +99,7 @@ export default function ReportsPage() {
           }))}
           xKey="label"
           chartType="line"
-          series={[{ key: "calories", label: tLabels("caloriesBurned"), color: "#1B2A41" }]}
+          series={[{ key: "calories", label: tLabels("caloriesBurned"), color: "#1E2C3A" }]}
         />
       </PremiumCard>
 

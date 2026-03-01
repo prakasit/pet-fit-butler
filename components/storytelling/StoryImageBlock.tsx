@@ -28,10 +28,12 @@ export function StoryImageBlock({ title, caption, imageUrl, alt }: StoryImageBlo
           className="object-cover transition duration-700 group-hover:scale-105"
         />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-brand-navy/26 to-transparent" />
-      <div className="absolute right-0 bottom-0 left-0 p-6 text-soft-cream">
-        <p className="text-2xl leading-tight">{title}</p>
-        <p className="mt-1 text-sm text-soft-cream/85">{caption}</p>
+      <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/24 via-beige/14 to-transparent" />
+      <div className="absolute right-0 bottom-0 left-0 p-6">
+        <div className="rounded-2xl bg-surface/84 p-4 text-brand-navy backdrop-blur-sm">
+          <p className="text-2xl leading-tight">{title}</p>
+          <p className="mt-1 text-sm text-text-muted">{caption}</p>
+        </div>
       </div>
     </motion.article>
   );

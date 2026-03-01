@@ -53,8 +53,8 @@ export function SidebarNav() {
                   className={cn(
                     "group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition",
                     active
-                      ? "bg-brand-navy text-soft-cream shadow-premium-sm"
-                      : "text-text-muted hover:bg-brand-navy/8 hover:text-brand-navy",
+                      ? "bg-sage text-surface shadow-premium-sm"
+                      : "text-text-muted hover:bg-soft-cream hover:text-brand-navy",
                   )}
                 >
                   <Icon className="h-4 w-4" />

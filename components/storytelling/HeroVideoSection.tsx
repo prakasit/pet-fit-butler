@@ -59,7 +59,7 @@ export function HeroVideoSection() {
         )}
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-brand-navy/20 via-brand-navy/38 to-brand-navy/74" />
+      <div className="absolute inset-0 bg-gradient-to-b from-soft-cream/10 via-beige/16 to-brand-navy/30" />
 
       <div className="absolute inset-x-0 bottom-0 z-10 p-6 md:p-8">
         <motion.div

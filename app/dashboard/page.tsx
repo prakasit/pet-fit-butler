@@ -113,11 +113,11 @@ export default function DashboardPage() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35 }}
-          className="rounded-[28px] bg-brand-navy p-6 text-soft-cream shadow-premium"
+          className="rounded-[28px] border border-line-soft bg-surface p-6 text-brand-navy shadow-premium"
         >
           <div className="mb-4 flex items-start justify-between">
             <div>
-              <p className="text-sm text-soft-cream/80">{tDashboard("membershipHeadline")}</p>
+              <p className="text-sm text-text-muted">{tDashboard("membershipHeadline")}</p>
               <h2 className="mt-1 text-[1.95rem] leading-tight">
                 {tDashboard("membershipJourney", { petName: featuredPet })}
               </h2>
@@ -125,10 +125,10 @@ export default function DashboardPage() {
             <StatusBadge
               label={tMembershipType(membershipTypeKey[membershipStatus.tier])}
               tone="warning"
-              className="bg-joy-peach/45 text-soft-cream"
+              className="bg-beige/30 text-brand-navy"
             />
           </div>
-          <p className="text-sm text-soft-cream/85">
+          <p className="text-sm text-text-muted">
             {tDashboard("membershipRemaining", { count: membershipStatus.visitsRemaining })}
           </p>
         </motion.section>
@@ -202,8 +202,8 @@ export default function DashboardPage() {
             xKey="day"
             chartType="line"
             series={[
-              { key: "calories", label: tLabels("caloriesBurned"), color: "#1B2A41" },
-              { key: "distanceKm", label: tLabels("distance"), color: "#5FBF9F" },
+              { key: "calories", label: tLabels("caloriesBurned"), color: "#1E2C3A" },
+              { key: "distanceKm", label: tLabels("distance"), color: "#6E9E8F" },
             ]}
           />
           <div className="mt-4 flex gap-3 text-sm">
@@ -285,8 +285,8 @@ export default function DashboardPage() {
               xKey="day"
               chartType="line"
               series={[
-                { key: "calories", label: tLabels("caloriesBurned"), color: "#1B2A41" },
-                { key: "distanceKm", label: tLabels("distance"), color: "#5FBF9F" },
+                { key: "calories", label: tLabels("caloriesBurned"), color: "#1E2C3A" },
+                { key: "distanceKm", label: tLabels("distance"), color: "#6E9E8F" },
               ]}
             />
           </PremiumCard>

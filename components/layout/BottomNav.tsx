@@ -42,7 +42,7 @@ export function BottomNav() {
   };
 
   return (
-    <nav className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-1.5rem)] max-w-[700px] -translate-x-1/2 rounded-3xl border border-white/55 bg-surface/68 p-2 shadow-xl shadow-brand-navy/14 backdrop-blur-xl md:w-[calc(100%-2.5rem)] md:max-w-[640px] lg:hidden">
+    <nav className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-1.5rem)] max-w-[700px] -translate-x-1/2 rounded-3xl border border-surface/65 bg-surface/78 p-2 shadow-xl shadow-brand-navy/12 backdrop-blur-xl md:w-[calc(100%-2.5rem)] md:max-w-[640px] lg:hidden">
       <ul className="grid grid-cols-5 gap-1">
         {navItems.map((item) => {
           const Icon = item.icon;
@@ -53,14 +53,14 @@ export function BottomNav() {
                 href={item.href}
                 className={cn(
                   "relative flex flex-col items-center gap-1 rounded-2xl py-2 text-[11px] font-medium transition",
-                  active ? "text-soft-cream" : "text-text-muted hover:bg-brand-navy/8",
+                  active ? "text-surface" : "text-text-muted hover:bg-soft-cream",
                 )}
               >
                 {active && (
                   <motion.span
                     layoutId="bottom-active-pill"
                     transition={{ type: "spring", stiffness: 320, damping: 28 }}
-                    className="absolute inset-0 rounded-2xl bg-brand-navy/95 shadow-lg shadow-brand-navy/25"
+                    className="absolute inset-0 rounded-2xl bg-sage shadow-lg shadow-brand-navy/20"
                   />
                 )}
                 <Icon className="relative z-10 h-4.5 w-4.5" />

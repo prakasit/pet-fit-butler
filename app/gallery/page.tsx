@@ -23,11 +23,11 @@ export default function GalleryPage() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35 }}
-        className="rounded-[28px] bg-brand-navy px-6 py-7 text-soft-cream shadow-premium"
+        className="rounded-[28px] border border-line-soft bg-surface px-6 py-7 text-brand-navy shadow-premium"
       >
-        <p className="text-sm text-soft-cream/80">{tGallery("heroTag")}</p>
+        <p className="text-sm text-text-muted">{tGallery("heroTag")}</p>
         <h2 className="mt-1 text-3xl leading-tight">{tGallery("heroTitle")}</h2>
-        <p className="mt-2 text-sm text-soft-cream/80">
+        <p className="mt-2 text-sm text-text-muted">
           {tGallery("heroCount", { images: imageAssets.length, videos: videoAssets.length })}
         </p>
       </motion.section>
@@ -42,7 +42,7 @@ export default function GalleryPage() {
               key={asset.id}
               className="min-w-[240px] overflow-hidden rounded-2xl border border-line-soft bg-surface shadow-premium-sm"
             >
-              <div className="grid h-40 place-items-center bg-[linear-gradient(135deg,rgba(15,27,45,0.86),rgba(143,175,155,0.85),rgba(233,216,195,0.85))] text-soft-cream">
+              <div className="grid h-40 place-items-center bg-[linear-gradient(135deg,rgba(110,158,143,0.92),rgba(217,160,102,0.7),rgba(244,230,214,0.82))] text-brand-navy">
                 <div className="text-center">
                   <ImageIcon className="mx-auto h-7 w-7" />
                   <p className="mt-2 text-sm">{tGallery("imageIndex", { index: index + 1 })}</p>
@@ -55,7 +55,7 @@ export default function GalleryPage() {
                 </p>
                 <button
                   type="button"
-                  className="inline-flex items-center gap-1 rounded-lg bg-brand-navy px-3 py-1.5 text-xs font-semibold text-soft-cream transition hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-1 rounded-lg bg-sage px-3 py-1.5 text-xs font-semibold text-surface transition hover:-translate-y-0.5"
                 >
                   <Download className="h-3.5 w-3.5" />
                   {tGallery("download")}
@@ -76,8 +76,8 @@ export default function GalleryPage() {
               key={asset.id}
               className="overflow-hidden rounded-2xl border border-line-soft bg-surface shadow-premium-sm"
             >
-              <div className="relative grid h-44 place-items-center bg-[linear-gradient(135deg,rgba(15,27,45,0.9),rgba(201,167,100,0.72),rgba(143,175,155,0.72))] text-soft-cream">
-                <span className="absolute top-3 left-3 rounded-full bg-red-500 px-2 py-0.5 text-[10px] font-semibold">
+              <div className="relative grid h-44 place-items-center bg-[linear-gradient(135deg,rgba(217,160,102,0.86),rgba(110,158,143,0.76),rgba(244,230,214,0.88))] text-brand-navy">
+                <span className="absolute top-3 left-3 rounded-full bg-beige px-2 py-0.5 text-[10px] font-semibold text-brand-navy">
                   {tCommon("video")}
                 </span>
                 <div className="text-center">
@@ -93,7 +93,7 @@ export default function GalleryPage() {
                 </p>
                 <button
                   type="button"
-                  className="inline-flex items-center gap-1 rounded-lg bg-brand-navy px-3 py-1.5 text-xs font-semibold text-soft-cream transition hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-1 rounded-lg bg-sage px-3 py-1.5 text-xs font-semibold text-surface transition hover:-translate-y-0.5"
                 >
                   <Download className="h-3.5 w-3.5" />
                   {tGallery("download")}

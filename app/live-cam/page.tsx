@@ -32,11 +32,11 @@ export default function LiveCamPage() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35 }}
-        className="rounded-[28px] bg-brand-navy px-6 py-7 text-soft-cream shadow-premium"
+        className="rounded-[28px] border border-line-soft bg-surface px-6 py-7 text-brand-navy shadow-premium"
       >
-        <p className="text-sm text-soft-cream/80">{tLiveCam("heroTag")}</p>
+        <p className="text-sm text-text-muted">{tLiveCam("heroTag")}</p>
         <h2 className="mt-1 text-3xl leading-tight">{selectedFeed.name}</h2>
-        <p className="mt-2 text-sm text-soft-cream/80">{selectedFeed.zone}</p>
+        <p className="mt-2 text-sm text-text-muted">{selectedFeed.zone}</p>
       </motion.section>
 
       <PremiumCard title={tLiveCam("feedsTitle")} subtitle={tLiveCam("feedsSubtitle")}>
@@ -48,7 +48,7 @@ export default function LiveCamPage() {
               onClick={() => setSelectedCameraId(feed.id)}
               className={`min-w-[150px] rounded-2xl border p-3 text-left transition ${
                 selectedFeed.id === feed.id
-                  ? "border-brand-navy bg-brand-navy text-soft-cream"
+                  ? "border-sage bg-sage text-surface"
                   : "border-line-soft bg-soft-cream text-brand-navy"
               }`}
             >
@@ -61,8 +61,8 @@ export default function LiveCamPage() {
 
       <PremiumCard title={selectedFeed.name} subtitle={selectedFeed.zone}>
         <div className="space-y-4">
-          <div className="relative overflow-hidden rounded-2xl border border-line-soft bg-brand-navy">
-            <div className="absolute top-4 left-4 z-10 inline-flex items-center gap-2 rounded-full bg-red-500/90 px-3 py-1 text-xs font-semibold text-white">
+          <div className="relative overflow-hidden rounded-2xl border border-line-soft bg-soft-cream">
+            <div className="absolute top-4 left-4 z-10 inline-flex items-center gap-2 rounded-full bg-beige px-3 py-1 text-xs font-semibold text-brand-navy">
               <CircleDot className="h-3.5 w-3.5" />
               {tLiveCam("liveBadge")}
             </div>
@@ -70,11 +70,11 @@ export default function LiveCamPage() {
               {tCommon("viewers", { count: selectedFeed.viewers })}
             </div>
 
-            <div className="flex h-[340px] items-center justify-center bg-[radial-gradient(circle_at_35%_35%,rgba(127,184,164,0.52),transparent_45%),radial-gradient(circle_at_70%_60%,rgba(247,216,200,0.42),transparent_50%)]">
-              <div className="rounded-2xl border border-soft-cream/25 bg-brand-navy/70 px-6 py-4 text-center text-soft-cream">
-                <Camera className="mx-auto h-8 w-8 text-joy-peach" />
+            <div className="flex h-[340px] items-center justify-center bg-[radial-gradient(circle_at_35%_35%,rgba(110,158,143,0.52),transparent_45%),radial-gradient(circle_at_70%_60%,rgba(217,160,102,0.34),transparent_50%)]">
+              <div className="rounded-2xl border border-line-soft bg-surface/84 px-6 py-4 text-center text-brand-navy backdrop-blur-sm">
+                <Camera className="mx-auto h-8 w-8 text-beige" />
                 <p className="mt-2 text-lg">{tLiveCam("streamPlaceholderTitle")}</p>
-                <p className="text-xs text-soft-cream/80">{tLiveCam("streamPlaceholderSubtitle")}</p>
+                <p className="text-xs text-text-muted">{tLiveCam("streamPlaceholderSubtitle")}</p>
               </div>
             </div>
           </div>
