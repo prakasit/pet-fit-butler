@@ -281,7 +281,8 @@
     "openLiveCamSubtitle": "สลับไปดูกล้องภายในสตูดิโอ",
     "shareRoute": "แชร์เส้นทาง",
     "shareRouteSubtitle": "ส่งลิงก์ติดตามแบบปลอดภัย",
-    "openWaypointList": "เปิดรายการจุดเส้นทางแบบละเอียด"
+    "openWaypointList": "เปิดรายการจุดเส้นทางแบบละเอียด",
+    "hideLiveDetails": "ปิดการแสดงรายละเอียด"
   },
   "driverCard": {
     "title": "ผู้ดูแลประจำการเดินทาง",

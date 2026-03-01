@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronRight, MapPin, Navigation, Radio } from "lucide-react";
+import { ChevronRight, MapPin, Navigation, Radio, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { ButlerDriverCard } from "@/components/ui/ButlerDriverCard";
@@ -125,6 +125,16 @@ export default function TrackingPage() {
                 transition={{ delay: 0.1, duration: 0.35 }}
                 className="absolute right-4 bottom-4 left-4 z-20 space-y-3"
               >
+                <div className="flex justify-end">
+                  <button
+                    type="button"
+                    onClick={() => setIsLiveDetailsVisible(false)}
+                    className="inline-flex items-center gap-1 rounded-full border border-line-soft bg-surface/95 px-3 py-1.5 text-xs font-semibold text-brand-navy shadow-premium-sm backdrop-blur"
+                  >
+                    <X className="h-3.5 w-3.5" />
+                    {tTracking("hideLiveDetails")}
+                  </button>
+                </div>
                 <ButlerDriverCard driver={selectedRide.driver} etaMinutes={etaCountdown} />
                 <div className="rounded-2xl border border-line-soft bg-surface/95 px-4 py-3 text-brand-navy shadow-premium-sm backdrop-blur">
                   <p className="mb-2 text-xs uppercase tracking-[0.12em] text-text-muted">

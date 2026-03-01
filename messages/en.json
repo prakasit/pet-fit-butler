@@ -281,7 +281,8 @@
     "openLiveCamSubtitle": "Switch to studio camera",
     "shareRoute": "Share Route",
     "shareRouteSubtitle": "Send secure tracking link",
-    "openWaypointList": "Open detailed waypoint list"
+    "openWaypointList": "Open detailed waypoint list",
+    "hideLiveDetails": "Hide details"
   },
   "driverCard": {
     "title": "Butler Driver",
