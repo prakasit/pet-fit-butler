@@ -93,224 +93,448 @@ export default function BookingPage() {
 
   return (
     <div className="space-y-10">
-      <PremiumCard
-        title="Booking"
-        subtitle={`Step ${step} of 5 · ${steps[step - 1]}`}
-      >
-        <div className="mb-8 flex gap-2 overflow-x-auto">
-          {steps.map((label, index) => (
-            <div
-              key={label}
-              className={`rounded-full px-4 py-2 text-xs font-semibold tracking-[0.06em] ${
-                step === index + 1
-                  ? "bg-brand-navy text-soft-cream"
-                  : step > index + 1
-                    ? "bg-sage/30 text-brand-navy"
-                    : "bg-soft-cream text-text-muted"
-              }`}
-            >
-              {label}
-            </div>
-          ))}
-        </div>
+      <div className="space-y-10 lg:hidden">
+        <PremiumCard
+          title="Booking"
+          subtitle={`Step ${step} of 5 · ${steps[step - 1]}`}
+        >
+          <div className="mb-8 flex gap-2 overflow-x-auto">
+            {steps.map((label, index) => (
+              <div
+                key={label}
+                className={`rounded-full px-4 py-2 text-xs font-semibold tracking-[0.06em] ${
+                  step === index + 1
+                    ? "bg-brand-navy text-soft-cream"
+                    : step > index + 1
+                      ? "bg-sage/30 text-brand-navy"
+                      : "bg-soft-cream text-text-muted"
+                }`}
+              >
+                {label}
+              </div>
+            ))}
+          </div>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={step}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.26 }}
-            className="min-h-[360px] space-y-4 md:min-h-[420px]"
-          >
-            {step === 1 && (
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={step}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.26 }}
+              className="min-h-[360px] space-y-4 md:min-h-[420px]"
+            >
+              {step === 1 && (
+                <div className="space-y-6">
+                  {Object.entries(groupedServices).map(([category, items]) => (
+                    <section key={category} className="space-y-3">
+                      <p className="text-xs font-semibold tracking-[0.08em] text-text-muted">
+                        {category.toUpperCase()}
+                      </p>
+                      <div className="space-y-4">
+                        {items.map((item) => (
+                          <button
+                            key={item.id}
+                            type="button"
+                            onClick={() => setService(item)}
+                            className={`w-full rounded-2xl border p-8 text-left transition duration-300 ${
+                              service?.id === item.id
+                                ? "border-brand-navy bg-brand-navy text-soft-cream shadow-xl shadow-brand-navy/25"
+                                : `${categoryTint[category] ?? "border-line-soft bg-soft-cream"} text-brand-navy shadow-xl shadow-brand-navy/8 hover:-translate-y-1 hover:scale-[1.01] hover:shadow-2xl hover:shadow-brand-navy/12`
+                            }`}
+                          >
+                            <h3 className="text-[1.65rem] leading-tight">{item.name}</h3>
+                            <p
+                              className={`mt-2 text-sm ${
+                                service?.id === item.id ? "text-soft-cream/85" : "text-text-muted"
+                              }`}
+                            >
+                              {item.description}
+                            </p>
+                            <div
+                              className={`mt-5 h-px w-full ${
+                                service?.id === item.id ? "bg-soft-cream/24" : "bg-brand-navy/12"
+                              }`}
+                            />
+                            <p className="mt-5 text-3xl leading-none font-semibold">
+                              {formatCurrency(item.price)}
+                            </p>
+                          </button>
+                        ))}
+                      </div>
+                    </section>
+                  ))}
+                </div>
+              )}
+
+              {step === 2 && (
+                <div className="space-y-3">
+                  {availableDates.map((availableDate) => (
+                    <button
+                      key={availableDate}
+                      type="button"
+                      onClick={() => setDate(availableDate)}
+                      className={`flex w-full items-center justify-between rounded-2xl border p-4 text-left transition ${
+                        date === availableDate
+                          ? "border-brand-navy bg-brand-navy text-soft-cream"
+                          : "border-line-soft bg-soft-cream text-brand-navy"
+                      }`}
+                    >
+                      <span className="inline-flex items-center gap-2 text-sm font-medium">
+                        <Calendar className="h-4 w-4" />
+                        {formatDate(availableDate)}
+                      </span>
+                      <ChevronRight className="h-4 w-4" />
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {step === 3 && (
+                <div className="space-y-3">
+                  {(["Morning", "Afternoon"] as const).map((slot) => (
+                    <button
+                      key={slot}
+                      type="button"
+                      onClick={() => setTimeSlot(slot)}
+                      className={`w-full rounded-2xl border p-5 text-left transition ${
+                        timeSlot === slot
+                          ? "border-brand-navy bg-brand-navy text-soft-cream"
+                          : "border-line-soft bg-soft-cream text-brand-navy"
+                      }`}
+                    >
+                      <p className="flex items-center gap-2 text-base font-semibold">
+                        <Clock3 className="h-4 w-4" />
+                        {slot}
+                      </p>
+                      <p className="mt-1 text-sm opacity-80">
+                        {slot === "Morning" ? "08:00 - 12:00" : "13:00 - 18:00"}
+                      </p>
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {step === 4 && (
+                <div className="space-y-4">
+                  <div className="rounded-2xl bg-soft-cream p-5">
+                    <p className="text-sm text-text-muted">
+                      Add-ons are optional and can be adjusted before final confirmation.
+                    </p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {selectedAddOns.length > 0 ? (
+                        selectedAddOns.map((addon) => (
+                          <StatusBadge key={addon.id} label={`${addon.name} (${formatCurrency(addon.price)})`} />
+                        ))
+                      ) : (
+                        <StatusBadge label="No add-ons selected" tone="neutral" />
+                      )}
+                    </div>
+                  </div>
+                  <ElegantButton type="button" variant="secondary" fullWidth onClick={() => setIsAddOnModalOpen(true)}>
+                    <Sparkles className="mr-2 h-4 w-4" />
+                    Choose Add-ons
+                  </ElegantButton>
+                </div>
+              )}
+
+              {step === 5 && (
+                <div className="space-y-3 rounded-2xl bg-soft-cream p-5 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-text-muted">Service</span>
+                    <span className="font-semibold text-brand-navy">{service?.name ?? "-"}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-text-muted">Date</span>
+                    <span className="font-semibold text-brand-navy">{date ? formatDate(date) : "-"}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-text-muted">Time</span>
+                    <span className="font-semibold text-brand-navy">{timeSlot ?? "-"}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-text-muted">Add-ons</span>
+                    <span className="max-w-[60%] text-right font-semibold text-brand-navy">
+                      {selectedAddOns.length > 0 ? selectedAddOns.map((addon) => addon.name).join(", ") : "None"}
+                    </span>
+                  </div>
+                  <hr className="border-line-soft" />
+                  <div className="flex justify-between">
+                    <span className="text-text-muted">Subtotal</span>
+                    <span className="font-semibold text-brand-navy">{formatCurrency(subtotal)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-text-muted">Add-ons</span>
+                    <span className="font-semibold text-brand-navy">{formatCurrency(addOnTotal)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-text-muted">VAT 7%</span>
+                    <span className="font-semibold text-brand-navy">{formatCurrency(tax)}</span>
+                  </div>
+                  <div className="flex justify-between text-base">
+                    <span className="font-semibold text-brand-navy">Total</span>
+                    <span className="font-bold text-brand-navy">{formatCurrency(grandTotal)}</span>
+                  </div>
+                </div>
+              )}
+            </motion.div>
+          </AnimatePresence>
+
+          <div className="mt-6 flex items-center gap-2">
+            <ElegantButton type="button" variant="ghost" onClick={previousStep} disabled={step === 1}>
+              Back
+            </ElegantButton>
+            {step < 5 ? (
+              <ElegantButton type="button" onClick={proceed} disabled={!canProceed} fullWidth>
+                Continue
+              </ElegantButton>
+            ) : (
+              <ElegantButton type="button" onClick={confirmBooking} fullWidth>
+                Confirm & Pay
+              </ElegantButton>
+            )}
+          </div>
+          {isConfirmed && (
+            <div className="mt-3 inline-flex items-center gap-1 rounded-full bg-sage/25 px-3 py-2 text-xs font-semibold text-brand-navy">
+              <CheckCircle2 className="h-4 w-4" />
+              Booking Confirmed
+            </div>
+          )}
+        </PremiumCard>
+
+        <PremiumCard title="Upcoming Sessions" subtitle="Elegant booking overview">
+          <div className="space-y-3">
+            {bookingRecords.slice(0, 3).map((booking) => (
+              <BookingCard key={booking.id} booking={booking} />
+            ))}
+          </div>
+        </PremiumCard>
+      </div>
+
+      <div className="hidden lg:block">
+        <div className="grid grid-cols-12 gap-8">
+          <section className="col-span-7 space-y-6">
+            <PremiumCard title="Service Details" subtitle="Choose the right care plan on the left">
               <div className="space-y-6">
                 {Object.entries(groupedServices).map(([category, items]) => (
                   <section key={category} className="space-y-3">
                     <p className="text-xs font-semibold tracking-[0.08em] text-text-muted">
                       {category.toUpperCase()}
                     </p>
-                    <div className="space-y-4">
+                    <div className="space-y-3">
                       {items.map((item) => (
                         <button
                           key={item.id}
                           type="button"
                           onClick={() => setService(item)}
-                          className={`w-full rounded-2xl border p-8 text-left transition duration-300 ${
+                          className={`w-full rounded-2xl border p-6 text-left transition ${
                             service?.id === item.id
-                              ? "border-brand-navy bg-brand-navy text-soft-cream shadow-xl shadow-brand-navy/25"
-                              : `${categoryTint[category] ?? "border-line-soft bg-soft-cream"} text-brand-navy shadow-xl shadow-brand-navy/8 hover:-translate-y-1 hover:scale-[1.01] hover:shadow-2xl hover:shadow-brand-navy/12`
+                              ? "border-brand-navy bg-brand-navy text-soft-cream shadow-premium"
+                              : `${categoryTint[category] ?? "border-line-soft bg-soft-cream"} text-brand-navy hover:-translate-y-0.5`
                           }`}
                         >
-                          <h3 className="text-[1.65rem] leading-tight">{item.name}</h3>
-                          <p
-                            className={`mt-2 text-sm ${
-                              service?.id === item.id ? "text-soft-cream/85" : "text-text-muted"
-                            }`}
-                          >
-                            {item.description}
-                          </p>
-                          <div
-                            className={`mt-5 h-px w-full ${
-                              service?.id === item.id ? "bg-soft-cream/24" : "bg-brand-navy/12"
-                            }`}
-                          />
-                          <p className="mt-5 text-3xl leading-none font-semibold">
-                            {formatCurrency(item.price)}
-                          </p>
+                          <p className="text-2xl leading-tight">{item.name}</p>
+                          <p className="mt-2 text-sm opacity-85">{item.description}</p>
+                          <p className="mt-4 text-2xl font-semibold">{formatCurrency(item.price)}</p>
                         </button>
                       ))}
                     </div>
                   </section>
                 ))}
               </div>
-            )}
+            </PremiumCard>
 
-            {step === 2 && (
-              <div className="space-y-3">
-                {availableDates.map((availableDate) => (
-                  <button
-                    key={availableDate}
-                    type="button"
-                    onClick={() => setDate(availableDate)}
-                    className={`flex w-full items-center justify-between rounded-2xl border p-4 text-left transition ${
-                      date === availableDate
-                        ? "border-brand-navy bg-brand-navy text-soft-cream"
-                        : "border-line-soft bg-soft-cream text-brand-navy"
-                    }`}
-                  >
-                    <span className="inline-flex items-center gap-2 text-sm font-medium">
-                      <Calendar className="h-4 w-4" />
-                      {formatDate(availableDate)}
-                    </span>
-                    <ChevronRight className="h-4 w-4" />
-                  </button>
-                ))}
-              </div>
-            )}
-
-            {step === 3 && (
-              <div className="space-y-3">
-                {(["Morning", "Afternoon"] as const).map((slot) => (
-                  <button
-                    key={slot}
-                    type="button"
-                    onClick={() => setTimeSlot(slot)}
-                    className={`w-full rounded-2xl border p-5 text-left transition ${
-                      timeSlot === slot
-                        ? "border-brand-navy bg-brand-navy text-soft-cream"
-                        : "border-line-soft bg-soft-cream text-brand-navy"
-                    }`}
-                  >
-                    <p className="flex items-center gap-2 text-base font-semibold">
-                      <Clock3 className="h-4 w-4" />
-                      {slot}
+            <PremiumCard title="Selected Service" subtitle="Plan overview">
+              {service ? (
+                <div className="space-y-4 text-sm">
+                  <div className="rounded-2xl bg-soft-cream p-5">
+                    <p className="text-xs tracking-[0.08em] text-text-muted">{service.category}</p>
+                    <p className="mt-1 text-3xl text-brand-navy">{service.name}</p>
+                    <p className="mt-2 text-text-muted">{service.description}</p>
+                    <p className="mt-4 text-2xl font-semibold text-brand-navy">
+                      {formatCurrency(service.price)}
                     </p>
-                    <p className="mt-1 text-sm opacity-80">
-                      {slot === "Morning" ? "08:00 - 12:00" : "13:00 - 18:00"}
-                    </p>
-                  </button>
-                ))}
-              </div>
-            )}
-
-            {step === 4 && (
-              <div className="space-y-4">
-                <div className="rounded-2xl bg-soft-cream p-5">
-                  <p className="text-sm text-text-muted">
-                    Add-ons are optional and can be adjusted before final confirmation.
-                  </p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {selectedAddOns.length > 0 ? (
-                      selectedAddOns.map((addon) => (
-                        <StatusBadge key={addon.id} label={`${addon.name} (${formatCurrency(addon.price)})`} />
-                      ))
-                    ) : (
-                      <StatusBadge label="No add-ons selected" tone="neutral" />
-                    )}
                   </div>
+                  <p className="text-text-muted">
+                    Select date, time, and add-ons from the booking form panel to the right.
+                  </p>
                 </div>
-                <ElegantButton type="button" variant="secondary" fullWidth onClick={() => setIsAddOnModalOpen(true)}>
-                  <Sparkles className="mr-2 h-4 w-4" />
-                  Choose Add-ons
-                </ElegantButton>
-              </div>
-            )}
+              ) : (
+                <p className="text-sm text-text-muted">Select a service card to begin booking.</p>
+              )}
+            </PremiumCard>
+          </section>
 
-            {step === 5 && (
-              <div className="space-y-3 rounded-2xl bg-soft-cream p-5 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-text-muted">Service</span>
-                  <span className="font-semibold text-brand-navy">{service?.name ?? "-"}</span>
+          <section className="col-span-5">
+            <div className="sticky top-28 space-y-6">
+              <PremiumCard title="Booking Form" subtitle={`Step ${step} of 5 · ${steps[step - 1]}`}>
+                <div className="mb-5 flex flex-wrap gap-2">
+                  {steps.map((label, index) => (
+                    <div
+                      key={label}
+                      className={`rounded-full px-3 py-1.5 text-xs font-semibold ${
+                        step === index + 1
+                          ? "bg-brand-navy text-soft-cream"
+                          : step > index + 1
+                            ? "bg-sage/30 text-brand-navy"
+                            : "bg-soft-cream text-text-muted"
+                      }`}
+                    >
+                      {label}
+                    </div>
+                  ))}
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-text-muted">Date</span>
-                  <span className="font-semibold text-brand-navy">{date ? formatDate(date) : "-"}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-text-muted">Time</span>
-                  <span className="font-semibold text-brand-navy">{timeSlot ?? "-"}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-text-muted">Add-ons</span>
-                  <span className="max-w-[60%] text-right font-semibold text-brand-navy">
-                    {selectedAddOns.length > 0 ? selectedAddOns.map((addon) => addon.name).join(", ") : "None"}
-                  </span>
-                </div>
-                <hr className="border-line-soft" />
-                <div className="flex justify-between">
-                  <span className="text-text-muted">Subtotal</span>
-                  <span className="font-semibold text-brand-navy">{formatCurrency(subtotal)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-text-muted">Add-ons</span>
-                  <span className="font-semibold text-brand-navy">{formatCurrency(addOnTotal)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-text-muted">VAT 7%</span>
-                  <span className="font-semibold text-brand-navy">{formatCurrency(tax)}</span>
-                </div>
-                <div className="flex justify-between text-base">
-                  <span className="font-semibold text-brand-navy">Total</span>
-                  <span className="font-bold text-brand-navy">{formatCurrency(grandTotal)}</span>
-                </div>
-              </div>
-            )}
-          </motion.div>
-        </AnimatePresence>
 
-        <div className="mt-6 flex items-center gap-2">
-          <ElegantButton type="button" variant="ghost" onClick={previousStep} disabled={step === 1}>
-            Back
-          </ElegantButton>
-          {step < 5 ? (
-            <ElegantButton type="button" onClick={proceed} disabled={!canProceed} fullWidth>
-              Continue
-            </ElegantButton>
-          ) : (
-            <ElegantButton type="button" onClick={confirmBooking} fullWidth>
-              Confirm & Pay
-            </ElegantButton>
-          )}
+                <div className="space-y-4">
+                  {step === 1 && (
+                    <div className="rounded-2xl bg-soft-cream p-5 text-sm text-text-muted">
+                      Choose your preferred service from the left panel, then continue to schedule.
+                    </div>
+                  )}
+
+                  {step === 2 && (
+                    <div className="space-y-2">
+                      {availableDates.map((availableDate) => (
+                        <button
+                          key={availableDate}
+                          type="button"
+                          onClick={() => setDate(availableDate)}
+                          className={`flex w-full items-center justify-between rounded-xl border px-4 py-3 text-left text-sm ${
+                            date === availableDate
+                              ? "border-brand-navy bg-brand-navy text-soft-cream"
+                              : "border-line-soft bg-soft-cream text-brand-navy"
+                          }`}
+                        >
+                          <span>{formatDate(availableDate)}</span>
+                          <ChevronRight className="h-4 w-4" />
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
+                  {step === 3 && (
+                    <div className="grid grid-cols-2 gap-2">
+                      {(["Morning", "Afternoon"] as const).map((slot) => (
+                        <button
+                          key={slot}
+                          type="button"
+                          onClick={() => setTimeSlot(slot)}
+                          className={`rounded-xl border p-4 text-left ${
+                            timeSlot === slot
+                              ? "border-brand-navy bg-brand-navy text-soft-cream"
+                              : "border-line-soft bg-soft-cream text-brand-navy"
+                          }`}
+                        >
+                          <p className="font-semibold">{slot}</p>
+                          <p className="mt-1 text-xs opacity-80">
+                            {slot === "Morning" ? "08:00 - 12:00" : "13:00 - 18:00"}
+                          </p>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
+                  {step === 4 && (
+                    <div className="space-y-2">
+                      {addOns.map((addon) => {
+                        const selected = selectedAddOns.some((item) => item.id === addon.id);
+                        return (
+                          <button
+                            type="button"
+                            key={addon.id}
+                            onClick={() => toggleAddOn(addon)}
+                            className={`w-full rounded-xl border p-4 text-left ${
+                              selected
+                                ? "border-brand-navy bg-brand-navy text-soft-cream"
+                                : "border-line-soft bg-soft-cream text-brand-navy"
+                            }`}
+                          >
+                            <p className="font-semibold">{addon.name}</p>
+                            <p className="mt-1 text-xs opacity-85">{addon.description}</p>
+                            <p className="mt-2 text-sm">{formatCurrency(addon.price)}</p>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+
+                  {step === 5 && (
+                    <div className="space-y-3 rounded-2xl bg-soft-cream p-5 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-text-muted">Service</span>
+                        <span className="font-semibold text-brand-navy">{service?.name ?? "-"}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-text-muted">Date</span>
+                        <span className="font-semibold text-brand-navy">{date ? formatDate(date) : "-"}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-text-muted">Time</span>
+                        <span className="font-semibold text-brand-navy">{timeSlot ?? "-"}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-text-muted">Add-ons</span>
+                        <span className="max-w-[60%] text-right font-semibold text-brand-navy">
+                          {selectedAddOns.length > 0 ? selectedAddOns.map((addon) => addon.name).join(", ") : "None"}
+                        </span>
+                      </div>
+                      <hr className="border-line-soft" />
+                      <div className="flex justify-between">
+                        <span className="text-text-muted">Subtotal</span>
+                        <span className="font-semibold text-brand-navy">{formatCurrency(subtotal)}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-text-muted">Add-ons</span>
+                        <span className="font-semibold text-brand-navy">{formatCurrency(addOnTotal)}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-text-muted">VAT 7%</span>
+                        <span className="font-semibold text-brand-navy">{formatCurrency(tax)}</span>
+                      </div>
+                      <div className="flex justify-between text-base">
+                        <span className="font-semibold text-brand-navy">Total</span>
+                        <span className="font-bold text-brand-navy">{formatCurrency(grandTotal)}</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <div className="mt-6 flex items-center gap-2">
+                  <ElegantButton type="button" variant="ghost" onClick={previousStep} disabled={step === 1}>
+                    Back
+                  </ElegantButton>
+                  {step < 5 ? (
+                    <ElegantButton type="button" onClick={proceed} disabled={!canProceed} fullWidth>
+                      Continue
+                    </ElegantButton>
+                  ) : (
+                    <ElegantButton type="button" onClick={confirmBooking} fullWidth>
+                      Confirm & Pay
+                    </ElegantButton>
+                  )}
+                </div>
+                {isConfirmed && (
+                  <div className="mt-3 inline-flex items-center gap-1 rounded-full bg-sage/25 px-3 py-2 text-xs font-semibold text-brand-navy">
+                    <CheckCircle2 className="h-4 w-4" />
+                    Booking Confirmed
+                  </div>
+                )}
+              </PremiumCard>
+
+              <PremiumCard title="Recent Sessions" subtitle="History preview">
+                <div className="space-y-3">
+                  {bookingRecords.slice(0, 2).map((booking) => (
+                    <BookingCard key={booking.id} booking={booking} />
+                  ))}
+                </div>
+              </PremiumCard>
+            </div>
+          </section>
         </div>
-        {isConfirmed && (
-          <div className="mt-3 inline-flex items-center gap-1 rounded-full bg-sage/25 px-3 py-2 text-xs font-semibold text-brand-navy">
-            <CheckCircle2 className="h-4 w-4" />
-            Booking Confirmed
-          </div>
-        )}
-      </PremiumCard>
-
-      <PremiumCard title="Upcoming Sessions" subtitle="Elegant booking overview">
-        <div className="space-y-3">
-          {bookingRecords.slice(0, 3).map((booking) => (
-            <BookingCard key={booking.id} booking={booking} />
-          ))}
-        </div>
-      </PremiumCard>
+      </div>
 
       {isAddOnModalOpen && (
-        <div className="fixed inset-0 z-50 bg-brand-navy/45 p-4">
+        <div className="fixed inset-0 z-50 bg-brand-navy/45 p-4 lg:hidden">
           <motion.div
             initial={{ y: "100%" }}
             animate={{ y: 0 }}

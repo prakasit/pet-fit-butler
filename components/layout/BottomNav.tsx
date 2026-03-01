@@ -35,7 +35,7 @@ export function BottomNav() {
   };
 
   return (
-    <nav className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-1.5rem)] max-w-[700px] -translate-x-1/2 rounded-3xl border border-white/55 bg-surface/68 p-2 shadow-xl shadow-brand-navy/14 backdrop-blur-xl md:w-[calc(100%-2.5rem)] md:max-w-[640px] lg:w-[calc(100%-4rem)] lg:max-w-[700px]">
+    <nav className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-1.5rem)] max-w-[700px] -translate-x-1/2 rounded-3xl border border-white/55 bg-surface/68 p-2 shadow-xl shadow-brand-navy/14 backdrop-blur-xl md:w-[calc(100%-2.5rem)] md:max-w-[640px] lg:hidden">
       <ul className="grid grid-cols-5 gap-1">
         {navItems.map((item) => {
           const Icon = item.icon;
