@@ -69,7 +69,7 @@ export function HeroVideoSection() {
           transition={{ duration: 0.55, ease: "easeOut" }}
           className="space-y-4"
         >
-          <p className="max-w-[30ch] text-4xl leading-tight text-soft-cream md:text-[2.65rem]">
+          <p className="font-heading max-w-[30ch] text-4xl leading-tight text-soft-cream md:text-[2.65rem]">
             {tHero("headline")}
           </p>
           <div className="flex flex-wrap gap-2">

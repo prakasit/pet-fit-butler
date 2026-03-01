@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { headers } from "next/headers";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Noto_Sans_Thai, Noto_Serif_Thai } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 
 import { LocaleHydrationSync } from "@/components/i18n/LocaleHydrationSync";
@@ -11,15 +11,16 @@ import thMessages from "@/messages/th.json";
 
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
+const notoSansThai = Noto_Sans_Thai({
+  variable: "--font-noto-sans-thai",
+  subsets: ["thai"],
   display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
+const notoSerifThai = Noto_Serif_Thai({
+  variable: "--font-noto-serif-thai",
+  subsets: ["thai"],
   display: "swap",
   weight: ["400", "500", "600", "700"],
 });
@@ -74,7 +75,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body className={`${inter.variable} ${playfair.variable} antialiased`}>
+      <body className={`${notoSansThai.variable} ${notoSerifThai.variable} antialiased`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <LocaleHydrationSync locale={locale} />
           <AppShell>{children}</AppShell>
