@@ -126,12 +126,12 @@ export default function DashboardPage() {
 
       <motion.section initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15, duration: 0.35 }}>
         <PremiumCard title="Quick Actions" subtitle="Simple, one-tap flow">
-          <div className="grid grid-cols-2 gap-3">
+          <div className="flex gap-3 overflow-x-auto pb-1">
             {quickActions.map((action) => {
               const Icon = action.icon;
               return (
                 <Link key={action.href} href={action.href}>
-                  <div className="rounded-2xl bg-soft-cream p-4 transition hover:-translate-y-0.5 hover:shadow-premium-sm">
+                  <div className="min-w-[180px] rounded-2xl bg-soft-cream p-4 transition hover:-translate-y-0.5 hover:shadow-premium-sm">
                     <Icon className="h-5 w-5 text-brand-navy" />
                     <p className="mt-4 text-sm font-semibold text-brand-navy">{action.label}</p>
                   </div>

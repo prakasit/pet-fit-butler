@@ -112,7 +112,7 @@ export default function BookingPage() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.26 }}
-            className="space-y-4"
+            className="min-h-[360px] space-y-4 md:min-h-[420px]"
           >
             {step === 1 && (
               <div className="space-y-4">

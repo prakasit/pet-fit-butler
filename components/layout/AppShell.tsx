@@ -43,9 +43,9 @@ export function AppShell({ children }: AppShellProps) {
   }
 
   return (
-    <div className="min-h-screen bg-soft-cream px-0 text-brand-navy md:px-4">
-      <div className="mx-auto min-h-screen w-full max-w-[480px] bg-soft-cream md:border-x md:border-line-soft/60 md:shadow-premium-sm">
-        <header className="sticky top-0 z-30 border-b border-line-soft/80 bg-soft-cream/95 px-5 pt-5 pb-4 backdrop-blur">
+    <div className="min-h-screen bg-soft-cream text-brand-navy lg:px-6 lg:py-5">
+      <div className="mx-auto min-h-screen w-full bg-soft-cream md:max-w-[640px] md:border-x md:border-line-soft/60 md:shadow-premium-sm lg:max-w-[720px] lg:overflow-hidden lg:rounded-[34px]">
+        <header className="sticky top-0 z-30 border-b border-line-soft/80 bg-soft-cream/95 px-5 pt-5 pb-4 backdrop-blur md:px-6 md:pt-6 md:pb-5">
           <div className="mb-4 flex items-center justify-between">
             <BrandLogo compact />
             <span className="inline-flex items-center gap-1 rounded-full bg-sage/30 px-3 py-1 text-xs font-semibold text-brand-navy">
@@ -60,7 +60,7 @@ export function AppShell({ children }: AppShellProps) {
           </div>
         </header>
 
-        <main className="px-4 pt-6 pb-28">{children}</main>
+        <main className="px-4 pt-6 pb-28 md:px-6 md:pt-7">{children}</main>
       </div>
 
       <BottomNav />
