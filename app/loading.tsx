@@ -10,7 +10,7 @@ export default function Loading() {
   return (
     <div className="grid min-h-screen place-items-center bg-soft-cream px-4">
       <div className="flex flex-col items-center gap-4 text-center">
-        <div className="overflow-hidden rounded-3xl border border-line-soft bg-surface p-2 shadow-premium">
+        <div className="overflow-hidden bg-surface p-2 shadow-premium">
           <Image
             src="/brand_logo.png"
             alt={tBrand("logoAlt")}
