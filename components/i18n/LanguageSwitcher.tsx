@@ -1,7 +1,7 @@
 "use client";
 
-import { useMemo } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useRef, useTransition } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 
 import {
@@ -23,22 +23,62 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
   const locale = resolveLocale(useLocale());
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
+  const pendingLocaleRef = useRef<AppLocale | null>(null);
+  const pendingHrefRef = useRef<string>("");
+  const fallbackTimerRef = useRef<number | null>(null);
 
   const basePath = useMemo(() => stripLocalePrefix(pathname || "/"), [pathname]);
   const queryString = searchParams.toString();
 
+  useEffect(() => {
+    if (pendingLocaleRef.current && locale === pendingLocaleRef.current) {
+      pendingLocaleRef.current = null;
+      pendingHrefRef.current = "";
+      if (fallbackTimerRef.current !== null) {
+        window.clearTimeout(fallbackTimerRef.current);
+        fallbackTimerRef.current = null;
+      }
+    }
+  }, [locale]);
+
+  useEffect(() => {
+    return () => {
+      if (fallbackTimerRef.current !== null) {
+        window.clearTimeout(fallbackTimerRef.current);
+      }
+    };
+  }, []);
+
   const onChangeLocale = (nextLocale: AppLocale) => {
-    if (nextLocale === locale) return;
+    if (nextLocale === locale || isPending || pendingLocaleRef.current === nextLocale) return;
 
     localStorage.setItem(LOCALE_STORAGE_KEY, nextLocale);
     document.cookie = `${LOCALE_COOKIE}=${nextLocale}; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`;
 
     const localizedPath = withLocalePrefix(basePath, nextLocale);
     const nextHref = queryString ? `${localizedPath}?${queryString}` : localizedPath;
+    pendingLocaleRef.current = nextLocale;
+    pendingHrefRef.current = nextHref;
 
-    // Force a full navigation so locale-prefixed rewrites always reload
-    // the correct server-rendered message bundle.
-    window.location.replace(nextHref);
+    if (fallbackTimerRef.current !== null) {
+      window.clearTimeout(fallbackTimerRef.current);
+      fallbackTimerRef.current = null;
+    }
+
+    // Middleware-based locale routing can occasionally stall on client transitions.
+    // Fallback to a hard navigation only if the locale does not update quickly.
+    fallbackTimerRef.current = window.setTimeout(() => {
+      if (pendingLocaleRef.current === nextLocale && pendingHrefRef.current) {
+        window.location.replace(pendingHrefRef.current);
+      }
+    }, 900);
+
+    startTransition(() => {
+      router.replace(nextHref, { scroll: false });
+      router.refresh();
+    });
   };
 
   return (
