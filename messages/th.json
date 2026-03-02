@@ -1,13 +1,13 @@
 {
   "meta": {
-    "title": "เพ็ท ฟิต บัตเลอร์ | ดูแลสุขภาพลูกรักแบบพรีเมียม",
+    "title": "Pet Fit Butler | ดูแลสุขภาพลูกรักแบบพรีเมียม",
     "description": "บริการดูแลสุขภาพสัตว์เลี้ยงระดับพรีเมียม พร้อมผู้ช่วยส่วนตัว การติดตามแบบเรียลไทม์ และรายงานสุขภาพครบถ้วน",
-    "appleTitle": "เพ็ท ฟิต บัตเลอร์"
+    "appleTitle": "Pet Fit Butler"
   },
   "brand": {
-    "name": "เพ็ท ฟิต บัตเลอร์",
-    "tagline": "ดูแลสุขภาพลูกรักอย่างพรีเมียม",
-    "logoAlt": "โลโก้แบรนด์เพ็ท ฟิต บัตเลอร์"
+    "name": "Pet Fit Butler",
+    "tagline": "ผู้ดูแลฟิตเนสสัตว์เลี้ยงส่วนตัว",
+    "logoAlt": "โลโก้แบรนด์ Pet Fit Butler"
   },
   "language": {
     "ariaLabel": "สลับภาษา",
@@ -33,7 +33,7 @@
     "pets": "ข้อมูลลูกรัก",
     "liveCam": "ถ่ายทอดสด",
     "gallery": "แกลเลอรี",
-    "fallback": "เพ็ท ฟิต บัตเลอร์"
+    "fallback": "Pet Fit Butler"
   },
   "appShell": {
     "greeting": "สวัสดีคุณ {name}",
@@ -144,7 +144,8 @@
     "desktopBookButton": "จองเลย"
   },
   "loading": {
-    "title": "กำลังเตรียมพื้นที่ดูแลสุขภาพลูกรัก"
+    "title": "กำลังเตรียมพื้นที่ดูแลสุขภาพลูกรัก",
+    "subtitle": "กรุณารอสักครู่"
   },
   "auth": {
     "title": "เข้าสู่ระบบอย่างปลอดภัย",
@@ -221,7 +222,12 @@
       "selectDate": "เลือกวันที่",
       "selectTime": "เลือกช่วงเวลา",
       "selectAddons": "เลือกบริการเสริม",
-      "summaryAndPayment": "สรุปรายละเอียดและชำระเงิน"
+      "summaryAndPayment": "สรุปรายละเอียดและชำระเงิน",
+      "selectProgramShort": "โปรแกรม",
+      "selectDateShort": "วันที่",
+      "selectTimeShort": "เวลา",
+      "selectAddonsShort": "เสริม",
+      "summaryAndPaymentShort": "ชำระเงิน"
     },
     "stepLabel": "ขั้นตอนที่ {current} จาก 5 · {name}",
     "upcomingTitle": "นัดหมายที่กำลังจะมาถึง",

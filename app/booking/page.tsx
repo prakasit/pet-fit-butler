@@ -46,6 +46,14 @@ export default function BookingPage() {
     tBooking("steps.summaryAndPayment"),
   ];
 
+  const stepsShort = [
+    tBooking("steps.selectProgramShort"),
+    tBooking("steps.selectDateShort"),
+    tBooking("steps.selectTimeShort"),
+    tBooking("steps.selectAddonsShort"),
+    tBooking("steps.summaryAndPaymentShort"),
+  ];
+
   const [isAddOnModalOpen, setIsAddOnModalOpen] = useState(false);
   const [isConfirmed, setIsConfirmed] = useState(false);
 
@@ -105,23 +113,26 @@ export default function BookingPage() {
   };
 
   const stepIndicator = (
-    <nav aria-label={tBooking("stepsAriaLabel")} className="w-full">
-      <div className="flex items-center justify-between gap-0 overflow-x-auto pb-2">
+    <nav aria-label={tBooking("stepsAriaLabel")} className="w-full overflow-hidden">
+      <div className="flex flex-nowrap items-center justify-between gap-0 pb-2 max-md:justify-between max-md:gap-0">
         {steps.map((label, index) => {
           const stepNumber = index + 1;
           const isActive = step === stepNumber;
           const isCompleted = step > stepNumber;
-          const isUpcoming = step < stepNumber;
+          const shortLabel = stepsShort[index];
           return (
-            <div key={label} className="flex min-w-0 flex-1 flex-col items-center">
-              <div className="flex w-full items-center">
+            <div
+              key={label}
+              className="flex min-w-0 flex-1 flex-col items-center"
+            >
+              <div className="flex w-full items-center justify-center max-md:justify-center">
                 <div
-                  className={`h-0.5 flex-1 min-w-0 ${
+                  className={`h-0.5 flex-1 min-w-0 max-md:max-w-[6px] ${
                     index > 0 ? (isCompleted ? "bg-sage" : "bg-line-soft") : "bg-transparent"
                   }`}
                 />
                 <div
-                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-semibold transition ${
+                  className={`flex shrink-0 items-center justify-center rounded-full text-sm font-semibold transition max-md:h-8 max-md:w-8 md:h-9 md:w-9 ${
                     isActive
                       ? "bg-sage text-white ring-4 ring-sage/30"
                       : isCompleted
@@ -129,10 +140,10 @@ export default function BookingPage() {
                         : "bg-soft-cream text-text-muted"
                   }`}
                 >
-                  {isCompleted ? <CheckCircle2 className="h-5 w-5" /> : stepNumber}
+                  {isCompleted ? <CheckCircle2 className="h-5 w-5 max-md:h-3.5 max-md:w-3.5" /> : stepNumber}
                 </div>
                 <div
-                  className={`h-0.5 flex-1 min-w-0 ${
+                  className={`h-0.5 flex-1 min-w-0 max-md:max-w-[6px] ${
                     index < steps.length - 1
                       ? step > stepNumber + 1
                         ? "bg-sage"
@@ -142,11 +153,12 @@ export default function BookingPage() {
                 />
               </div>
               <p
-                className={`mt-2 w-full text-center text-[10px] font-medium sm:text-xs ${
+                className={`mt-2 w-full text-center font-medium max-md:mt-1 max-md:text-[10px] max-md:leading-tight sm:text-xs md:whitespace-nowrap ${
                   isActive ? "text-brand-navy" : isCompleted ? "text-sage" : "text-text-muted"
                 }`}
               >
-                {label}
+                <span className="hidden md:inline">{label}</span>
+                <span className="md:hidden">{shortLabel}</span>
               </p>
             </div>
           );
@@ -173,7 +185,7 @@ export default function BookingPage() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.26 }}
-              className="min-h-[360px] space-y-4 md:min-h-[420px]"
+              className="min-h-0 space-y-4 max-md:min-h-0 md:min-h-[360px] lg:min-h-[420px]"
             >
               {step === 1 && (
                 <div className="space-y-6">
@@ -190,32 +202,48 @@ export default function BookingPage() {
                               key={item.id}
                               type="button"
                               onClick={() => setService(item)}
-                              className={`flex w-full items-stretch gap-5 rounded-2xl border p-8 text-left transition duration-300 ${
+                              className={`flex w-full text-left transition duration-300 max-md:flex-col max-md:items-stretch max-md:gap-0 max-md:rounded-2xl max-md:p-5 max-md:shadow-[0_2px_8px_rgba(15,27,45,0.06)] md:items-stretch md:gap-5 md:rounded-2xl md:p-8 ${
                                 activeService?.id === item.id
-                                  ? "border-sage bg-sage text-surface shadow-premium"
-                                  : `${categoryTint[category] ?? "border-line-soft bg-soft-cream"} text-brand-navy shadow-premium-sm hover:-translate-y-1 hover:scale-[1.01] hover:shadow-premium`
+                                  ? "border border-sage bg-sage text-surface shadow-premium"
+                                  : `border ${categoryTint[category] ?? "border-line-soft bg-soft-cream"} text-brand-navy shadow-premium-sm hover:-translate-y-1 hover:scale-[1.01] hover:shadow-premium`
                               }`}
                             >
-                              <div className="min-w-0 flex-1">
-                                <h3 className="text-[1.65rem] leading-tight">{item.name}</h3>
+                              <div className="min-w-0 flex-1 max-md:min-h-0">
+                                <div className="flex items-start gap-3 max-md:flex-row max-md:gap-2 md:block">
+                                  <h3 className="text-[1.65rem] leading-tight max-md:text-xl md:leading-tight">
+                                    {item.name}
+                                  </h3>
+                                  <span
+                                    className={`flex shrink-0 items-center justify-center rounded-xl max-md:inline-flex max-md:h-9 max-md:w-9 md:hidden ${
+                                      activeService?.id === item.id ? "bg-surface/20" : "bg-brand-navy/8"
+                                    }`}
+                                  >
+                                    <PetIcon
+                                      className={`h-5 w-5 ${
+                                        activeService?.id === item.id ? "text-surface/90" : "text-sage"
+                                      }`}
+                                      strokeWidth={1.5}
+                                    />
+                                  </span>
+                                </div>
                                 <p
-                                  className={`mt-2 text-sm ${
+                                  className={`mt-2 text-sm max-md:mt-1.5 max-md:text-xs ${
                                     activeService?.id === item.id ? "text-surface/85" : "text-text-muted"
                                   }`}
                                 >
                                   {item.description}
                                 </p>
                                 <div
-                                  className={`mt-5 h-px w-full ${
+                                  className={`mt-5 h-px w-full max-md:mt-4 ${
                                     activeService?.id === item.id ? "bg-surface/24" : "bg-line-soft"
                                   }`}
                                 />
-                                <p className="mt-5 text-3xl leading-none font-semibold">
+                                <p className="mt-5 text-3xl leading-none font-semibold max-md:mt-4 max-md:text-2xl">
                                   {formatCurrency(item.price, locale)}
                                 </p>
                               </div>
                               <div
-                                className={`flex shrink-0 items-center justify-center rounded-2xl p-4 ${
+                                className={`hidden shrink-0 items-center justify-center rounded-2xl p-4 md:flex ${
                                   activeService?.id === item.id
                                     ? "bg-surface/20"
                                     : "bg-brand-navy/8"

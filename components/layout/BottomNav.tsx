@@ -3,14 +3,7 @@
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import {
-  Activity,
-  CalendarCheck,
-  CalendarClock,
-  Home,
-  Radio,
-  UserRound,
-} from "lucide-react";
+import { Activity, CalendarClock, Home, Radio } from "lucide-react";
 
 import { LocaleLink } from "@/components/i18n/LocaleLink";
 import { stripLocalePrefix } from "@/lib/i18n";
@@ -25,10 +18,8 @@ export function BottomNav() {
   const navItems = [
     { href: "/dashboard", label: tNav("home"), icon: Home },
     { href: "/booking", label: tNav("booking"), icon: CalendarClock },
-    { href: "/upcoming", label: tNav("upcoming"), icon: CalendarCheck },
     { href: "/health", label: tNav("activity"), icon: Activity },
     { href: "/tracking", label: tNav("live"), icon: Radio },
-    { href: "/profile", label: tNav("profile"), icon: UserRound },
   ];
 
   const isActive = (href: string) => {
@@ -44,29 +35,34 @@ export function BottomNav() {
   };
 
   return (
-    <nav className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-1.5rem)] max-w-[700px] -translate-x-1/2 rounded-3xl border border-surface/65 bg-surface/78 p-2 shadow-xl shadow-brand-navy/12 backdrop-blur-xl md:w-[calc(100%-2.5rem)] md:max-w-[640px] lg:hidden">
-      <ul className="grid grid-cols-5 gap-1">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 h-[72px] border-t border-line-soft/60 bg-surface/95 shadow-[0_-2px_12px_rgba(15,27,45,0.06)] backdrop-blur-xl lg:hidden">
+      <ul className="flex h-full max-w-[100vw] items-center justify-around px-2">
         {navItems.map((item) => {
           const Icon = item.icon;
           const active = isActive(item.href);
           return (
-            <li key={item.href}>
+            <li key={item.href} className="flex flex-1 shrink-0 basis-0 justify-center">
               <LocaleLink
                 href={item.href}
                 className={cn(
-                  "relative flex flex-col items-center gap-1 rounded-2xl py-2 text-[11px] font-medium transition",
-                  active ? "text-white" : "text-text-muted hover:bg-soft-cream",
+                  "relative flex flex-col items-center justify-center gap-1 rounded-2xl py-2 px-3 text-[12px] font-medium transition min-w-0",
+                  active ? "text-sage" : "text-text-muted active:opacity-80",
                 )}
               >
                 {active && (
                   <motion.span
                     layoutId="bottom-active-pill"
                     transition={{ type: "spring", stiffness: 320, damping: 28 }}
-                    className="absolute inset-0 rounded-2xl bg-sage shadow-lg shadow-brand-navy/20"
+                    className="absolute inset-0 rounded-2xl bg-sage/15"
                   />
                 )}
-                <Icon className="relative z-10 h-4.5 w-4.5" />
-                <span className="relative z-10">{item.label}</span>
+                <Icon
+                  className={cn(
+                    "relative z-10 h-5 w-5 shrink-0",
+                    active && "text-sage",
+                  )}
+                />
+                <span className="relative z-10 truncate text-[12px]">{item.label}</span>
               </LocaleLink>
             </li>
           );

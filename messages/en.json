@@ -144,7 +144,8 @@
     "desktopBookButton": "Book Now"
   },
   "loading": {
-    "title": "Preparing your premium wellness lounge"
+    "title": "Preparing your premium wellness lounge",
+    "subtitle": "One moment please"
   },
   "auth": {
     "title": "Secure Sign In",
@@ -221,7 +222,12 @@
       "selectDate": "Select Date",
       "selectTime": "Select Time Slot",
       "selectAddons": "Select Add-ons",
-      "summaryAndPayment": "Summary & Payment"
+      "summaryAndPayment": "Summary & Payment",
+      "selectProgramShort": "Program",
+      "selectDateShort": "Date",
+      "selectTimeShort": "Time",
+      "selectAddonsShort": "Add-ons",
+      "summaryAndPaymentShort": "Pay"
     },
     "stepLabel": "Step {current} of 5 · {name}",
     "upcomingTitle": "Upcoming Sessions",

@@ -107,3 +107,41 @@ a {
 ::selection {
   background: rgba(110, 158, 143, 0.3);
 }
+
+/* ETA pill subtle pulse (mobile only, real-time tracking) */
+@keyframes eta-pill-soft-fade {
+  0%, 100% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.eta-pill-mobile {
+  animation: eta-pill-soft-fade 3s ease-in-out infinite;
+}
+
+/* Mobile loading: progress bar shimmer (left to right, 2.5s loop) */
+@keyframes loading-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(400%);
+  }
+}
+
+.loading-progress-shimmer {
+  animation: loading-shimmer 2.5s ease-in-out infinite;
+}
+
+/* SVG loading spinner — calm rotation */
+@keyframes loading-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

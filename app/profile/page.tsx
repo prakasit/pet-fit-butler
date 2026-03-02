@@ -35,20 +35,27 @@ export default function ProfilePage() {
   ];
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-10 max-md:space-y-6">
       <motion.section
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35 }}
-        className="rounded-[28px] border border-line-soft bg-surface px-6 py-7 text-brand-navy shadow-premium"
+        className="rounded-[28px] border border-line-soft bg-surface px-6 py-7 text-brand-navy shadow-premium max-md:rounded-2xl max-md:px-4 max-md:py-6 max-md:shadow-[0_2px_12px_rgba(15,27,45,0.06)]"
       >
-        <p className="text-sm text-text-muted">{tProfile("heroTag")}</p>
-        <h2 className="mt-1 text-3xl leading-tight">{tProfile("heroTitle", { name: firstName })}</h2>
-        <p className="mt-2 text-sm text-text-muted">{currentUserProfile.email}</p>
+        <div className="max-md:space-y-3 md:space-y-0 md:[&>p]:mt-2 md:[&>h2]:mt-1">
+          <p className="text-sm text-text-muted max-md:text-xs">{tProfile("heroTag")}</p>
+          <h2 className="max-md:text-xl max-md:font-semibold max-md:leading-snug max-md:wrap-break-word md:mt-1 md:text-3xl md:leading-tight">
+            <span className="md:hidden">{currentUserProfile.name}</span>
+            <span className="hidden md:inline">{tProfile("heroTitle", { name: firstName })}</span>
+          </h2>
+          <p className="text-sm text-text-muted/70 max-md:text-xs md:mt-2">
+            {currentUserProfile.email}
+          </p>
+        </div>
       </motion.section>
 
       <PremiumCard
-        className="lg:hidden"
+        className="max-md:p-5 lg:hidden"
         title={tProfile("mobileLanguageTitle")}
         subtitle={tProfile("mobileLanguageSubtitle")}
       >
@@ -56,6 +63,7 @@ export default function ProfilePage() {
       </PremiumCard>
 
       <PremiumCard
+        className="max-md:p-5"
         title={currentUserProfile.name}
         subtitle={tProfile("membershipSubtitle")}
         action={
@@ -82,6 +90,7 @@ export default function ProfilePage() {
       </PremiumCard>
 
       <PremiumCard
+        className="max-md:p-5"
         title={tProfile("bookingHistoryTitle")}
         subtitle={tProfile("bookingHistorySubtitle", { count: currentUserProfile.bookingHistory.length })}
       >

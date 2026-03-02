@@ -108,50 +108,56 @@ export default function DashboardPage() {
 
   return (
     <>
-      <div className="space-y-8 lg:hidden">
+      <div className="space-y-8 max-md:space-y-5 lg:hidden">
+        <HeroVideoSection />
+
         <motion.section
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35 }}
-          className="rounded-[28px] border border-line-soft bg-surface p-6 text-brand-navy shadow-premium"
+          className="rounded-[28px] border border-line-soft bg-surface p-6 text-brand-navy shadow-premium max-md:flex max-md:flex-col max-md:rounded-2xl max-md:gap-3 max-md:p-4 max-md:shadow-lg max-md:shadow-brand-navy/6"
         >
-          <div className="mb-4 flex items-start justify-between">
-            <div>
-              <p className="text-sm text-text-muted">{tDashboard("membershipHeadline")}</p>
-              <h2 className="mt-1 text-[1.95rem] leading-tight">
-                {tDashboard("membershipJourney", { petName: featuredPet })}
-              </h2>
-            </div>
+          <div className="mb-4 flex items-start justify-between max-md:order-1 max-md:mb-0 max-md:flex-col max-md:gap-2 max-md:items-stretch">
             <StatusBadge
               label={tMembershipType(membershipTypeKey[membershipStatus.tier])}
               tone="warning"
-              className="bg-beige/30 text-brand-navy"
+              className="max-md:order-1 max-md:w-fit bg-beige/30 text-brand-navy"
             />
+            <div className="max-md:order-2">
+              <p className="text-sm text-text-muted max-md:text-xs">{tDashboard("membershipHeadline")}</p>
+              <h2 className="mt-1 text-[1.95rem] leading-tight max-md:mt-0.5 max-md:text-lg">
+                {tDashboard("membershipJourney", { petName: featuredPet })}
+              </h2>
+            </div>
           </div>
-          <p className="text-sm text-text-muted">
+          <p className="text-sm text-text-muted max-md:order-2 max-md:text-xs">
             {tDashboard("membershipRemaining", { count: membershipStatus.visitsRemaining })}
           </p>
         </motion.section>
 
-        <PremiumCard title={tDashboard("nextBookingTitle")} subtitle={tDashboard("nextBookingSubtitle")}>
+        <PremiumCard
+          title={tDashboard("nextBookingTitle")}
+          subtitle={tDashboard("nextBookingSubtitle")}
+          className="max-md:rounded-2xl max-md:p-5 max-md:shadow-lg max-md:shadow-brand-navy/6"
+        >
           {nextBooking ? (
-            <div className="space-y-4">
-              <div className="rounded-2xl bg-soft-cream p-5">
-                <p className="text-2xl text-brand-navy">{nextBooking.petName}</p>
+            <div className="space-y-4 max-md:flex max-md:flex-col max-md:space-y-3">
+              <div className="rounded-2xl bg-soft-cream p-5 max-md:p-4 max-md:flex max-md:flex-col max-md:gap-2">
+                <p className="text-2xl text-brand-navy max-md:text-xl">{nextBooking.petName}</p>
                 <p className="mt-1 text-sm text-text-muted">{nextBooking.serviceName}</p>
-                <p className="mt-3 text-sm text-brand-navy" suppressHydrationWarning>
+                <p className="mt-3 text-sm text-brand-navy max-md:mt-0" suppressHydrationWarning>
                   {formatDate(nextBooking.date, locale)} · {formatTime(nextBooking.date, locale)} (
                   {tTimeSlot(timeSlotKey[nextBooking.timeSlot])})
                 </p>
-                <div className="mt-3 flex items-center gap-2">
+                <div className="mt-3 flex items-center gap-2 max-md:mt-2 max-md:flex-wrap">
                   <StatusBadge label={tBookingStatus(bookingStatusKey[nextBooking.status])} tone="warning" />
                   <span className="text-xs text-text-muted">
                     {tDashboard("queuedSessions", { count: upcomingBookings.length })}
                   </span>
                 </div>
               </div>
-              <LocaleLink href="/booking">
-                <ElegantButton fullWidth>{tCta("seeDetails")}</ElegantButton>
+              <LocaleLink href="/booking" className="max-md:w-full max-md:block">
+                <ElegantButton fullWidth className="max-md:w-full">{tCta("seeDetails")}</ElegantButton>
               </LocaleLink>
             </div>
           ) : (
@@ -159,20 +165,25 @@ export default function DashboardPage() {
           )}
         </PremiumCard>
 
-        <PremiumCard title={tDashboard("butlerLiveTitle")} subtitle={butlerStatus.shiftName}>
-          <div className="space-y-4">
-            <div className="flex items-center justify-between rounded-2xl bg-soft-cream p-4">
-              <div>
-                <p className="text-base font-semibold text-brand-navy">{butlerStatus.butlerName}</p>
-                <p className="text-sm text-text-muted">{butlerStatus.currentTask}</p>
+        <PremiumCard
+          title={tDashboard("butlerLiveTitle")}
+          subtitle={butlerStatus.shiftName}
+          className="max-md:rounded-2xl max-md:p-5 max-md:shadow-lg max-md:shadow-brand-navy/6"
+        >
+          <div className="space-y-4 max-md:flex max-md:flex-col max-md:space-y-3">
+            <div className="flex items-center justify-between rounded-2xl bg-soft-cream p-4 max-md:flex-col max-md:items-stretch max-md:gap-2 max-md:p-3">
+              <div className="min-w-0">
+                <p className="text-base font-semibold text-brand-navy max-md:text-sm">{butlerStatus.butlerName}</p>
+                <p className="text-sm text-text-muted max-md:text-xs">{butlerStatus.currentTask}</p>
               </div>
               <StatusBadge
                 label={butlerStatus.isActive ? tDashboard("butlerActive") : tDashboard("butlerStandby")}
                 tone={butlerStatus.isActive ? "active" : "neutral"}
+                className="max-md:w-fit"
               />
             </div>
-            <LocaleLink href="/tracking">
-              <ElegantButton variant="secondary" fullWidth>
+            <LocaleLink href="/tracking" className="max-md:w-full max-md:block">
+              <ElegantButton variant="secondary" fullWidth className="max-md:w-full">
                 <MapPinned className="mr-2 h-4 w-4" />
                 {tCta("trackRide")}
               </ElegantButton>
@@ -180,8 +191,12 @@ export default function DashboardPage() {
           </div>
         </PremiumCard>
 
-        <PremiumCard title={tDashboard("quickActionsTitle")} subtitle={tDashboard("quickActionsSubtitle")}>
-          <div className="grid grid-cols-2 gap-3">
+        <PremiumCard
+          title={tDashboard("quickActionsTitle")}
+          subtitle={tDashboard("quickActionsSubtitle")}
+          className="max-md:rounded-2xl max-md:p-5 max-md:shadow-lg max-md:shadow-brand-navy/6"
+        >
+          <div className="grid grid-cols-2 gap-3 max-md:gap-2">
             {quickActions.map((action) => {
               const Icon = action.icon;
               return (
@@ -196,7 +211,11 @@ export default function DashboardPage() {
           </div>
         </PremiumCard>
 
-        <PremiumCard title={tDashboard("dailyActivityTitle")} subtitle={tDashboard("dailyActivitySubtitle")}>
+        <PremiumCard
+          title={tDashboard("dailyActivityTitle")}
+          subtitle={tDashboard("dailyActivitySubtitle")}
+          className="max-md:rounded-2xl max-md:p-5 max-md:shadow-lg max-md:shadow-brand-navy/6"
+        >
           <HealthChart
             data={dailyActivitySeries}
             xKey="day"
@@ -206,30 +225,30 @@ export default function DashboardPage() {
               { key: "distanceKm", label: tLabels("distance"), color: "#6E9E8F" },
             ]}
           />
-          <div className="mt-4 flex gap-3 text-sm">
-            <div className="rounded-2xl bg-soft-cream px-4 py-3">
+          <div className="mt-4 flex gap-3 text-sm max-md:flex-col max-md:gap-2 max-md:mt-3">
+            <div className="rounded-2xl bg-soft-cream px-4 py-3 max-md:px-3 max-md:py-2.5">
               <p className="text-xs text-text-muted">{tLabels("averageWeight")}</p>
-              <p className="text-lg font-semibold text-brand-navy">
+              <p className="text-lg font-semibold text-brand-navy max-md:text-base">
                 {tLabels("kilogram", { value: averageWeight.toFixed(1) })}
               </p>
             </div>
-            <div className="rounded-2xl bg-soft-cream px-4 py-3">
+            <div className="rounded-2xl bg-soft-cream px-4 py-3 max-md:px-3 max-md:py-2.5">
               <p className="text-xs text-text-muted">{tLabels("weeklyCalories")}</p>
-              <p className="text-lg font-semibold text-brand-navy">{totalCaloriesWeek}</p>
+              <p className="text-lg font-semibold text-brand-navy max-md:text-base">{totalCaloriesWeek}</p>
             </div>
           </div>
         </PremiumCard>
 
-        <div>
-          <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-2xl text-brand-navy">{tDashboard("recentHighlights")}</h2>
+        <div className="max-md:space-y-3">
+          <div className="mb-3 flex items-center justify-between max-md:mb-2">
+            <h2 className="text-2xl text-brand-navy max-md:text-xl">{tDashboard("recentHighlights")}</h2>
             <span className="text-xs uppercase tracking-[0.14em] text-text-muted">{tCommon("swipe")}</span>
           </div>
-          <div className="flex gap-3 overflow-x-auto pb-1">
+          <div className="flex gap-3 overflow-x-auto pb-1 max-md:gap-2">
             {dashboardActivities.slice(0, 10).map((activity) => (
               <article
                 key={activity.id}
-                className="min-w-[260px] rounded-2xl border border-line-soft bg-surface p-5 shadow-premium-sm"
+                className="min-w-[260px] shrink-0 rounded-2xl border border-line-soft bg-surface p-5 shadow-premium-sm max-md:min-w-[240px] max-md:rounded-2xl max-md:p-4 max-md:shadow-lg max-md:shadow-brand-navy/6"
               >
                 <div className="mb-3 flex items-center justify-between">
                   <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-sage/25">
@@ -243,6 +262,36 @@ export default function DashboardPage() {
             ))}
           </div>
         </div>
+
+        <section className="max-md:space-y-3">
+          <h2 className="mb-3 text-2xl text-brand-navy max-md:mb-2 max-md:text-xl">
+            {tDashboard("storyGalleryTitle")}
+          </h2>
+          <div className="flex gap-3 overflow-x-auto pb-1 max-md:gap-2">
+            {galleryShowcase.map((item) => (
+              <article
+                key={item.id}
+                className="min-w-[200px] shrink-0 overflow-hidden rounded-2xl border border-line-soft bg-surface shadow-premium-sm max-md:shadow-lg max-md:shadow-brand-navy/6"
+              >
+                <div className="relative h-40 w-full max-md:h-36">
+                  <Image
+                    src={item.imageUrl}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 768px) 200px, 240px"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-3 max-md:p-2.5">
+                  <p className="inline-flex items-center gap-1 text-sm font-semibold text-brand-navy max-md:text-xs">
+                    <PawPrint className="h-4 w-4 text-sage max-md:h-3.5 max-md:w-3.5" />
+                    {item.title}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
       </div>
 
       <div className="hidden space-y-10 lg:block">

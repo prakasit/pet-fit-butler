@@ -56,7 +56,13 @@ export function AppShell({ children }: AppShellProps) {
   return (
     <>
       <div className="lg:hidden">
-        <MobileLayout title={title} firstName={firstName} featuredPet={featuredPet} today={today}>
+        <MobileLayout
+          title={title}
+          firstName={firstName}
+          featuredPet={featuredPet}
+          today={today}
+          avatarUrl={`https://i.pravatar.cc/150?u=${currentUserProfile.id}`}
+        >
           {children}
         </MobileLayout>
       </div>

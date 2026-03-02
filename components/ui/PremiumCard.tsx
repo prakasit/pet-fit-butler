@@ -27,12 +27,18 @@ export function PremiumCard({
       )}
     >
       {(title || subtitle || action) && (
-        <header className="relative z-10 mb-7 flex items-start justify-between gap-3">
+        <header className="relative z-10 mb-7 flex items-start justify-between gap-3 max-md:gap-3">
           <div className="min-w-0 flex-1 space-y-1">
             {title && (
-              <h3 className="truncate text-[1.7rem] leading-tight text-brand-navy">{title}</h3>
+              <h3 className="leading-tight text-brand-navy max-md:line-clamp-2 max-md:text-base max-md:font-medium max-md:leading-snug md:truncate md:text-[1.7rem]">
+                {title}
+              </h3>
             )}
-            {subtitle && <p className="truncate text-sm text-text-muted">{subtitle}</p>}
+            {subtitle && (
+              <p className="text-sm text-text-muted max-md:text-xs md:truncate">
+                {subtitle}
+              </p>
+            )}
           </div>
           {action != null && <div className="shrink-0">{action}</div>}
         </header>
