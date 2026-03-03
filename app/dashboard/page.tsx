@@ -344,7 +344,7 @@ export default function DashboardPage() {
               <div className="space-y-3">
                 <p className="text-xl text-brand-navy">{nextBooking.petName}</p>
                 <p className="text-sm text-text-muted">{nextBooking.serviceName}</p>
-                <p className="text-sm text-brand-navy">
+                <p className="text-sm text-brand-navy" suppressHydrationWarning>
                   {formatDate(nextBooking.date, locale)} · {formatTime(nextBooking.date, locale)}
                 </p>
                 <StatusBadge label={tBookingStatus(bookingStatusKey[nextBooking.status])} tone="warning" />

@@ -81,7 +81,7 @@ export interface MockDataBundle {
 const localizedDictionary: Record<AppLocale, LocaleDataDictionary> = {
   th: {
     ownerNames: [
-      "ณัฐพร ศรีสุข",
+      "ธนพล ใจดี",
       "พิมพ์ชนก ชัยวัฒน์",
       "กิตติพงศ์ บุญศรี",
       "ศิริพร รัตนกุล",
@@ -274,7 +274,7 @@ const localizedDictionary: Record<AppLocale, LocaleDataDictionary> = {
   },
   en: {
     ownerNames: [
-      "Nattaporn Srisuk",
+      "Thanapon Jaidee",
       "Pimchanok Chaiyawat",
       "Kittipong Boonsri",
       "Siriporn Rattanakul",
@@ -624,6 +624,7 @@ function buildMockData(locale: AppLocale): MockDataBundle {
     membershipType: membershipStatus.tier,
     paymentMethod: faker.helpers.arrayElement(dictionary.paymentMethods),
     bookingHistory: bookingRecords,
+    photoUrl: "https://i.pravatar.cc/300?img=33",
   };
 
   const healthDashboardSeries = {

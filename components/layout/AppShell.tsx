@@ -61,7 +61,7 @@ export function AppShell({ children }: AppShellProps) {
           firstName={firstName}
           featuredPet={featuredPet}
           today={today}
-          avatarUrl={`https://i.pravatar.cc/150?u=${currentUserProfile.id}`}
+          avatarUrl={currentUserProfile.photoUrl ?? `https://i.pravatar.cc/150?u=${currentUserProfile.id}`}
         >
           {children}
         </MobileLayout>

@@ -89,6 +89,8 @@ export interface OwnerProfile {
   membershipType: MembershipType;
   paymentMethod: string;
   bookingHistory: BookingRecord[];
+  /** Optional profile picture URL (e.g. pravatar, upload). */
+  photoUrl?: string;
 }
 
 export interface ButlerDriver {
