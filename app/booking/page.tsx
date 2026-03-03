@@ -2,10 +2,12 @@
 
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import { Calendar, Cat, CheckCircle2, ChevronRight, Clock3, Dog, Sparkles, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { ElegantButton } from "@/components/ui/ElegantButton";
+import { withLocalePrefix } from "@/lib/i18n";
 import { PremiumCard } from "@/components/ui/PremiumCard";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { formatCurrency, formatDate } from "@/lib/format";
@@ -55,7 +57,7 @@ export default function BookingPage() {
   ];
 
   const [isAddOnModalOpen, setIsAddOnModalOpen] = useState(false);
-  const [isConfirmed, setIsConfirmed] = useState(false);
+  const router = useRouter();
 
   const {
     step,
@@ -104,12 +106,11 @@ export default function BookingPage() {
     nextStep();
   };
 
-  const confirmBooking = () => {
-    setIsConfirmed(true);
-    setTimeout(() => {
-      reset();
-      setIsConfirmed(false);
-    }, 1700);
+  const handleConfirmAndPay = () => {
+    const bookingId = `B-${Date.now()}`;
+    router.push(
+      withLocalePrefix(`/payment-gateway?bookingId=${bookingId}`, locale as "th" | "en")
+    );
   };
 
   const stepIndicator = (
@@ -406,17 +407,11 @@ export default function BookingPage() {
                 {tCta("continue")}
               </ElegantButton>
             ) : (
-              <ElegantButton type="button" onClick={confirmBooking} fullWidth>
+              <ElegantButton type="button" onClick={handleConfirmAndPay} fullWidth>
                 {tCta("confirmAndPay")}
               </ElegantButton>
             )}
           </div>
-          {isConfirmed && (
-            <div className="mt-3 inline-flex items-center gap-1 rounded-full bg-sage/25 px-3 py-2 text-xs font-semibold text-brand-navy">
-              <CheckCircle2 className="h-4 w-4" />
-              {tBooking("confirmed")}
-            </div>
-          )}
         </PremiumCard>
       </div>
 

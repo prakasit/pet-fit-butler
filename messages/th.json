@@ -25,6 +25,9 @@
   "routeTitles": {
     "dashboard": "หน้าหลัก",
     "booking": "จองบริการ",
+    "paymentGateway": "ชำระเงิน",
+    "thankYou": "ขอบคุณ",
+    "myBooking": "การจองของฉัน",
     "upcoming": "นัดหมาย",
     "health": "กิจกรรม",
     "tracking": "ถ่ายทอดสด",
@@ -366,6 +369,38 @@
     },
     "mobileLanguageTitle": "ภาษาแอป",
     "mobileLanguageSubtitle": "เลือกภาษาที่ต้องการใช้งาน"
+  },
+  "payment": {
+    "title": "ช่องทางการชำระเงิน",
+    "subtitle": "เลือกวิธีชำระเงินที่ต้องการ",
+    "creditCard": "บัตรเครดิต",
+    "cardNumber": "หมายเลขบัตร",
+    "expiryDate": "วันหมดอายุ",
+    "cvv": "CVV",
+    "nameOnCard": "ชื่อบนบัตร",
+    "qrPayment": "QR พร้อมเพย์",
+    "confirmAfterPayment": "ยืนยันหลังชำระเงิน",
+    "bankTransfer": "โอนเงินผ่านธนาคาร",
+    "bankAccountNumber": "เลขบัญชี",
+    "slipUpload": "อัปโหลดสลิป (ไม่บังคับ)",
+    "confirm": "ยืนยัน",
+    "installment": "ผ่อนชำระ",
+    "installmentPeriod": "ระยะเวลาผ่อน",
+    "months": "{count} เดือน",
+    "monthlyAmount": "ยอดชำระต่อเดือน",
+    "recurringToggle": "เปิดใช้งานการตัดเงินอัตโนมัติรายเดือน",
+    "recurringDescription": "ระบบจะตัดเงินอัตโนมัติทุกเดือน สามารถยกเลิกได้จากหน้าโปรไฟล์",
+    "payNow": "ชำระเงิน",
+    "processing": "กำลังดำเนินการ...",
+    "sessionExpired": "เซสชันการจองหมดอายุแล้ว กรุณาเริ่มจองใหม่",
+    "backToBooking": "กลับไปจองบริการ"
+  },
+  "thankYou": {
+    "title": "ชำระเงินสำเร็จ 🎉",
+    "successMessage": "ลูกรักของคุณได้รับการจองเรียบร้อยแล้ว",
+    "viewMyBooking": "ดูการจองของฉัน",
+    "bookMore": "จองเพิ่มเติม",
+    "backToHome": "กลับหน้าแรก"
   },
   "gallery": {
     "heroTag": "ช่วงเวลาที่บันทึกไว้",

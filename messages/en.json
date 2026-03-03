@@ -25,6 +25,9 @@
   "routeTitles": {
     "dashboard": "Home",
     "booking": "Booking",
+    "paymentGateway": "Payment",
+    "thankYou": "Thank You",
+    "myBooking": "My Booking",
     "upcoming": "Appointments",
     "health": "Activity",
     "tracking": "Live",
@@ -366,6 +369,38 @@
     },
     "mobileLanguageTitle": "App Language",
     "mobileLanguageSubtitle": "Choose your preferred language"
+  },
+  "payment": {
+    "title": "Payment Method",
+    "subtitle": "Choose how you would like to pay",
+    "creditCard": "Credit Card",
+    "cardNumber": "Card Number",
+    "expiryDate": "Expiry Date",
+    "cvv": "CVV",
+    "nameOnCard": "Name on Card",
+    "qrPayment": "QR Payment (PromptPay)",
+    "confirmAfterPayment": "Confirm After Payment",
+    "bankTransfer": "Bank Transfer",
+    "bankAccountNumber": "Bank Account Number",
+    "slipUpload": "Upload Slip (optional)",
+    "confirm": "Confirm",
+    "installment": "Installment",
+    "installmentPeriod": "Installment period",
+    "months": "{count} months",
+    "monthlyAmount": "Monthly amount",
+    "recurringToggle": "Enable Monthly Auto Recurring Payment",
+    "recurringDescription": "The system will automatically charge monthly. You can cancel anytime from your profile.",
+    "payNow": "Pay Now",
+    "processing": "Processing...",
+    "sessionExpired": "Your booking session has expired. Please start your booking again.",
+    "backToBooking": "Back to Booking"
+  },
+  "thankYou": {
+    "title": "Payment Successful 🎉",
+    "successMessage": "Your pet's session has been successfully booked.",
+    "viewMyBooking": "View My Booking",
+    "bookMore": "Book More",
+    "backToHome": "Back to Home"
   },
   "gallery": {
     "heroTag": "Captured Moments",
