@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronRight, Navigation, Video } from "lucide-react";
+import { ChevronRight, Navigation } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { ButlerDriverCard } from "@/components/ui/ButlerDriverCard";
@@ -32,6 +32,10 @@ export default function TrackingPage() {
   const tLabels = useTranslations("labels");
   const { rides } = useMockData();
 
+  const liveVideoSrc = useMemo(
+    () => `/video/live_video${Math.random() < 0.5 ? "1" : "2"}.mp4`,
+    [],
+  );
   const [rideId, setRideId] = useState(rides[0]?.id ?? "");
   const [etaByRide, setEtaByRide] = useState<Record<string, number>>(() =>
     Object.fromEntries(rides.map((ride) => [ride.id, ride.etaMinutes])),
@@ -120,18 +124,19 @@ export default function TrackingPage() {
                   noCard
                 />
                 <div className="relative flex min-h-[200px] items-center justify-center overflow-hidden rounded-2xl bg-brand-navy/90">
-                  <div className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full bg-red-500 px-2.5 py-1 text-xs font-bold text-white">
+                  <div className="absolute right-3 top-3 z-10 flex items-center gap-1.5 rounded-full bg-red-500 px-2.5 py-1 text-xs font-bold text-white">
                     <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white" />
                     {tTracking("livePetStream")}
                   </div>
-                  <div className="flex flex-col items-center gap-3 text-center">
-                    <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-surface/10">
-                      <Video className="h-8 w-8 text-surface/70" />
-                    </div>
-                    <p className="max-w-[200px] text-sm text-surface/80">
-                      {tTracking("livePetStreamSubtitle")}
-                    </p>
-                  </div>
+                  <video
+                    src={liveVideoSrc}
+                    className="h-full min-h-[200px] w-full object-cover"
+                    playsInline
+                    muted
+                    loop
+                    autoPlay
+                    aria-label={tTracking("livePetStream")}
+                  />
                 </div>
               </div>
               <div>
