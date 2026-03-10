@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronRight, Navigation } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
@@ -32,9 +32,8 @@ export default function TrackingPage() {
   const tLabels = useTranslations("labels");
   const { rides } = useMockData();
 
-  const liveVideoSrc = useMemo(
-    () => `/video/live_video${Math.random() < 0.5 ? "1" : "2"}.mp4`,
-    [],
+  const [liveVideoSrc, setLiveVideoSrc] = useState(
+    () => `/video/live_video${Math.floor(Math.random() * 4) + 1}.mp4`,
   );
   const [rideId, setRideId] = useState(rides[0]?.id ?? "");
   const [etaByRide, setEtaByRide] = useState<Record<string, number>>(() =>
@@ -46,6 +45,15 @@ export default function TrackingPage() {
   );
   const etaCountdown =
     (selectedRide ? etaByRide[selectedRide.id] : undefined) ?? selectedRide?.etaMinutes ?? 0;
+
+  const isFirstMount = useRef(true);
+  useEffect(() => {
+    if (isFirstMount.current) {
+      isFirstMount.current = false;
+      return;
+    }
+    setLiveVideoSrc(`/video/live_video${Math.floor(Math.random() * 4) + 1}.mp4`);
+  }, [rideId]);
 
   useEffect(() => {
     if (!selectedRide) return;
