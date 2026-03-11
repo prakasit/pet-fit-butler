@@ -33,7 +33,7 @@ export default function TrackingPage() {
   const { rides } = useMockData();
 
   const [liveVideoSrc, setLiveVideoSrc] = useState(
-    () => `/video/live_video${Math.floor(Math.random() * 4) + 1}.mp4`,
+    () => `/video/live_video${Math.floor(Math.random() * 6) + 1}.mp4`,
   );
   const [rideId, setRideId] = useState(rides[0]?.id ?? "");
   const [etaByRide, setEtaByRide] = useState<Record<string, number>>(() =>
@@ -52,7 +52,7 @@ export default function TrackingPage() {
       isFirstMount.current = false;
       return;
     }
-    setLiveVideoSrc(`/video/live_video${Math.floor(Math.random() * 4) + 1}.mp4`);
+    setLiveVideoSrc(`/video/live_video${Math.floor(Math.random() * 6) + 1}.mp4`);
   }, [rideId]);
 
   useEffect(() => {
