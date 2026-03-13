@@ -478,6 +478,38 @@ const rideStatusFlow: RideStatus[] = [
   "ARRIVED_HOME",
 ];
 
+/** Durations in minutes from previous step: travel to pickup, to studio, at studio, workout, travel home */
+function buildRideTimeline(activeStage: number): RideStatusPoint[] {
+  const base = new Date();
+  base.setHours(9, 0, 0, 0);
+  if (base > new Date()) base.setDate(base.getDate() - 1);
+
+  const travelToPickupMin = faker.number.int({ min: 10, max: 20 });
+  const pickupToStudioMin = faker.number.int({ min: 10, max: 30 });
+  const atStudioMin = 5;
+  const workoutMin = faker.number.int({ min: 45, max: 60 });
+  const travelHomeMin = faker.number.int({ min: 10, max: 30 });
+
+  const cumulativeMin = [
+    0,
+    travelToPickupMin,
+    travelToPickupMin + pickupToStudioMin,
+    travelToPickupMin + pickupToStudioMin + atStudioMin,
+    travelToPickupMin + pickupToStudioMin + atStudioMin + workoutMin,
+    travelToPickupMin + pickupToStudioMin + atStudioMin + workoutMin + travelHomeMin,
+  ];
+
+  return rideStatusFlow.map((status, stage) => {
+    const t = new Date(base.getTime() + cumulativeMin[stage]! * 60 * 1000);
+    return {
+      status,
+      completed: stage < activeStage,
+      active: stage === activeStage,
+      timestamp: t.toISOString(),
+    };
+  });
+}
+
 const ownerCoordinates = {
   lat: 13.7563,
   lng: 100.5018,
@@ -650,13 +682,7 @@ function buildMockData(locale: AppLocale): MockDataBundle {
     const pickup = randomCoordinate({ lat: 13.7563, lng: 100.5018 });
     const studio = randomCoordinate({ lat: 13.7396, lng: 100.5626 });
     const pet = pets[index % pets.length]!;
-
-    const timeline: RideStatusPoint[] = rideStatusFlow.map((status, stage) => ({
-      status,
-      completed: stage < activeStage,
-      active: stage === activeStage,
-      timestamp: faker.date.recent({ days: 1 }).toISOString(),
-    }));
+    const timeline = buildRideTimeline(activeStage);
 
     return {
       id: `ride-${index + 1}`,

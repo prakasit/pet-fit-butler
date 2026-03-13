@@ -32,9 +32,7 @@ export default function TrackingPage() {
   const tLabels = useTranslations("labels");
   const { rides } = useMockData();
 
-  const [liveVideoSrc, setLiveVideoSrc] = useState(
-    () => `/video/live_video${Math.floor(Math.random() * 6) + 1}.mp4`,
-  );
+  const [liveVideoSrc, setLiveVideoSrc] = useState("/video/live_video1.mp4");
   const [rideId, setRideId] = useState(rides[0]?.id ?? "");
   const [etaByRide, setEtaByRide] = useState<Record<string, number>>(() =>
     Object.fromEntries(rides.map((ride) => [ride.id, ride.etaMinutes])),
@@ -45,6 +43,10 @@ export default function TrackingPage() {
   );
   const etaCountdown =
     (selectedRide ? etaByRide[selectedRide.id] : undefined) ?? selectedRide?.etaMinutes ?? 0;
+
+  useEffect(() => {
+    setLiveVideoSrc(`/video/live_video${Math.floor(Math.random() * 6) + 1}.mp4`);
+  }, []);
 
   const isFirstMount = useRef(true);
   useEffect(() => {
@@ -171,16 +173,18 @@ export default function TrackingPage() {
           <StatusBadge label={tLabels("minutes", { count: etaCountdown })} tone="warning" />
         </div>
         <Timeline
-          items={selectedRide.timeline.map((point, index) => ({
-            id: `${selectedRide.id}-timeline-${index}`,
-            label: tRideStatus(rideStatusKey[point.status]),
-            timestamp: new Date(point.timestamp).toLocaleTimeString(locale === "en" ? "en-US" : "th-TH", {
-              hour: "2-digit",
-              minute: "2-digit",
-            }),
-            completed: point.completed,
-            active: point.active,
-          }))}
+          items={[...selectedRide.timeline]
+            .sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime())
+            .map((point, index) => ({
+              id: `${selectedRide.id}-timeline-${index}`,
+              label: tRideStatus(rideStatusKey[point.status]),
+              timestamp: new Date(point.timestamp).toLocaleTimeString(locale === "en" ? "en-US" : "th-TH", {
+                hour: "2-digit",
+                minute: "2-digit",
+              }),
+              completed: point.completed,
+              active: point.active,
+            }))}
         />
       </PremiumCard>
 
